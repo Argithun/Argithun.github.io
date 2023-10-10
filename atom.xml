@@ -1,0 +1,273 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Argithun&#39;s Blog</title>
+  
+  <subtitle>山头斜照却相迎</subtitle>
+  <link href="https://argithun.github.io/atom.xml" rel="self"/>
+  
+  <link href="https://argithun.github.io/"/>
+  <updated>2023-10-10T06:52:47.553Z</updated>
+  <id>https://argithun.github.io/</id>
+  
+  <author>
+    <name>Argithun Pan</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>北航计算机学院面向对象（2023 第四单元）</title>
+    <link href="https://argithun.github.io/2023/06/01/OO_4/"/>
+    <id>https://argithun.github.io/2023/06/01/OO_4/</id>
+    <published>2023-06-01T01:25:00.000Z</published>
+    <updated>2023-10-10T06:52:47.553Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;北航计算机学院面向对象（2023-第四单元）&quot;&gt;&lt;a href=&quot;#北航计算机学院面向对象（2023-第四单元）&quot; class=&quot;headerlink&quot; title=&quot;北航计算机学院面向对象（2023 第四单元）&quot;&gt;&lt;/a&gt;北航计算机学院面向对象（2023</summary>
+        
+      
+    
+    
+    
+    <category term="面向对象" scheme="https://argithun.github.io/categories/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/"/>
+    
+    
+    <category term="Java" scheme="https://argithun.github.io/tags/Java/"/>
+    
+    <category term="面向对象" scheme="https://argithun.github.io/tags/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>北航计算机学院面向对象（2023 第三单元）</title>
+    <link href="https://argithun.github.io/2023/05/01/OO_3/"/>
+    <id>https://argithun.github.io/2023/05/01/OO_3/</id>
+    <published>2023-05-01T01:25:00.000Z</published>
+    <updated>2023-10-10T06:52:50.369Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;北航计算机学院面向对象（2023-第三单元）&quot;&gt;&lt;a href=&quot;#北航计算机学院面向对象（2023-第三单元）&quot; class=&quot;headerlink&quot; title=&quot;北航计算机学院面向对象（2023 第三单元）&quot;&gt;&lt;/a&gt;北航计算机学院面向对象（2023</summary>
+        
+      
+    
+    
+    
+    <category term="面向对象" scheme="https://argithun.github.io/categories/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/"/>
+    
+    
+    <category term="Java" scheme="https://argithun.github.io/tags/Java/"/>
+    
+    <category term="面向对象" scheme="https://argithun.github.io/tags/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/"/>
+    
+    <category term="JML" scheme="https://argithun.github.io/tags/JML/"/>
+    
+    <category term="软件测试" scheme="https://argithun.github.io/tags/%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>北航计算机学院面向对象（2023 第二单元）</title>
+    <link href="https://argithun.github.io/2023/04/01/OO_2/"/>
+    <id>https://argithun.github.io/2023/04/01/OO_2/</id>
+    <published>2023-04-01T01:25:00.000Z</published>
+    <updated>2023-10-10T06:52:52.052Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;北航计算机学院面向对象（2023-第二单元）&quot;&gt;&lt;a href=&quot;#北航计算机学院面向对象（2023-第二单元）&quot; class=&quot;headerlink&quot; title=&quot;北航计算机学院面向对象（2023 第二单元）&quot;&gt;&lt;/a&gt;北航计算机学院面向对象（2023</summary>
+        
+      
+    
+    
+    
+    <category term="面向对象" scheme="https://argithun.github.io/categories/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/"/>
+    
+    
+    <category term="Java" scheme="https://argithun.github.io/tags/Java/"/>
+    
+    <category term="面向对象" scheme="https://argithun.github.io/tags/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/"/>
+    
+    <category term="并发程序设计" scheme="https://argithun.github.io/tags/%E5%B9%B6%E5%8F%91%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>北航计算机学院面向对象（2023 第一单元）</title>
+    <link href="https://argithun.github.io/2023/03/01/OO_1/"/>
+    <id>https://argithun.github.io/2023/03/01/OO_1/</id>
+    <published>2023-03-01T01:25:00.000Z</published>
+    <updated>2023-10-09T14:16:47.153Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;北航计算机学院面向对象（2023-第一单元）&quot;&gt;&lt;a href=&quot;#北航计算机学院面向对象（2023-第一单元）&quot; class=&quot;headerlink&quot; title=&quot;北航计算机学院面向对象（2023 第一单元）&quot;&gt;&lt;/a&gt;北航计算机学院面向对象（2023</summary>
+        
+      
+    
+    
+    
+    <category term="面向对象" scheme="https://argithun.github.io/categories/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/"/>
+    
+    
+    <category term="Java" scheme="https://argithun.github.io/tags/Java/"/>
+    
+    <category term="面向对象" scheme="https://argithun.github.io/tags/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>2022北航计算机组成原理 Project 8</title>
+    <link href="https://argithun.github.io/2022/12/10/CO_P8/"/>
+    <id>https://argithun.github.io/2022/12/10/CO_P8/</id>
+    <published>2022-12-10T01:25:00.000Z</published>
+    <updated>2023-10-10T06:50:01.284Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;MIPS微系统设计文档&quot;&gt;&lt;a href=&quot;#MIPS微系统设计文档&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="体系结构" scheme="https://argithun.github.io/categories/%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84/"/>
+    
+    
+    <category term="计算机组成" scheme="https://argithun.github.io/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90/"/>
+    
+    <category term="Verilog" scheme="https://argithun.github.io/tags/Verilog/"/>
+    
+    <category term="嵌入式" scheme="https://argithun.github.io/tags/%E5%B5%8C%E5%85%A5%E5%BC%8F/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>2022北航计算机组成原理 Project 7</title>
+    <link href="https://argithun.github.io/2022/11/22/CO_P7/"/>
+    <id>https://argithun.github.io/2022/11/22/CO_P7/</id>
+    <published>2022-11-22T01:25:00.000Z</published>
+    <updated>2023-10-09T14:14:23.660Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;流水线CPU（支持异常处理）设计文档&quot;&gt;&lt;a href=&quot;#流水线CPU（支持异常处理）设计文档&quot; class=&quot;headerlink&quot; title=&quot;流水线CPU（支持异常处理）设计文档&quot;&gt;&lt;/a&gt;流水线CPU（支持异常处理）设计文档&lt;/h1&gt;&lt;hr&gt;
+&lt;h2</summary>
+        
+      
+    
+    
+    
+    <category term="体系结构" scheme="https://argithun.github.io/categories/%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84/"/>
+    
+    
+    <category term="计算机组成" scheme="https://argithun.github.io/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90/"/>
+    
+    <category term="Verilog" scheme="https://argithun.github.io/tags/Verilog/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>2022北航计算机组成原理 Project 6</title>
+    <link href="https://argithun.github.io/2022/11/15/CO_P6/"/>
+    <id>https://argithun.github.io/2022/11/15/CO_P6/</id>
+    <published>2022-11-15T01:25:00.000Z</published>
+    <updated>2023-10-09T14:14:05.505Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;流水线CPU（存储器外置）设计文档&quot;&gt;&lt;a href=&quot;#流水线CPU（存储器外置）设计文档&quot; class=&quot;headerlink&quot; title=&quot;流水线CPU（存储器外置）设计文档&quot;&gt;&lt;/a&gt;流水线CPU（存储器外置）设计文档&lt;/h1&gt;&lt;hr&gt;
+&lt;h2</summary>
+        
+      
+    
+    
+    
+    <category term="体系结构" scheme="https://argithun.github.io/categories/%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84/"/>
+    
+    
+    <category term="计算机组成" scheme="https://argithun.github.io/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90/"/>
+    
+    <category term="Verilog" scheme="https://argithun.github.io/tags/Verilog/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>2022北航计算机组成原理 Project 5</title>
+    <link href="https://argithun.github.io/2022/11/08/CO_P5/"/>
+    <id>https://argithun.github.io/2022/11/08/CO_P5/</id>
+    <published>2022-11-08T01:25:00.000Z</published>
+    <updated>2023-10-09T14:13:13.842Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;流水线CPU设计文档&quot;&gt;&lt;a href=&quot;#流水线CPU设计文档&quot; class=&quot;headerlink&quot; title=&quot;流水线CPU设计文档&quot;&gt;&lt;/a&gt;流水线CPU设计文档&lt;/h1&gt;&lt;hr&gt;
+&lt;h2 id=&quot;设计草稿及模块安排&quot;&gt;&lt;a</summary>
+        
+      
+    
+    
+    
+    <category term="体系结构" scheme="https://argithun.github.io/categories/%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84/"/>
+    
+    
+    <category term="计算机组成" scheme="https://argithun.github.io/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90/"/>
+    
+    <category term="Verilog" scheme="https://argithun.github.io/tags/Verilog/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>2022北航计算机组成原理 Project 4</title>
+    <link href="https://argithun.github.io/2022/11/01/CO_P4/"/>
+    <id>https://argithun.github.io/2022/11/01/CO_P4/</id>
+    <published>2022-11-01T01:25:00.000Z</published>
+    <updated>2023-10-09T14:12:50.122Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;Verilog-语言设计单周期-CPU&quot;&gt;&lt;a href=&quot;#Verilog-语言设计单周期-CPU&quot; class=&quot;headerlink&quot; title=&quot;Verilog 语言设计单周期 CPU&quot;&gt;&lt;/a&gt;Verilog 语言设计单周期</summary>
+        
+      
+    
+    
+    
+    <category term="体系结构" scheme="https://argithun.github.io/categories/%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84/"/>
+    
+    
+    <category term="计算机组成" scheme="https://argithun.github.io/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90/"/>
+    
+    <category term="Verilog" scheme="https://argithun.github.io/tags/Verilog/"/>
+    
+  </entry>
+  
+</feed>

@@ -1,0 +1,1212 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="北航计算机学院面向对象（2023 第一单元）, Argithun&#39;s Blog">
+    <meta name="description" content="计算机科学与技术专业的学生博客，记录课设、科研和实习项目的心得，欢迎任何技术层面的探讨~">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>北航计算机学院面向对象（2023 第一单元） | Argithun&#39;s Blog</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+
+    <script src="/libs/jquery/jquery.min.js"></script>
+
+<meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="Argithun's Blog" type="application/atom+xml">
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+
+
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">Argithun&#39;s Blog</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/contact" class="waves-effect waves-light">
+      
+      <i class="fas fa-comments" style="zoom: 0.6;"></i>
+      
+      <span>留言板</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/friends" class="waves-effect waves-light">
+      
+      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
+      
+      <span>友情链接</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">Argithun&#39;s Blog</div>
+        <div class="logo-desc">
+            
+            计算机科学与技术专业的学生博客，记录课设、科研和实习项目的心得，欢迎任何技术层面的探讨~
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			分类
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/contact" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-comments"></i>
+			
+			留言板
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/friends" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-address-book"></i>
+			
+			友情链接
+		</a>
+          
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/blinkfox/hexo-theme-matery" class="waves-effect waves-light" target="_blank">
+                <i class="fab fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/blinkfox/hexo-theme-matery" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+    
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('https://argithun-blog-1321510384.cos.ap-beijing.myqcloud.com/OO1.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">北航计算机学院面向对象（2023 第一单元）</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="container content">
+
+    
+    <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/Java/">
+                                <span class="chip bg-color">Java</span>
+                            </a>
+                        
+                            <a href="/tags/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/">
+                                <span class="chip bg-color">面向对象</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/" class="post-category">
+                                面向对象
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2023-03-01
+                </div>
+                
+
+                
+
+                
+
+                
+
+                
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h1 id="北航计算机学院面向对象（2023-第一单元）"><a href="#北航计算机学院面向对象（2023-第一单元）" class="headerlink" title="北航计算机学院面向对象（2023 第一单元）"></a>北航计算机学院面向对象（2023 第一单元）</h1><p>本文将以笔者学习过程中的思考感悟为基础，对2023北航计算机学院面向对象课程第一单元（作业1~3）的架构搭建和程序设计思路做简明的描述；如有不同见解，欢迎学习交流。</p>
+<hr>
+<h2 id="一、架构的搭建和迭代"><a href="#一、架构的搭建和迭代" class="headerlink" title="一、架构的搭建和迭代"></a>一、架构的搭建和迭代</h2><p>在面向对象（OO）这门课程中，每个单元的作业采取增量开发的模式，需求随着时间的推进变得更加复杂、丰富；这需要我们在编程过程中尽量构建可扩展性强的架构。</p>
+<h3 id="1-第一次作业"><a href="#1-第一次作业" class="headerlink" title="1.第一次作业"></a>1.第一次作业</h3><p>第一单元第一次作业是我们建构面向对象思维很好的起点，我们在这次作业构建的架构的科学性很大程度上决定了后两次作业的工作量。</p>
+<p><strong>（1）需求概述</strong><br>本次作业的目标可以概述为：编写一个可以化简由数字（支持前导零），变量（x,y,z），指数，括号（暂不考虑嵌套）构成的表达式的程序，去除所有括号，结果短则性能佳。</p>
+<p><strong>（2）基本思路</strong><br><del>由于本人上学期没有选上 oopre，故</del>仔细学习了课程组提供的练习题的代码，将其思想推广到本次作业的情形：</p>
+<ul>
+<li>不要妄图靠特判和顺序循环把本次作业搞成字符串的 tirck，为了方便后两次作业的迭代，基于表达式文法的递归下降方法需要被采用。</li>
+<li>作业需求中对待化简表达式的递归定义十分严谨，简单来看可以分为三个层次：<pre class=" language-mermaid"><code class="language-mermaid">graph TD
+A[常数因子]--->B[因子]
+C[变量因子]--->B
+D[表达式因子]-->B
+B-->|*|E[项]
+E-->|+|F[表达式]
+D------F
+</code></pre>
+</li>
+<li>我们的精力集中在对表达式的解析上，所以表达式形制越简单，我们在编写文法和词法解析器时的思考量也越小；<strong>预处理</strong>是一种较好的策略（将空格全部去除，将幂全部转为乘积，将相连的正负号等价缩短）。</li>
+</ul>
+<p><strong>（3）架构搭建</strong></p>
+<pre class=" language-mermaid"><code class="language-mermaid">graph LR
+A[预处理]-->B[文法词法解析]-->C[后处理]-->D[合并同类项]
+</code></pre>
+<ul>
+<li>预处理上文已经交代；</li>
+<li>文法词法解析主要包括两个重要的类：<br><strong>Lexer</strong><br>  词法解析器，指示目前程序读到的关键字段，如数字，括号，正负号等，使顺序遍历字符串的工具。<br><strong>Parser</strong><br>  语法解析器，遇到标志符号则调用相应的解析器，简要规则：<ol>
+<li>入口为表达式解析器；</li>
+<li>遇到加减切换至项解析器；</li>
+<li>遇到乘法切换到因子解析器；</li>
+<li>遇到括号切换到表达式解析器。<br>  这里为了方便描述一些细节处理没有完全写出。</li>
+</ol>
+</li>
+<li>后处理主要包括将连乘恢复为幂，根据项内各因子的符号决定项的符号（exp: -x*+y*-z –&gt; +x*y*z）；</li>
+<li>合并同类项只需检查幂次的对应匹配即可。</li>
+</ul>
+<p><strong>（4）可拓展性</strong><br>本次作业虽然需求较为单一，但考虑到后两次作业不可避免的增量开发，故提前支持了括号的嵌套功能；其实这也是十分自然的设计，因为层次化的递归下降法就是为了解析这种嵌套次数不定，字词出现概率不定但递归定义十分明朗的语言而设计的。</p>
+<h3 id="2-第二次作业"><a href="#2-第二次作业" class="headerlink" title="2.第二次作业"></a>2.第二次作业</h3><p><strong>（1）新增需求</strong><br>本次作业支持括号嵌套（上一次已实现），三角函数（函数内容为任意<strong>因子</strong>），自定义函数。</p>
+<p><strong>（2）扩展思路</strong></p>
+<ul>
+<li><p>处理三角函数<br>由于三角函数无法在预处理中消除，我们必须对 Lexer 和 Parser 做适当的扩展。<br>扩展时可参考的层次结构如下：</p>
+<pre class=" language-mermaid"><code class="language-mermaid">  graph TD
+  G[三角函数因子]--->B[因子]
+  I[三角函数内容]-->G
+  H[三角函数名]-->G
+  A[常数因子]--->B
+  C[变量因子]--->B
+  D[表达式因子]-->B
+  B-->|*|E[项]
+  E-->|+|F[表达式]
+  D------F
+  I------B
+</code></pre>
+<p>主要的工作是扩展 Lexer 使其支持 sin&#x2F;cos 的识别；扩展 Parser 使其读到 sin&#x2F;cos 时再次进入因子解析器。</p>
+</li>
+<li><p>处理自定义函数<br>为了降低解析的复杂度，考虑在预处理中消除自定义函数，则这个过程分为两步：</p>
+<ol>
+<li>读取用户自定义的函数，做法是建立自定义函数类，包含<strong>函数名</strong>、<strong>形参列表</strong>、<strong>函数体</strong>三个关键参数。</li>
+<li>依据定义的函数名识别带化简字符串中调用的函数，进行简单的字符串替换和拼接（注意括号）；笔者开始时尝试使用递归的方法从内到外对调用的函数进行解析，无奈方法复杂度较高，故采用了<strong>循环化简</strong>直至式子中不出现函数名为止的较为朴素的方法。</li>
+</ol>
+</li>
+</ul>
+<p><strong>（3）架构搭建</strong><br>基于第一次作业的架构，在文法词法解析前加入了自定义函数处理的环节，扩展了文法词法解析对三角函数的支持，结构如下：</p>
+<pre class=" language-mermaid"><code class="language-mermaid">graph LR
+A[预处理]-->E[函数处理]-->B[文法词法解析]-->C[后处理]-->D[合并同类项]
+</code></pre>
+<h3 id="3-第三次作业"><a href="#3-第三次作业" class="headerlink" title="3.第三次作业"></a>3.第三次作业</h3><p><strong>（1）新增要求</strong><br>自定义函数定义时可以使用已定义的自定义函数；加入求导算子（一组输入中只出现一次）。</p>
+<p><strong>（2）扩展思路</strong><br>根据笔者前两次作业调试 Bug 的经验，文法词法解析和后处理的步骤最容易出现错误，故考虑将新增功能的扩展尽量前移；</p>
+<ol>
+<li><p>其中支持使用现有函数定义函数的处理较为简单，只需动态维护一个现有函数库，将第二次作业的<strong>函数处理类</strong>对<strong>每个函数在定义时解析出的函数体</strong>使用即可，只不过传入的参数不是完全的函数库而是目前为止已定义的函数的集合。</p>
+</li>
+<li><p>对于导数的处理，要尽可能简化我们求导的流程，则又可以采用预处理的策略；可以先对求导对象（d[xyz](content) 的 content）使用第二次作业的程序对其进行全过程解析化简，最后的通式为：</p>
+</li>
+</ol>
+<pre><code>Constant * x**a * y**b * z**c * sin(A)**d * cos(B)**f [+-] ···
+</code></pre>
+<p>则基于此通式，采用递归下降的思路，可构建一个类专门用于求导，构造的三个函数调用关系如下：</p>
+<pre class=" language-mermaid"><code class="language-mermaid">graph TD
+A[表达式求导]--->|加法法则|B[项求导]
+B--->|乘方求导公式|A
+B--->|乘法法则|A
+B--->|不含括号外的乘和乘方|C[基元求导]
+C-->D[常数求导]
+C-->E[单个一次变量求导]
+C-->F[三角函数求导]
+F-->|三角求导公式|A
+</code></pre>
+<p>其中调用的衔接是根据求导公式的十分简单的字符串拼接。</p>
+<p><strong>（3）架构搭建</strong></p>
+<pre class=" language-mermaid"><code class="language-mermaid">graph LR
+E[函数处理]-->F[导数处理]-->A[预处理]--> B[文法词法解析]-->C[后处理]-->D[合并同类项]
+</code></pre>
+<p>值得注意的是，将预处理放在了函数、导数处理之后；这是因为预处理中包含了乘方转化为乘法的步骤，若放在第一步，会大大降低求导的效率。<br>这个架构的优点是我们可以完全复用上一次作业的文法词法解析器、后处理、合并同类项的函数和类，<strong>无需任何改动</strong>。</p>
+<hr>
+<h2 id="二、模块化重构策略"><a href="#二、模块化重构策略" class="headerlink" title="二、模块化重构策略"></a>二、模块化重构策略</h2><p>虽然三次作业是迭代开发的逻辑关系，但由于架构和需求的原因，难免会出现<strong>重构</strong>的情况；重构常常是必要的，但我们可以采取一些策略以降低我们的工作量。笔者认为，主要有以下两点：</p>
+<ul>
+<li>非必要不改动核心架构，而是通过添加<strong>预&#x2F;后处理</strong>操作使现有的核心架构能够处理新增的需求。</li>
+<li>开始一个项目时遵循模块化策略（将问题的处理按流程划分），面对新的需求时仅重构其中一个流程的操作，避免修改较多的文件。</li>
+</ul>
+<p>具体来说，以第一单元的作业为例：</p>
+<h3 id="1-三角函数导致的部分重构"><a href="#1-三角函数导致的部分重构" class="headerlink" title="1.三角函数导致的部分重构"></a>1.三角函数导致的部分重构</h3><p>在第二次作业中，支持三角函数的需求的加入使笔者不得不对代码作出一些修改：</p>
+<ul>
+<li>在词法文法解析模块加入识别三角函数的判定，并为三角函数新建一个类以存储函数名和函数体；这部分的工作量并不大，因为三角函数括号内部可以看做因子处理，总的来看，<strong>三角函数符号可以看作一个无法被消除的括号</strong>。</li>
+<li>对于化简和合并同类项的部分：<br>由于第一次作业在此部分的函数默认了表达式中已经没有括号了，故采用切割表达式录入项的通式，最后匹配幂次进行合并的方式。<br>但第二次作业存在三角函数这种“无法被消去的括号”，故笔者的化简部分需要重构。<ul>
+<li>考虑到思路的连贯性，还是采取拆字符串的方式，但分隔符是表达式不被在括号中的加减号。</li>
+<li>重新构造项类，将三角函数纳入，并使用 hashset 记录因子，方便后续的合并操作。</li>
+<li>对于三角函数内的式子，递归调用此化简和合并方法。</li>
+</ul>
+</li>
+</ul>
+<p>可见这次重构涉及了四个文件，并未进行全局性的大改。</p>
+<h3 id="2-“懒惰”地处理求导"><a href="#2-“懒惰”地处理求导" class="headerlink" title="2.“懒惰”地处理求导"></a>2.“懒惰”地处理求导</h3><p>第三次作业的一个要求看起来十分得复杂：<br><strong>加入求导算子</strong><br>但我们可以这样理解：<br><strong>只加入求导算子，不引入新的变量或常量</strong></p>
+<p>因此我们只要在词法文法分析之前将求导算子计算完毕，则后续的操作可以直接复用第二次作业的代码；故我们将求导操作放在预处理之前。</p>
+<ul>
+<li>那如何尽量简化求导的操作呢，基本思想是将待求导的式子<strong>规范化</strong>；这里笔者采取的方式是复用第二次作业对表达式处理的全程代码，最后生成的式子较为规整，格式如下：<pre><code>Constant * x**a * y**b * z**c * sin(A)**d * cos(B)**f [+-] ···
+</code></pre>
+</li>
+<li>有了规整的式子，我们的求导操作可以由三个基本的操作构成：常数求导，一次变量求导，三角函数求导，具体逻辑可参照第一节相关内容；在此基础上进行层次化的递归下降，不难构造出求导类。</li>
+</ul>
+<p>将求导操作集中在一个类里，避免了在文法词法分析时进行求导操作，直接避免了在各个因子的类中构造求导函数；虽然这样安排有些面向过程的嫌疑，但集中在一个类中极大方便了代码的维护，提高了代码的复用率，降低了编程思维量。</p>
+<p>通过这两个例子，可以看出模块化重构和添加功能的优势。</p>
+<hr>
+<h2 id="三、Bug-的查找、修复和编程习惯"><a href="#三、Bug-的查找、修复和编程习惯" class="headerlink" title="三、Bug 的查找、修复和编程习惯"></a>三、Bug 的查找、修复和编程习惯</h2><p>在此节，笔者将以反思的态度总结在第一单元作业编程过程中的疏漏，并记录一些实用技巧。</p>
+<h3 id="1-Bug-的定位"><a href="#1-Bug-的定位" class="headerlink" title="1.Bug 的定位"></a>1.Bug 的定位</h3><p>从接触编程到现在，其实每次程序运行结果出错，定位一个 Bug 比改好一个 Bug 花费的时间多得多。<br>在维护一个较大的项目时，这种问题尤为突出，笔者认为可以从两个方面入手改善 debug 的体验感：</p>
+<ul>
+<li>利用好程序模块化的特点，在主程序各个阶段使用打印的方式定位 Bug 出现在哪个流程中，在相应的流程中再次利用此方法，定位 Bug 在哪个函数中；这样下来 Bug 的出现范围就大大缩小了。</li>
+<li>利用好报错信息和编辑器的调试功能；得到大致范围后，根据 IDEA 详细的报错信息和自己具备的调试经验，不难精准定位 Bug。</li>
+</ul>
+<h3 id="2-Bug-的修复"><a href="#2-Bug-的修复" class="headerlink" title="2.Bug 的修复"></a>2.Bug 的修复</h3><p>对于 Bug 的修复，大抵可以遵循重构一节的策略，即非必要不要做影响基本架构的改动，非必要不要做跨文件的修改。</p>
+<h3 id="3-作业中的-Bug"><a href="#3-作业中的-Bug" class="headerlink" title="3. 作业中的 Bug"></a>3. 作业中的 Bug</h3><p>笔者在第一次作业和第三次作业中各出现了一个 Bug。<br><strong>（1）字符串处理的 Trick</strong><br>在第一次作业中，笔者在乘方转化为乘法的函数中，画蛇添足地记录了每一次乘方符号的位置，在下一次从该位置开始继续找，但忽视了展开操作对字符串长度的影响，导致有时展开不完全，出现错误，在互测中被测出2次。<br><strong>（2）危险的思维定势</strong><br>在第三次作业中指导书有这样一句话：<strong>在输入中，求导算子最多只能出现一次</strong>，然而，由于求导算子可以作为函数的参数，展开后可以出现多次，故需要循环处理求导因子，笔者仅仅处理了一次，直接导致强测爆炸呜呜呜。</p>
+<p>反思：<strong>多做测试，多做测试，多做测试！</strong><br>中测的数据不强，在今后的作业中还是要仔细考虑可能出现的情况，对代码进行针对性测试。</p>
+<h3 id="4-Hack-数据的构造"><a href="#4-Hack-数据的构造" class="headerlink" title="4.Hack 数据的构造"></a>4.Hack 数据的构造</h3><p>面向对象课程独特的互测机制极大地考验构造数据的能力；笔者认为构造数据的技巧有以下几点：</p>
+<ul>
+<li>考虑边界条件和简单的样例（大数字，0，1，x**0，sin(0)**0 ……）<del>笔者的室友第一次作业就靠捏0收获6分</del></li>
+<li>考虑正负号的连续和与数字的特殊组合</li>
+<li>考虑函数调用的特殊情况</li>
+<li>考虑字符串处理中可能的疏漏</li>
+<li>考虑从易误读的定义入手</li>
+<li>考虑自己编程的易错点（同一个房间的水平相差不大）</li>
+<li>认真阅读他人代码</li>
+</ul>
+<p>在互测中，笔者一般先采取<strong>盲狙</strong>的策略，之后再对房间内的代码进行<strong>针对性检查</strong>。关于手写评测机，由于数据的随机性，可能没有针对性构造效率高，但也不失为一种省心省力的办法。</p>
+<p>ps: 个人体验是中测的强度不是很高，所以  强测前的自查是必要的，群里和讨论区的优秀样例都可以拿来测试。</p>
+<h3 id="4-编程习惯"><a href="#4-编程习惯" class="headerlink" title="4.编程习惯"></a>4.编程习惯</h3><p>面向对象课程作业的规模直接决定了我们需要改变以往面向过程的编程习惯，笔者到目前为止粗浅地总结了几点：</p>
+<ul>
+<li><strong>架构极其重要</strong>，刚接触一个作业时，我们既要根据已有需求选择合理的安排，又要“脑补”下后续可能的需求，给架构留足拓展空间。</li>
+<li>巧用递归和层次分析可以大大减少编程的思维量和复杂度。</li>
+<li>面向过程地安排模块（这也是自然的，做任何事总会有个先后和流程），在模块内利用面向对象的思想构造类，巧用继承和接口降低代码重复率。</li>
+<li>善于利用 java 的数据类型、库和函数大大降低代码量。</li>
+<li>摒弃过多的字符串循环检查和读取操作，利用解析器结合构造的类更科学地获取数据。</li>
+</ul>
+<hr>
+<h2 id="四、-心得体会"><a href="#四、-心得体会" class="headerlink" title="四、 心得体会"></a>四、 心得体会</h2><p>第一单元的作业让我真正踏入了面向对象编程的大门；在编写程序的过程中，我熟悉了许多 java 的语法和工具，能较灵活地应用递归下降等经典方法，学会了如何科学地维护自己的程序。<br>但我也暴露出一些不足，包括没有完全利用 java 的继承属性导致寻找合法符号的函数在不同类中出现多次；为保证低耦合度每个流程对字符串处理一遍导致效率不高；构造 hack 数据经验尚少等。<br>总的来说，这次迭代开发的作业让我收获许多，也为后续的任务打下了一定的基础。</p>
+
+                
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">Argithun</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://argithun.github.io/2023/03/01/OO_1/">https://argithun.github.io/2023/03/01/OO_1/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="/about" target="_blank">Argithun</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/Java/">
+                                    <span class="chip bg-color">Java</span>
+                                </a>
+                            
+                                <a href="/tags/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/">
+                                    <span class="chip bg-color">面向对象</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+                <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.4rem;
+        line-height: 38px;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 320px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .close:hover {
+        color: #ef5350;
+        transform: scale(1.3);
+        -moz-transform:scale(1.3);
+        -webkit-transform:scale(1.3);
+        -o-transform:scale(1.3);
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 210px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-content ul {
+        padding-left: 0 !important;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        background-color: #ccc;
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff !important;
+        background-color: #22AB38 !important;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff !important;
+        background-color: #019FE8 !important;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.jpg" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/2023/04/01/OO_2/">
+                    <div class="card-image">
+                        
+                        <img src="https://argithun-blog-1321510384.cos.ap-beijing.myqcloud.com/OO2.jpg" class="responsive-img" alt="北航计算机学院面向对象（2023 第二单元）">
+                        
+                        <span class="card-title">北航计算机学院面向对象（2023 第二单元）</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            本文将以笔者学习过程中的思考感悟为基础，对2023北航计算机学院面向对象课程第二单元（作业5~7）的架构搭建和程序设计思路做简明的描述；如有不同见解，欢迎学习交流。
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2023-04-01
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/" class="post-category">
+                                    面向对象
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Java/">
+                        <span class="chip bg-color">Java</span>
+                    </a>
+                    
+                    <a href="/tags/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/">
+                        <span class="chip bg-color">面向对象</span>
+                    </a>
+                    
+                    <a href="/tags/%E5%B9%B6%E5%8F%91%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/">
+                        <span class="chip bg-color">并发程序设计</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2022/12/10/CO_P8/">
+                    <div class="card-image">
+                        
+                        <img src="https://argithun-blog-1321510384.cos.ap-beijing.myqcloud.com/CO8.jpg" class="responsive-img" alt="2022北航计算机组成原理 Project 8">
+                        
+                        <span class="card-title">2022北航计算机组成原理 Project 8</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            MIPS微系统设计文档
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-12-10
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84/" class="post-category">
+                                    体系结构
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90/">
+                        <span class="chip bg-color">计算机组成</span>
+                    </a>
+                    
+                    <a href="/tags/Verilog/">
+                        <span class="chip bg-color">Verilog</span>
+                    </a>
+                    
+                    <a href="/tags/%E5%B5%8C%E5%85%A5%E5%BC%8F/">
+                        <span class="chip bg-color">嵌入式</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+    
+
+</main>
+
+
+
+
+    <footer class="page-footer bg-color">
+    
+        <link rel="stylesheet" href="/libs/aplayer/APlayer.min.css">
+<style>
+    .aplayer .aplayer-lrc p {
+        
+        display: none;
+        
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 16px !important;
+    }
+
+    .aplayer .aplayer-lrc p.aplayer-lrc-current {
+        
+        display: none;
+        
+        font-size: 15px;
+        color: #42b983;
+    }
+
+    
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body {
+        left: -66px !important;
+    }
+
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body:hover {
+        left: 0px !important;
+    }
+
+    
+</style>
+<div class="">
+    
+    <div class="row">
+        <meting-js class="col l8 offset-l2 m10 offset-m1 s12"
+                   server="netease"
+                   type="playlist"
+                   id="503838841"
+                   fixed='true'
+                   autoplay='false'
+                   theme='#42b983'
+                   loop='all'
+                   order='random'
+                   preload='auto'
+                   volume='0.7'
+                   list-folded='true'
+        >
+        </meting-js>
+    </div>
+</div>
+
+<script src="/libs/aplayer/APlayer.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+
+    
+    <div class="container row center-align" style="margin-bottom: 0px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2019-2023</span>
+            
+            <span id="year">2019</span>
+            <a href="/about" target="_blank">Argithun Pan</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            <br>
+            
+            
+            
+            
+            
+            
+            <span id="busuanzi_container_site_pv">
+                |&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;<span id="busuanzi_value_site_pv"
+                    class="white-color"></span>&nbsp;次
+            </span>
+            
+            
+            <span id="busuanzi_container_site_uv">
+                |&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;<span id="busuanzi_value_site_uv"
+                    class="white-color"></span>&nbsp;人
+            </span>
+            
+            <br>
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/Argithun" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:21371249@buaa.edu.cn" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+    <a href="https://twitter.com/Vanthon1024" class="tooltipped" target="_blank" data-tooltip="关注我的Twitter: https://twitter.com/Vanthon1024" data-position="top" data-delay="50">
+        <i class="fab fa-twitter"></i>
+    </a>
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=3063559416" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 3063559416" data-position="top" data-delay="50">
+        <i class="fab fa-qq"></i>
+    </a>
+
+
+
+
+
+
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <script src="/libs/others/clicklove.js" async="async"></script>
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+	
+    
+
+    
+
+    
+
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+</body>
+
+</html>

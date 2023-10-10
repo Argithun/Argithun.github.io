@@ -1,0 +1,1240 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="北航计算机学院面向对象（2023 第三单元）, Argithun&#39;s Blog">
+    <meta name="description" content="计算机科学与技术专业的学生博客，记录课设、科研和实习项目的心得，欢迎任何技术层面的探讨~">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>北航计算机学院面向对象（2023 第三单元） | Argithun&#39;s Blog</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+
+    <script src="/libs/jquery/jquery.min.js"></script>
+
+<meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="Argithun's Blog" type="application/atom+xml">
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+
+
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">Argithun&#39;s Blog</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/contact" class="waves-effect waves-light">
+      
+      <i class="fas fa-comments" style="zoom: 0.6;"></i>
+      
+      <span>留言板</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/friends" class="waves-effect waves-light">
+      
+      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
+      
+      <span>友情链接</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">Argithun&#39;s Blog</div>
+        <div class="logo-desc">
+            
+            计算机科学与技术专业的学生博客，记录课设、科研和实习项目的心得，欢迎任何技术层面的探讨~
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			分类
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/contact" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-comments"></i>
+			
+			留言板
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/friends" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-address-book"></i>
+			
+			友情链接
+		</a>
+          
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/blinkfox/hexo-theme-matery" class="waves-effect waves-light" target="_blank">
+                <i class="fab fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/blinkfox/hexo-theme-matery" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+    
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('https://argithun-blog-1321510384.cos.ap-beijing.myqcloud.com/OO3.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">北航计算机学院面向对象（2023 第三单元）</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="container content">
+
+    
+    <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/Java/">
+                                <span class="chip bg-color">Java</span>
+                            </a>
+                        
+                            <a href="/tags/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/">
+                                <span class="chip bg-color">面向对象</span>
+                            </a>
+                        
+                            <a href="/tags/JML/">
+                                <span class="chip bg-color">JML</span>
+                            </a>
+                        
+                            <a href="/tags/%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95/">
+                                <span class="chip bg-color">软件测试</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/" class="post-category">
+                                面向对象
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2023-05-01
+                </div>
+                
+
+                
+
+                
+
+                
+
+                
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h1 id="北航计算机学院面向对象（2023-第三单元）"><a href="#北航计算机学院面向对象（2023-第三单元）" class="headerlink" title="北航计算机学院面向对象（2023 第三单元）"></a>北航计算机学院面向对象（2023 第三单元）</h1><h2 id="简介。"><a href="#简介。" class="headerlink" title="简介。"></a>简介。</h2><p>本文将以笔者学习过程中的思考感悟为基础，对2023北航计算机学院面向对象课程第三单元（作业9~11）的架构搭建和程序设计思路做简明的描述；如有不同见解，欢迎学习交流。</p>
+<hr>
+<h2 id="一、作业架构"><a href="#一、作业架构" class="headerlink" title="一、作业架构"></a>一、作业架构</h2><h3 id="1-架构总览"><a href="#1-架构总览" class="headerlink" title="1. 架构总览"></a>1. 架构总览</h3><p>本单元的作业要求实现一个社交网络模拟器，由于规格和部分文件已经给出，故架构较为固定，笔者在设计过程中为了使功能相对关系不大的方法分开，在要求实现的类的基础上添加了一些优化代码可读性的设计。<br>这是本次作业的架构图：<br><img src="https://argithun-blog-1321510384.cos.ap-beijing.myqcloud.com/OO3-1.png"></p>
+<p>可见这个系统本质上是一个以人为结点，人与人间关系为边，各种社交行为可以修改边和点的属性的无向图。</p>
+<h3 id="2-图模型的建立和维护"><a href="#2-图模型的建立和维护" class="headerlink" title="2. 图模型的建立和维护&#96;"></a>2. 图模型的建立和维护&#96;</h3><ul>
+<li>在设计中采用 HashMap 存储各个节点下属的边；在总的 MyNetwork 类中采用 ArrayList 存储 person、message 等数据信息。经本地对比测试，在10000条数据内 ArrayList 的性能略优于 HashMap，但30000条数据以上，HashMap 存储的优势显现。</li>
+<li>对于关系的查找，并未采用并查集的策略，而是使用深度优先搜索进行遍历。<br>其实并查集和深搜策略的性能取决于测试数据是读密集型（利好并查集）还是写密集型（利好深搜）。</li>
+<li>将性能纳入考虑，则需要采用缓存策略和一系列图论算法（见第三节优化部分）。</li>
+</ul>
+<hr>
+<h2 id="二、代码测试"><a href="#二、代码测试" class="headerlink" title="二、代码测试"></a>二、代码测试</h2><p>本节中，将对各种测试方式和本单元测试策略做简要说明。</p>
+<h3 id="1-黑箱与白箱测试"><a href="#1-黑箱与白箱测试" class="headerlink" title="1. 黑箱与白箱测试"></a>1. 黑箱与白箱测试</h3><ul>
+<li>白箱测试<br>是测试人员要了解程序结构和处理过程,按照<strong>程序内部逻辑</strong>测试程序,检查程序中的每条通路是否按照预定要求正确工作.它主要的针对被测程序的<strong>源代码</strong>,测试者可以完全不考虑程序的功能.</li>
+<li>黑箱测试<br>是根据功能需求来测试程序是否<strong>按照预期工作</strong>,是要从用户的角度分析，尽量发现代码所表现的<strong>外部行为</strong>的错误。黑盒测试应该是由测试团队来完成的，根据某个给定的输入,应该能够理解并详细说明程序的预期输出。</li>
+</ul>
+<h3 id="2-各种测试策略"><a href="#2-各种测试策略" class="headerlink" title="2. 各种测试策略"></a>2. 各种测试策略</h3><ul>
+<li>单元测试<br>完成最小的软件设计单元（<strong>模块</strong>）的验证工作，目标是确保模块被正确的编码，使用<strong>过程设计描述</strong>作为指南，对重要的控制路径进行测试以发现模块内的错误，通常情况下是<strong>白盒</strong>的，对代码风格和规则、程序设计和结构、业务逻辑等进行<strong>静态测试</strong>，及早的发现和解决不易显现的错误。</li>
+<li>功能测试<br>功能测试也叫<strong>黑盒测试或数据驱动测试</strong>，只需考虑需要测试的各个功能，不需要考虑整个软件的内部结构及代码，一般从软件产品的界面、架构出发，按照<strong>需求</strong>编写出来的测试用例，输入数据在预期结果和实际结果之间进行评测，进而提出更加使产品达到用户使用的要求。</li>
+<li>集成测试<br>通过测试发现与<strong>模块接口</strong>有关的问题。目标是把通过了单元测试的模块拿来，构造一个在设计中所描述的程序结构进行测试。</li>
+<li>压力测试<br>压力测试指一段时间内持续<strong>超过系统规格的负载</strong>进行测试的一种可靠性测试方法。</li>
+<li>回归测试<br>在对软件进行修正后进行的有选择的<strong>重新测试</strong>过程，一般要重复已用的测试用例，目的是检验软件在更改后所引起的错误,验证软件在<strong>修改后</strong>未引起不希望的有害效果。</li>
+</ul>
+<h3 id="3-测试工具"><a href="#3-测试工具" class="headerlink" title="3. 测试工具"></a>3. 测试工具</h3><p>笔者在本单元中对代码的测试主要采用黑盒测试的方式，主要进行功能测试和压力测试，使用的工具是 python 编写的数据生成器和对拍器。测试策略有：</p>
+<ul>
+<li>对指令集进行划分，既可以在全指令集上进行综合测试，也可以对部分指令进行集中的针对测试</li>
+<li>对指令数量做出要求，可一次产生10000条测试数据进行压力测试。</li>
+<li>支持多人对拍，对多个 jar 包进行功能测试，参与的人数越多，结果越准确。</li>
+<li>对于 okTest 方法的测试主要采用灰盒测试的策略，在对代码的各个分支进行分析后针对性构造测试数据，测试输出是否符合预期。</li>
+</ul>
+<h3 id="4-数据构造"><a href="#4-数据构造" class="headerlink" title="4. 数据构造"></a>4. 数据构造</h3><p>依靠数据生成器，可从以下几个角度构造具有一定强度的测试数据：</p>
+<ul>
+<li>大数据量 + 全指令集，生成综合测试数据。</li>
+<li>大数据量 + 针对指令集，生成针对性数据，特别是一些费时的查询指令，这种方法可以测试程序是否具有一定的性能。</li>
+</ul>
+<p>依靠手动构造，可从以下几个角度构造具有一定强度的测试数据：</p>
+<ul>
+<li>边界数据（调用函数作用自身，存在异常等情况）</li>
+<li>异常触发数据，用于覆盖测试异常抛出机制。</li>
+</ul>
+<hr>
+<h2 id="三、规格和实现分离的优化策略"><a href="#三、规格和实现分离的优化策略" class="headerlink" title="三、规格和实现分离的优化策略"></a>三、规格和实现分离的优化策略</h2><p>在第3单元作业的编写中，一些方法的规格十分简单易懂，但完全按照规格编写会导致某些方法的性能较差；具体的：</p>
+<h3 id="1-queryBlockSum-方法"><a href="#1-queryBlockSum-方法" class="headerlink" title="1. queryBlockSum 方法"></a>1. queryBlockSum 方法</h3><p>该方法的目的是求出总人群中互不相连的人群数，规格中描述如下：</p>
+<pre class=" language-java"><code class="language-java">    <span class="token comment" spellcheck="true">/*@ ensures \result ==
+      @         (\sum int i; 0 &lt;= i &amp;&amp; i &lt; people.length &amp;&amp;
+      @         (\forall int j; 0 &lt;= j &amp;&amp; j &lt; i; !isCircle(people[i].getId(), people[j].getId()));
+      @         1);
+      @*/</span>
+    <span class="token keyword">public</span> <span class="token comment" spellcheck="true">/*@ pure @*/</span> <span class="token keyword">int</span> <span class="token function">queryBlockSum</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<p>可以看出，该方法在二重循环中调用了 isCircle 方法，算法复杂度达到 O(n3logn)，必须考虑优化：</p>
+<ul>
+<li>优化方法1：<br>为该方法另编写深搜函数，从某个人出发进行深搜，将可以链接到的人标记，在下一次深搜时不予访问；深搜次数即为所求；这种算法的复杂度约为 O(n2)</li>
+<li>优化方法2：<br>对 person 对象构造并查集，在 addPerson、addRelation、modifyRelation 时进行更新，这样在查询时复杂度可以降低到 O(1)<br>但这种方法需要在人或关系变更时对并查集进行维护，其性能优化效果取决于测试数据是<strong>读密集型</strong>还是<strong>写密集型</strong>。</li>
+</ul>
+<h3 id="2-queryTripleSum-方法"><a href="#2-queryTripleSum-方法" class="headerlink" title="2. queryTripleSum 方法"></a>2. queryTripleSum 方法</h3><p>改方法的目的是查询总人群中三角关系的总数，规格中描述如下：</p>
+<pre class=" language-java"><code class="language-java">    <span class="token comment" spellcheck="true">/*@ ensures \result ==
+      @         (\sum int i; 0 &lt;= i &amp;&amp; i &lt; people.length;
+      @             (\sum int j; i &lt; j &amp;&amp; j &lt; people.length;
+      @                 (\sum int k; j &lt; k &amp;&amp; k &lt; people.length
+      @                     &amp;&amp; getPerson(people[i].getId()).isLinked(getPerson(people[j].getId()))
+      @                     &amp;&amp; getPerson(people[j].getId()).isLinked(getPerson(people[k].getId()))
+      @                     &amp;&amp; getPerson(people[k].getId()).isLinked(getPerson(people[i].getId()));
+      @                     1)));
+      @*/</span>
+    <span class="token keyword">public</span> <span class="token comment" spellcheck="true">/*@ pure @*/</span> <span class="token keyword">int</span> <span class="token function">queryTripleSum</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<p>可以发现，该规格使用三重循环，算法复杂度为 O(n3)，需要进行优化。<br>考虑到人与关系的集合本质是无向图，在边的遍历时，相同节点对间的边会被访问两次，故优化策略为<strong>将无向图转化为有向图</strong>：</p>
+<ul>
+<li>若节点 A 与节点 B 间有边，则保留 小id 的指向 大id 的边，以此处理构造有向图。</li>
+<li>寻找三角关系，使用hashmap存储节点对<pre class=" language-java"><code class="language-java">  hashmap<span class="token operator">&lt;</span>idB<span class="token punctuation">,</span> idA<span class="token operator">></span>   <span class="token comment" spellcheck="true">//&lt;key, value>    </span>
+  <span class="token comment" spellcheck="true">// idB > idA，这表示指向 B 的节点为 A</span>
+</code></pre>
+<pre class=" language-mermaid"><code class="language-mermaid">  graph TD
+  A-->B
+  A-->C
+  B-->C
+</code></pre>
+如图每次选取一个节点 A ，在 hashmap 中设置其指向的结点，对每个其指向的结点 B，查询 B 指向的结点 C 的 hashmap值，若 <strong>hashmap.get(idB) &#x3D;&#x3D; hashmap.get(idC)</strong> 则确认一组三角关系。<br>该算法的复杂度为 O(n1.5)</li>
+</ul>
+<h3 id="3-queryCoupleSum-方法"><a href="#3-queryCoupleSum-方法" class="headerlink" title="3. queryCoupleSum 方法"></a>3. queryCoupleSum 方法</h3><p>该方法寻找总人群中互相关系最好的对数，规格中描述如下：</p>
+<pre class=" language-java"><code class="language-java">    <span class="token comment" spellcheck="true">/*@ ensures \result ==
+      @         (\sum int i, j; 0 &lt;= i &amp;&amp; i &lt; j &amp;&amp; j &lt; people.length
+      @                         &amp;&amp; people[i].acquaintance.length > 0 &amp;&amp; queryBestAcquaintance(people[i].getId()) == people[j].getId()
+      @                         &amp;&amp; people[j].acquaintance.length > 0 &amp;&amp; queryBestAcquaintance(people[j].getId()) == people[i].getId();
+      @                         1);
+      @*/</span>
+    <span class="token keyword">public</span> <span class="token comment" spellcheck="true">/*@ pure @*/</span> <span class="token keyword">int</span> <span class="token function">queryCoupleSum</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<p>可以发现，该方法使用二重循环，每次调用 queryBestAcquaintance 方法，故算法复杂度为 O(n3)，需要优化。</p>
+<p>在该方法内部，调用了许多次 queryBestAcquaintance 方法，若每次进行检索，则做了许多重复计算，故在person类中设置 hisBestAcq 变量保存上一次的计算结果，并设置信号量 ifNeedRenew，在某些操作时发送更新信号，动态维护。<br>优化后复杂度为 O(n2)。</p>
+<p>进一步，无需对每个可能存在的对都遍历一次，可以遍历所有人，对每个人求 bestAcq ，在确认 bestAcq 的 bestAcq 是否是此人，这样结合上一个策略，复杂度降到 O(n)。</p>
+<h3 id="4-queryLeastMoments-方法"><a href="#4-queryLeastMoments-方法" class="headerlink" title="4. queryLeastMoments 方法"></a>4. queryLeastMoments 方法</h3><p>该方法的目的是寻找以结点 id 为出发点的最短回路（回路上包括出发点至少有三个不同的结点），给出的规格只从结果约束的角度对方法进行了描述，未给出可能的实现方法，需要自行设计。</p>
+<p><strong>（1）删边法</strong><br>最直观的，若有满足描述的最短回路，存在与出发点 A 邻接的点 B，使得 A 到 B 的路径不只有 AB 边这一条。<br>故我们每次取一条与 A 邻接的边 AB，删除该边，然后使用 dijstra 算法求出 A 到各个点的最短路径，若 A 到 B 存在最短路径，则存在一个满足题意的回路，长度为：</p>
+<pre><code>AB.length + Path(AB).length
+</code></pre>
+<p>如此遍历所有与 A，邻接的点后，长度最短的回路则为所求。<br>这种方法虽然简单易于实现，但在最坏情况下复杂度达到了 O(n3)，需要进行优化。</p>
+<p><strong>（2）建树法</strong><br>此方法的思想是“寻找最后一条边”，具体的：</p>
+<ul>
+<li>以 A 为出发点，使用 dijstra 算法</li>
+<li>记录 A 到各个点的最短路径上的边，以此构造最短路径树</li>
+<li>选取原图中不在最短路径树上的边 BC</li>
+<li>对每个这样的边的两个端点使用最近公共祖先（LCA）算法</li>
+<li>若最近公共祖先为 A ，则回路上“最后一条边”为 BC</li>
+<li>该回路长度为<pre><code>  Path(AC).length + Path(AB).length + BC.length
+</code></pre>
+</li>
+<li>遍历每个这样的非路径树边记录最短回路长度即可</li>
+</ul>
+<p>这样只进行了一次 dijstra 算法，且由于在使用 dijstra 算法的过程中记录每个点在最短路径树上的深度， 一次LCA 算法的开销为O(n)，故总复杂度降到 O(n2)。</p>
+<h3 id="5-缓存策略的推广"><a href="#5-缓存策略的推广" class="headerlink" title="5. 缓存策略的推广"></a>5. 缓存策略的推广</h3><p>记录上一次运算结果的策略也可以推广到其他方法中：</p>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>历史保存变量</th>
+<th>更新信号量</th>
+<th>更新触发方法</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>queryBlockSum</td>
+<td>hisBlockSum</td>
+<td>ifRenewForBlock</td>
+<td>addRelation&#x2F;addPerson&#x2F;modifyRelation</td>
+</tr>
+<tr>
+<td>queryTripleSum</td>
+<td>hisTriSum</td>
+<td>ifRenewForTri</td>
+<td>addRelation&#x2F;modifyRelation</td>
+</tr>
+<tr>
+<td>queryBestAcquaintance</td>
+<td>hisBestValue&#x2F;hisBestId</td>
+<td>ifBestNeedRenew</td>
+<td>addRelation&#x2F;modifyRelation</td>
+</tr>
+</tbody></table>
+<p>这种策略可以适用于读密集型的数据，并规避恶意重复访问。</p>
+<hr>
+<h2 id="四、Bug-的发现和修复"><a href="#四、Bug-的发现和修复" class="headerlink" title="四、Bug 的发现和修复"></a>四、Bug 的发现和修复</h2><p>在本单元作业中，笔者在强测出现了一些代码实现和设计上的 bug，并在强测中对他人的 bug 进行了hack。</p>
+<h3 id="1-作业中出现的-bug"><a href="#1-作业中出现的-bug" class="headerlink" title="1. 作业中出现的 bug"></a>1. 作业中出现的 bug</h3><ul>
+<li>在本单元第一次作业中，笔者的 okTest 中出现了访问越界的 bug，在代码设计的时候想当然的认为在该函数中 null 可以用判等符号与另一个非 null 值进行比较，结果课程组提供的 Runner 类中有对访问越界的异常进行捕获的机制，导致还未进行判等就直接抛出异常了。<br>在撰写代码的时候还是应当注意与之关联的部分的实现方式。</li>
+<li>在第二次作业中，对 qcs 的强测出现了 CPU_Time_Limited_Existed 的 bug，这来源于 queryCoupleSum 方法的设计问题，当时仅对照 JML 描述进行了翻译，并未做降低复杂度的优化，导致超时。</li>
+<li>在第三次作业中，对 qlm 的强测中出现了 Memrory_Limited_Existed 的 bug，这来源于 queryLeastMoments 方法的设计问题，当时使用了过大的二维数组，适当减小空间或切换为邻接表表示图即可。</li>
+</ul>
+<p>在撰写代码时还应该注意采用规格和实现分离的优化策略。</p>
+<h3 id="2-Hack-策略"><a href="#2-Hack-策略" class="headerlink" title="2. Hack 策略"></a>2. Hack 策略</h3><p>由于笔者和室友在往届学长的对拍器上进行了扩展，形成了针对本单元作业的对拍器，故 hack 时非常简单直接，对拍器支持大于1的任意人数进行测试，数据在范围内随机生成，检测每个测试对象的每个输出，在不同的位置进行标记报错，定位 bug 十分快捷；主要发现的 bug 有</p>
+<ul>
+<li>MyPerson 中一些函数的处理没有考虑到传入自身的特殊情况。</li>
+<li>qlm 指令计算路径错误（常常表现为找不到路径）</li>
+<li>继承 Messgae 类的类的 equals 方法中直接沿用了Message类的 <code>instanceof Message</code>语句而未做修改。</li>
+</ul>
+<hr>
+<h2 id="五、关于-OK测试"><a href="#五、关于-OK测试" class="headerlink" title="五、关于 OK测试"></a>五、关于 OK测试</h2><h3 id="1-OKTest-检验规格一致性"><a href="#1-OKTest-检验规格一致性" class="headerlink" title="1. OKTest 检验规格一致性"></a>1. OKTest 检验规格一致性</h3><p>在三次作业中，我们对代码中的小部分方法进行了 OK测试，在根据规格编写测试程序时，可以发现：</p>
+<ul>
+<li>OK测试代码严格依附于 JML 规格。</li>
+<li>OK测试代码对方法调用前后数据变化的合理性和一致性都做了测试，这于规格相符。</li>
+<li>OK测试对于方法调用可能作用于数据的各种行为进行了覆盖，较为严密。</li>
+</ul>
+<h3 id="2-改进建议"><a href="#2-改进建议" class="headerlink" title="2. 改进建议"></a>2. 改进建议</h3><p>在完成作业时，笔者有一些感受和建议：</p>
+<ul>
+<li>避免在写完该方法的代码实现后再编写 OKTest，否则易受到代码编写的影响导致 OKTest 失去原本的作用。</li>
+<li>可以尝试为已经提供的方法进行 OKTest，真正体现 OKTest 的作用。</li>
+<li>可以尝试在强测中引入 OKTest 互测机制，为同学的指定方法进行测试。</li>
+</ul>
+<hr>
+<h2 id="写在后面"><a href="#写在后面" class="headerlink" title="写在后面"></a>写在后面</h2><p>本单元的核心是对 JML 规格的理解和撰写能力，在复杂方法中，JML 规格常常通过约束方法前后的变化和定义中间量来对方法的规格进行描述。<br>我们在阅读规格实现方法时，即要充分理解规格，保证完备性，又要不受规格中性能较低的语句约束，采取适当的优化，提升性能。<br>我们在撰写 JML 规格时，要明确该方法的作用是什么，有几种可能出现的情况，对变量修改的完备性如何等问题，并考虑 OKTest 的编写来验证方法是否符合规格的期待。</p>
+
+                
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">Argithun</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://argithun.github.io/2023/05/01/OO_3/">https://argithun.github.io/2023/05/01/OO_3/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="/about" target="_blank">Argithun</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/Java/">
+                                    <span class="chip bg-color">Java</span>
+                                </a>
+                            
+                                <a href="/tags/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/">
+                                    <span class="chip bg-color">面向对象</span>
+                                </a>
+                            
+                                <a href="/tags/JML/">
+                                    <span class="chip bg-color">JML</span>
+                                </a>
+                            
+                                <a href="/tags/%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95/">
+                                    <span class="chip bg-color">软件测试</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+                <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.4rem;
+        line-height: 38px;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 320px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .close:hover {
+        color: #ef5350;
+        transform: scale(1.3);
+        -moz-transform:scale(1.3);
+        -webkit-transform:scale(1.3);
+        -o-transform:scale(1.3);
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 210px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-content ul {
+        padding-left: 0 !important;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        background-color: #ccc;
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff !important;
+        background-color: #22AB38 !important;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff !important;
+        background-color: #019FE8 !important;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.jpg" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/2023/06/01/OO_4/">
+                    <div class="card-image">
+                        
+                        <img src="https://argithun-blog-1321510384.cos.ap-beijing.myqcloud.com/OO4.jpg" class="responsive-img" alt="北航计算机学院面向对象（2023 第四单元）">
+                        
+                        <span class="card-title">北航计算机学院面向对象（2023 第四单元）</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            本文将以笔者学习过程中的思考感悟为基础，对2023北航计算机学院面向对象课程第四单元（作业13~15）的架构搭建和程序设计思路做简明的描述；如有不同见解，欢迎学习交流。
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2023-06-01
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/" class="post-category">
+                                    面向对象
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Java/">
+                        <span class="chip bg-color">Java</span>
+                    </a>
+                    
+                    <a href="/tags/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/">
+                        <span class="chip bg-color">面向对象</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2023/04/01/OO_2/">
+                    <div class="card-image">
+                        
+                        <img src="https://argithun-blog-1321510384.cos.ap-beijing.myqcloud.com/OO2.jpg" class="responsive-img" alt="北航计算机学院面向对象（2023 第二单元）">
+                        
+                        <span class="card-title">北航计算机学院面向对象（2023 第二单元）</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            本文将以笔者学习过程中的思考感悟为基础，对2023北航计算机学院面向对象课程第二单元（作业5~7）的架构搭建和程序设计思路做简明的描述；如有不同见解，欢迎学习交流。
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-04-01
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/" class="post-category">
+                                    面向对象
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Java/">
+                        <span class="chip bg-color">Java</span>
+                    </a>
+                    
+                    <a href="/tags/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/">
+                        <span class="chip bg-color">面向对象</span>
+                    </a>
+                    
+                    <a href="/tags/%E5%B9%B6%E5%8F%91%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/">
+                        <span class="chip bg-color">并发程序设计</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+    
+
+</main>
+
+
+
+
+    <footer class="page-footer bg-color">
+    
+        <link rel="stylesheet" href="/libs/aplayer/APlayer.min.css">
+<style>
+    .aplayer .aplayer-lrc p {
+        
+        display: none;
+        
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 16px !important;
+    }
+
+    .aplayer .aplayer-lrc p.aplayer-lrc-current {
+        
+        display: none;
+        
+        font-size: 15px;
+        color: #42b983;
+    }
+
+    
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body {
+        left: -66px !important;
+    }
+
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body:hover {
+        left: 0px !important;
+    }
+
+    
+</style>
+<div class="">
+    
+    <div class="row">
+        <meting-js class="col l8 offset-l2 m10 offset-m1 s12"
+                   server="netease"
+                   type="playlist"
+                   id="503838841"
+                   fixed='true'
+                   autoplay='false'
+                   theme='#42b983'
+                   loop='all'
+                   order='random'
+                   preload='auto'
+                   volume='0.7'
+                   list-folded='true'
+        >
+        </meting-js>
+    </div>
+</div>
+
+<script src="/libs/aplayer/APlayer.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+
+    
+    <div class="container row center-align" style="margin-bottom: 0px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2019-2023</span>
+            
+            <span id="year">2019</span>
+            <a href="/about" target="_blank">Argithun Pan</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            <br>
+            
+            
+            
+            
+            
+            
+            <span id="busuanzi_container_site_pv">
+                |&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;<span id="busuanzi_value_site_pv"
+                    class="white-color"></span>&nbsp;次
+            </span>
+            
+            
+            <span id="busuanzi_container_site_uv">
+                |&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;<span id="busuanzi_value_site_uv"
+                    class="white-color"></span>&nbsp;人
+            </span>
+            
+            <br>
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/Argithun" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:21371249@buaa.edu.cn" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+    <a href="https://twitter.com/Vanthon1024" class="tooltipped" target="_blank" data-tooltip="关注我的Twitter: https://twitter.com/Vanthon1024" data-position="top" data-delay="50">
+        <i class="fab fa-twitter"></i>
+    </a>
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=3063559416" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 3063559416" data-position="top" data-delay="50">
+        <i class="fab fa-qq"></i>
+    </a>
+
+
+
+
+
+
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <script src="/libs/others/clicklove.js" async="async"></script>
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+	
+    
+
+    
+
+    
+
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+</body>
+
+</html>
