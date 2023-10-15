@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="北航计算机学院面向对象（2023 第四单元）, Argithun&#39;s Blog">
+    <meta name="keywords" content="算法课程杂记 1, Argithun&#39;s Blog">
     <meta name="description" content="计算机科学与技术专业的学生博客，记录课设、科研和实习项目的心得，欢迎任何技术层面的探讨~">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>北航计算机学院面向对象（2023 第四单元） | Argithun&#39;s Blog</title>
+    <title>算法课程杂记 1 | Argithun&#39;s Blog</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -311,12 +311,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('https://argithun-blog-1321510384.cos.ap-beijing.myqcloud.com/OO4.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('https://argithun-blog-1321510384.cos.ap-beijing.myqcloud.com/alg1.png')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">北航计算机学院面向对象（2023 第四单元）</h1>
+                    <h1 class="description center-align post-title">算法课程杂记 1</h1>
                 </div>
             </div>
         </div>
@@ -338,12 +338,12 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/Java/">
-                                <span class="chip bg-color">Java</span>
+                            <a href="/tags/%E5%88%86%E6%B2%BB/">
+                                <span class="chip bg-color">分治</span>
                             </a>
                         
-                            <a href="/tags/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/">
-                                <span class="chip bg-color">面向对象</span>
+                            <a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">
+                                <span class="chip bg-color">动态规划</span>
                             </a>
                         
                     </div>
@@ -354,8 +354,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/" class="post-category">
-                                面向对象
+                            <a href="/categories/%E7%AE%97%E6%B3%95/" class="post-category">
+                                算法
                             </a>
                         
                     </div>
@@ -367,7 +367,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2023-06-01
+                    2023-10-15
                 </div>
                 
 
@@ -388,95 +388,89 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="北航计算机学院面向对象（2023-第四单元）"><a href="#北航计算机学院面向对象（2023-第四单元）" class="headerlink" title="北航计算机学院面向对象（2023 第四单元）"></a>北航计算机学院面向对象（2023 第四单元）</h1><h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>本文将以笔者学习过程中的思考感悟为基础，对2023北航计算机学院面向对象课程第四单元（作业13~15）的架构搭建和程序设计思路做简明的描述；如有不同见解，欢迎学习交流。</p>
-<hr>
-<h2 id="正向建模与开发"><a href="#正向建模与开发" class="headerlink" title="正向建模与开发"></a>正向建模与开发</h2><p>本单元可以说是面向对象课程对架构设计考验最严格的一次（之前的三次作业都有固定的架构模板或者根本不需要设计架构）。<br>在实际的开发问题中，问题的逻辑往往一开始是模糊隐蔽且错综复杂的，需要对问题从<strong>现实维度</strong>进行理解，将问题的<strong>逻辑链</strong>和<strong>事件链</strong>抽离出来进行建模，服务与后续架构设计。<br>本节将基于本单元的编程实践讨论正向建模开发的过程。</p>
-<h3 id="一次微型重构"><a href="#一次微型重构" class="headerlink" title="一次微型重构"></a>一次微型重构</h3><p>在第一次作业公布后，给我的最直接的感觉是书的传递规则十分复杂，在那个周二的晚上，我做出了第一版设计，这个设计虽然在后续几天被改得面目全非，但其中一次改动使我对这个单元正向建模的风格（或者完成作业的技巧？）有了一个大概的把握。<br>图书管理系统，本质上是书籍在不同对象间的规则传递，那么<strong>需要为书建立实例化对象吗，或是在各个对象内仅对书进行分类计数？</strong>，弄清这个问题是本单元建模和开发的基础：</p>
+                <h2 id="线性时间解决MCS问题"><a href="#线性时间解决MCS问题" class="headerlink" title="线性时间解决MCS问题"></a>线性时间解决MCS问题</h2><p>课堂上的分治算法解决最大子序列问题的时间复杂度为 $O(n*logn)$，然而，这种问题更加优越、更加常见的解决方式是应用动态规划的思想，即 Kadane 算法。</p>
+<h3 id="MCS-问题简述"><a href="#MCS-问题简述" class="headerlink" title="MCS 问题简述"></a>MCS 问题简述</h3><p>即最大子序列问题：在数组的一个维度寻找连续的的子序列，使该子序列的和最大。<br>这种问题经常被包装成一些现实的策略问题，例如：根据股票的涨跌求算哪个时间区间入股赚得最多（当然是事后判断，要是能预测那大家都退学炒股去了hhh</p>
+<h3 id="算法思想"><a href="#算法思想" class="headerlink" title="算法思想"></a>算法思想</h3><p>一开始接触到的是分治算法解决的思想：</p>
 <ul>
-<li>在第一版设计中，我没有为书籍建立专门的类，而是在各个对象内对书籍进行分类计数；书籍的传递也只是简单的数量加减。</li>
-<li>在经过第二天一个上午的思考后，我决定改动这个设计，为书籍建立相应的类，在拥有书籍的对象中建立容器管理书籍；书籍的传递涉及对象在容器中的出入。</li>
+<li>显然，将一个数组从正中间分成两块，则所求序列有三种分布方式：在左块，在右块，横跨两块</li>
+<li>在左或右的情况递归处理即可，横跨两块的情况需要从正中的坐标出发，分别向左右进行移动，找到起点在正中的左右最大子序列（复杂度：$O(n)$），再将左右找到的合并即可。</li>
+<li>对这三种情况求算出的结果区最大值即可</li>
 </ul>
-<p>为什么做这样的改动呢，看上去第一版似乎更加简单且易于实现？<br>其实是这样的：第一版设计确实可以完成本单元第一次作业，但这样做的风险很大，因为现实中书籍是有很多维度的性质的，即使完全重名的两本书，也可能有不同的状态，实例化书籍对象在模型构建和后续迭代的过程中都使代码<strong>更加具象且易于管理</strong>。<br>因此，我理解的正向建模实际上就是<strong>使用计算机语言对开发场景下现实世界中的物理对象的实体和行为进行最大贴合的建模</strong>（这样做的性能可能不是最佳，但模型的可读性强，性能可以在代码构建后进行局部优化）。</p>
-<h3 id="逻辑链的抽离"><a href="#逻辑链的抽离" class="headerlink" title="逻辑链的抽离"></a>逻辑链的抽离</h3><p>开发场景下，物理世界实体的行为逻辑往往是十分复杂的，如何剖析入理，明白代码需要遵循哪些场景逻辑是正向建模中十分重要的一步。<br>在本单元作业中，图书馆管理管理系统主要涉及以下几条逻辑链：</p>
+<p>显然，这种算法不可能是线性复杂度的</p>
+<p>故采用动态规划的思想：</p>
 <ul>
-<li>借阅书籍（学生——图书馆）</li>
-<li>预订书籍（学生——图书馆）</li>
-<li>运输书籍（图书馆——图书馆）</li>
-<li>购入书籍（图书馆）</li>
-<li>归还书籍（学生——图书馆）</li>
-<li>馆内分流（图书馆）</li>
+<li>要利用动态规划，一般情况下需要找到比当前问题规模小 “1” 的子问题</li>
+<li>故该问题转化为，求一系列以<code>array[i], 0 &lt;= i &lt; len</code>结尾的最大子序列，其中这一系列最大子序列中最大的为所求。</li>
 </ul>
-<h2 id="在这些逻辑链中，往往存在行为触发规则和行为进行所需要的信息。对于这两类关键控制因素：-行为触发规则-在各方法的代码实现中体现，多体现为对目标对象状态和自身状态的检测。-行为依赖信息-在各个对象实体中用一定的数据结构进行保存，行为通过检索数据进行执行，执行结果有时也会对其依赖的数据产生影响。"><a href="#在这些逻辑链中，往往存在行为触发规则和行为进行所需要的信息。对于这两类关键控制因素：-行为触发规则-在各方法的代码实现中体现，多体现为对目标对象状态和自身状态的检测。-行为依赖信息-在各个对象实体中用一定的数据结构进行保存，行为通过检索数据进行执行，执行结果有时也会对其依赖的数据产生影响。" class="headerlink" title="在这些逻辑链中，往往存在行为触发规则和行为进行所需要的信息。对于这两类关键控制因素：* 行为触发规则  在各方法的代码实现中体现，多体现为对目标对象状态和自身状态的检测。* 行为依赖信息  在各个对象实体中用一定的数据结构进行保存，行为通过检索数据进行执行，执行结果有时也会对其依赖的数据产生影响。
-  "></a>在这些逻辑链中，往往存在行为触发规则和行为进行所需要的信息。对于这两类关键控制因素：<br>* 行为触发规则<br>  在各方法的代码实现中体现，多体现为对目标对象状态和自身状态的检测。<br>* 行为依赖信息<br>  在各个对象实体中用一定的数据结构进行保存，行为通过检索数据进行执行，执行结果有时也会对其依赖的数据产生影响。
-  </h2><h2 id="架构设计和UML图"><a href="#架构设计和UML图" class="headerlink" title="架构设计和UML图"></a>架构设计和UML图</h2><p>本单元的架构设计，我始终遵循一个认知：<br><strong>所有行为对象都是书籍的集合！</strong></p>
-<h3 id="架构的搭建"><a href="#架构的搭建" class="headerlink" title="架构的搭建"></a>架构的搭建</h3><p>在本单元作业的要求中，我们可以发现，所有的行为实体（学生、书架、管理员……）都具有一些共同的功能，例如：</p>
+<h3 id="算法实现"><a href="#算法实现" class="headerlink" title="算法实现"></a>算法实现</h3><p>这样，核心代码就非常简单了：</p>
+<pre class=" language-c"><code class="language-c"><span class="token keyword">int</span> <span class="token function">MCSofArray</span><span class="token punctuation">(</span><span class="token keyword">int</span> <span class="token operator">*</span>array<span class="token punctuation">,</span> <span class="token keyword">int</span> len<span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+    <span class="token keyword">int</span> dp<span class="token punctuation">[</span>len<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>array<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span><span class="token punctuation">;</span>
+    <span class="token keyword">int</span> maxdp <span class="token operator">=</span> dp<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> len<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+        dp<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">max</span><span class="token punctuation">(</span>dp<span class="token punctuation">[</span>i<span class="token number">-1</span><span class="token punctuation">]</span> <span class="token operator">+</span> array<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">,</span> array<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        maxdp <span class="token operator">=</span> <span class="token function">max</span><span class="token punctuation">(</span>maxdp<span class="token punctuation">,</span> dp<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> maxdp<span class="token punctuation">;</span>
+<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+</code></pre>
+<p>该算法的时间复杂度为 $O(n)$</p>
+<h3 id="分治和动归的界限"><a href="#分治和动归的界限" class="headerlink" title="分治和动归的界限"></a>分治和动归的界限</h3><p>或许仍有些疑问，如果我拿到一个算法问题，如何确定是用分治还是用动归思想去解决呢？</p>
+<p>我浅薄地认为：</p>
 <ul>
-<li>给出一本书</li>
-<li>接纳一本书</li>
-<li>书籍的成批发出和接受</li>
+<li>分治思想适用的问题都可以被分成两个（或者多个）子问题，这些子问题一般是该问题<strong>做除法</strong>得到的，这一点反映在时间复杂度的计算上</li>
+<li>动归思想适用的问题一般可以分为多个子问题，这些子问题是该问题<strong>做减法</strong>得到的</li>
+<li>显然，对于问题规模的下降速度，减法要比除法慢得多，所以“做减法”的问题如果不做转换一般不适用于分治的经典结构——递归</li>
 </ul>
-<p>但各个实体也有自己独特的功能方法，例如：</p>
+<h2 id="快速傅里叶变换"><a href="#快速傅里叶变换" class="headerlink" title="快速傅里叶变换"></a>快速傅里叶变换</h2><p>课上学习两个多项式相乘的算法时，我们很别扭地将两个多项式的乘法拆成了3个子问题，然而，最著名的解决该问题的方法则是快速傅里叶变换。</p>
+<h3 id="多项式的表示形式"><a href="#多项式的表示形式" class="headerlink" title="多项式的表示形式"></a>多项式的表示形式</h3><p>不必多说，对于 n 次多项式，其标准型为：</p>
+<p>$A(x) &#x3D; a_0 + a_1 * x + a_2 * x^2 + \dots + a_n * x^n$</p>
+<p>系数表示法写成：</p>
+<p>$A &#x3D; (a_0, a_1, a_2, \dots, a_n)$</p>
+<p><strong>点值表示法</strong>则有：</p>
+<p>$A(x) &#x3D; {(x_0, A(x_0)), (x_1, A(x_1)),\dots,(x_{n-1}, A(x_{n-1})),}$ , $x_k$ 互不相等</p>
+<p>这个表示法是多项式乘法能被傅里叶变换优化的基础。</p>
+<h3 id="多项式相乘问题的-another-approach"><a href="#多项式相乘问题的-another-approach" class="headerlink" title="多项式相乘问题的 another approach"></a>多项式相乘问题的 another approach</h3><p>假设我们需要求的式子为：<br>$C(x) &#x3D; A(x) * B(x)$</p>
+<p>其中用点值表示法表示 C(x), A(x), B(x)<br>必然有：<br>$C(x) &#x3D; {(x_0, A(x_0)*B(x_0)), (x_1, A(x_1)*B(x_1)),\dots,(x_{n-1}, A(x_{n-1})*B(x_{n-1})),}$ , $x_k$ 互不相等</p>
+<p>至此，我们只需要根据 C(x) 的点表示式写出其一般多项式形式即可。</p>
+<p>这个问题的关键有两点：</p>
 <ul>
-<li>学生可以损坏或丢失书籍</li>
-<li>预订管理员可以记录申请</li>
-<li>后期处可以修复书籍</li>
+<li>如何得到一个多项式的点表示式</li>
+<li>如何由一个点表示式推出对应多项式</li>
 </ul>
-<p>这些特征暗示了各个行为对象可以有共同的方法又保持自身一定的独特性，即可以使用继承关系<strong>继承一个“书集合”的父类</strong>。<br>但我在架构设计的时候为了避免继承时子类需要实现过多的额外方法，直接在 BookGroup 类中实现了尽可能多的方法（可能不被全部行为实体共有），后在各个行为实体中<strong>直接实例化该类</strong>，间接调用方法。<br>以本单元第一次作业为例可以形象地感受这个设计思路：<br><img src="https://argithun-blog-1321510384.cos.ap-beijing.myqcloud.com/OO4-1.png"></p>
-<p>可以发现：</p>
+<p><strong>如何得到 A(x) 的点表示式</strong></p>
 <ul>
-<li>bookGroup作为通用类被几个主要行为对象实例化</li>
-<li>行为对象间的交互在 MainClass 中发生</li>
-<li>为学生的申请单独开辟 Requirement 类记录格式化的信息</li>
-<li>使用 DateOpt 类进行日期转换和计算</li>
+<li>需要取n个不重复的点，这n个点的取法是复数域上的单位根。复数域上的单位根：将单位圆分成n份，每一份对应的复数即为选择的点：<br>$w_n^k &#x3D; cos(2k\pi&#x2F;n) + i * sin(2k\pi&#x2F;n)$</li>
+<li>现在知道点表示法的横坐标了，需要带入 A(x) 求出对应的纵坐标的值，直接带入计算的话，求解这n个点的时间复杂度是$O(n^2)$的，因此不可取</li>
+<li>现在起要求n是2的整数次幂，如果不足的话，后面补零</li>
+<li>将 A(x) 的奇数项和偶数项分开，设：<br>$A_1(x) &#x3D; a_0 + a_2*x + \dots + a_{n-2}<em>x^{n&#x2F;2-1}$<br>$A_2(x) &#x3D; a_1 + a_3</em>x + \dots + a_{n-1}<em>x^{n&#x2F;2-1}$<br>$A(x) &#x3D; A_1(x^2) + x</em>A_2(x^2)$</li>
+<li>当需要求解 $w_n^k$ 对应的纵坐标时，不妨同时关注$w_n^{k + n&#x2F;2}$:<br>$A(w_n^k) &#x3D; A_1(w_n^{2k}) + w_n^k<em>A_2(w_n^{2k}) &#x3D; A_1(w_{n&#x2F;2}^{k}) + w_n^k</em>A_2(w_{n&#x2F;2}^{k})$<br>$A(w_n^{k+n&#x2F;2}) &#x3D; A_1(w_n^{2k+n}) + w_n^{k+n&#x2F;2}<em>A_2(w_n^{2k+n}) &#x3D; A_1(w_{n&#x2F;2}^{k}) - w_n^k</em>A_2(w_{n&#x2F;2}^{k})$</li>
+<li>注意到$A(w_n^k)$ 和 $A(w_n^{k+n&#x2F;2})$ 最后分解成的式子中有公共部分，则这二者可一并计算</li>
+<li>故对于计算单个点对应的纵坐标，采用分治算法，时间复杂度 $T(n) &#x3D; 2*T(n&#x2F;2)$，为$O(logn)$</li>
+<li>总时间复杂度为 $O(n*logn)$</li>
 </ul>
-<p>这种架构在视觉上十分清晰简洁，对象间的交互统一管理，减少了不必要的参数传递。</p>
-<h3 id="架构的迭代"><a href="#架构的迭代" class="headerlink" title="架构的迭代"></a>架构的迭代</h3><p>本单元迭代工作量较大的一次是第一次到第二次作业的迭代；在本次迭代中由于引入了校际借阅和购入图书等新行为，使得逻辑链更加交错复杂；不过得益于书籍的实例化和通用方法的使用，本次迭代的工作量相比之下没有失控，具体架构如下：<br><img src="https://argithun-blog-1321510384.cos.ap-beijing.myqcloud.com/OO4-2.png"></p>
-<p>可以发现有以下变化：</p>
+<p>关于如何分治：因为我们要求$A(w_n^k)$需要知道$A_1(w_{n&#x2F;2}^{k})$ 和 $A_2(w_{n&#x2F;2}^{k})$</p>
+<p>可见，子问题的形式与原问题一样，但规模减半，运用分支的递归策略即可求解</p>
+<p><strong>如何由一个点表示式推出对应多项式</strong><br>结论是：<br>将n个点的每个点$(w_n^k, A(w_n^k))$记作$(x_k, y_k)$，则多项式系数$a_k$为：<br>$a_k &#x3D; 1&#x2F;n * \sum(y_i * (w_n^{-k})^i), i \in [0, n-1]$<br>具体推导步骤<a target="_blank" rel="noopener" href="http://t.csdnimg.cn/l95Tr">见此</a></p>
+<p>那对于$a_k$的计算，如何分治呢？<br>其实这里是一个小 trick，观察$a_k$可知，我们要计算的是一个以 $w_n^{-k}$ 为参数的多项式，这与刚刚求纵坐标的方式非常类似，做相同的处理即可，在编程上可以用同一个函实现数，总复杂度为 $O(n*logn)$</p>
+<h2 id="背包问题"><a href="#背包问题" class="headerlink" title="背包问题"></a>背包问题</h2><p>背包问题主要有三类：</p>
 <ul>
-<li>封装原本的校内交互为 School 类的方法</li>
-<li>在 MainClass 中实例化多个 school，处理校际交互行为</li>
-<li>构建运输类专门处理校际书籍的交接</li>
-<li>图书管理员和采购部分离各司其职</li>
+<li>0-1背包问题，每个物体数量为1</li>
+<li>完全背包问题，每个物体数量无限</li>
+<li>多重背包问题，每个物体数量有限，为 s[i]</li>
 </ul>
-<p>本架构在最大化维持原本的布局的情况下完成了复杂功能的扩展，可见原本的架构设计是较为合理的。</p>
-<hr>
-<h2 id="架构设计思维的演进"><a href="#架构设计思维的演进" class="headerlink" title="架构设计思维的演进"></a>架构设计思维的演进</h2><p>在面向对象的课程中，虽然老师和助教一直强调架构设计的重要性，但十分惭愧地说：我在最后一单元作业中才真正自主从头到尾设计出一套架构：</p>
-<ul>
-<li>第一单元的表达式解析<ul>
-<li>使用经典的递归下降方法（任务练习作业中已经打好框架）</li>
-<li>使用预处理进行简化，方便后续操作</li>
-<li>各部分功能类相互分离，降低耦合</li>
-</ul>
-</li>
-<li>第二单元多线程电梯模拟<ul>
-<li>参考学长的博客，采用自由竞争的策略，架构较为简单</li>
-<li>主要分为电梯运行部分和开关门动作单独处理部分</li>
-<li>由于没有控制器的加入，各部分独立性强，但性能不顶尖</li>
-</ul>
-</li>
-<li>第三单元 JML 撰写和编程<ul>
-<li>几乎没考虑架构，全部完形填空去了（×</li>
-<li>回看第三单元的作业，实现的是人群间通讯模拟，对性能要求高</li>
-<li>使用实现与设计分离，优化算法提升性能</li>
-</ul>
-</li>
-<li>第四单元图书管理系统<ul>
-<li>实例化书本带来了架构的可靠性和可维护性</li>
-<li>公共类的引入带来了架构的可扩展性和简洁性</li>
-<li>低耦合度的方法使新功能的实现更加便携</li>
-</ul>
-</li>
-</ul>
-<hr>
-<h2 id="测试思维的演进"><a href="#测试思维的演进" class="headerlink" title="测试思维的演进"></a>测试思维的演进</h2><p>在面向对象课程中，测试思维的好坏往往能决定程序的品质<del>和分数</del>，在四个单元的磨炼中，我也形成了一套测试思维：</p>
-<ul>
-<li>第一单元初接触较为庞大的程序，测试抓不住重点，采用随机数据生成的方式进行随机测试，这种测试效率不高且易发生疏漏。</li>
-<li>第二单元中，多线程的引入使对拍和debug不再方便，采用边界条件构造和大数据量测试的方法，集中测试程序在极端情况下的可靠性，效果较为出色。</li>
-<li>第三单元，使用静态分析、OKtest测试和对拍程序相结合的方式，在本单元完成了一个数据生成和自动对拍器，本单元对性能的强调也是突出的，故有针对地构造大量耗时数据十分重要。</li>
-<li>第四单元，测试被淡化，但绝不是不重要，由于充分的考量和架构设计，我们的程序具有较高的起点，犯错概率大大降低；本单元采用对逻辑链依次构造数据的方式，测评程序完备性。</li>
-</ul>
-<hr>
-<h2 id="课程总结与收获"><a href="#课程总结与收获" class="headerlink" title="课程总结与收获"></a>课程总结与收获</h2><p>在 2023北航面向对象 的课程中，我在java基本程序设计、复杂架构搭建、测试策略和程序编写、形式化验证、程序结构建模等方面收获良多，虽然最后取得的成绩并不顶尖，但这些面向对象的思维观念和良好的编程习惯已经牢牢地刻印在脑海中。<br>这门课给我的最直观感受是要求严格但知识密度极大，是教授真正本领的一门课程，我很荣幸能全程参与。<br>最后，希望北航面向对象课程越办越好。</p>
+<p>其中，多重背包问题可通过将同类物体视为不同转变为0-1背包问题，这里不做赘述。</p>
+<h3 id="状态转移方程辨析"><a href="#状态转移方程辨析" class="headerlink" title="状态转移方程辨析"></a>状态转移方程辨析</h3><p>递推式中，i 表示检索第 i 个物体，j表示当前背包重量，v 为物体价值数组，dp 存储检索完第 i 个物体时背包重量为 j 时，对应的背包价值。</p>
+<p>0-1背包问题：</p>
+<pre class=" language-c"><code class="language-c">dp<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">max</span><span class="token punctuation">(</span>dp<span class="token punctuation">[</span>i <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">,</span>v<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">+</span>dp<span class="token punctuation">[</span>i <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">[</span>j <span class="token operator">-</span> w<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+</code></pre>
+<p>完全背包问题：</p>
+<pre class=" language-c"><code class="language-c">dp<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">max</span><span class="token punctuation">(</span>dp<span class="token punctuation">[</span>i <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">,</span>v<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">+</span> dp<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j <span class="token operator">-</span> w<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+</code></pre>
+<p>可以看到，由于完全背包情况下物体数量无限，故决定是否放入标号为 i 的物体前，可能已放入标号为 i 的物体。</p>
+<h2 id="多项式时间复杂度中的-x-的辨析"><a href="#多项式时间复杂度中的-x-的辨析" class="headerlink" title="多项式时间复杂度中的 x 的辨析"></a>多项式时间复杂度中的 x 的辨析</h2><p>多项式时间算法：在输入规模为x的情况下，算法能够在$O(x^k)$ 时间(k为常数)内解决该问题。</p>
+<p>以一个最简单的问题为例，寻找 $[0, N]$ 区间内所有的素数。<br>大家可能会想到素数筛等算法，或者干脆的直接查表，时间复杂度为O(n)，但这个问题的输入只有一个数字 n，换算成输入规模为 $x &#x3D; logn, n &#x3D; 2^x$</p>
+<p>显然，该算法的时间复杂度可以表示为 $O(2^x)$，不是多项式时间算法。</p>
+<p>到这，你或许可以理解为什么人们对多项式时间算法如此执着追求，你可以通俗的理解，<strong>这种算法响应一个输入的相对时间代价较小</strong>；毕竟算法都是服务于人的，就像那个素数的例子，没有用户会手动把 0 到 N 全部输入进去哈哈哈~</p>
 
                 
             </div>
@@ -503,7 +497,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://argithun.github.io/2023/06/01/OO_4/">https://argithun.github.io/2023/06/01/OO_4/</a>
+                    <a href="https://argithun.github.io/2023/10/15/alg1/">https://argithun.github.io/2023/10/15/alg1/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -541,12 +535,12 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/Java/">
-                                    <span class="chip bg-color">Java</span>
+                                <a href="/tags/%E5%88%86%E6%B2%BB/">
+                                    <span class="chip bg-color">分治</span>
                                 </a>
                             
-                                <a href="/tags/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/">
-                                    <span class="chip bg-color">面向对象</span>
+                                <a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">
+                                    <span class="chip bg-color">动态规划</span>
                                 </a>
                             
                         </div>
@@ -716,9 +710,10 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
                 <a href="/2023/10/15/alg1/">
                     <div class="card-image">
@@ -735,9 +730,9 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2023-10-15
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-10-15
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -750,6 +745,7 @@
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -772,31 +768,30 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2023/05/15/os-lab6/">
+                <a href="/2023/06/01/OO_4/">
                     <div class="card-image">
                         
+                        <img src="https://argithun-blog-1321510384.cos.ap-beijing.myqcloud.com/OO4.jpg" class="responsive-img" alt="北航计算机学院面向对象（2023 第四单元）">
                         
-                        <img src="/medias/featureimages/18.jpg" class="responsive-img" alt="操作系统实验报告（lab6）">
-                        
-                        <span class="card-title">操作系统实验报告（lab6）</span>
+                        <span class="card-title">北航计算机学院面向对象（2023 第四单元）</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            
+                            本文将以笔者学习过程中的思考感悟为基础，对2023北航计算机学院面向对象课程第四单元（作业13~15）的架构搭建和程序设计思路做简明的描述；如有不同见解，欢迎学习交流。
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-05-15
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-06-01
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84/" class="post-category">
-                                    体系结构
+                            <a href="/categories/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/" class="post-category">
+                                    面向对象
                                 </a>
                             
                             
@@ -806,12 +801,12 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">
-                        <span class="chip bg-color">操作系统</span>
+                    <a href="/tags/Java/">
+                        <span class="chip bg-color">Java</span>
                     </a>
                     
-                    <a href="/tags/linux/">
-                        <span class="chip bg-color">linux</span>
+                    <a href="/tags/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/">
+                        <span class="chip bg-color">面向对象</span>
                     </a>
                     
                 </div>
