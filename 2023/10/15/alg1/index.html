@@ -29,8 +29,12 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="Argithun's Blog" type="application/atom+xml">
-<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.3.0"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"><link rel="alternate" href="/atom.xml" title="Argithun's Blog" type="application/atom+xml">
+</head>
 
 
 
@@ -442,8 +446,22 @@
 <li>需要取n个不重复的点，这n个点的取法是复数域上的单位根。复数域上的单位根：将单位圆分成n份，每一份对应的复数即为选择的点：<br>$w_n^k &#x3D; cos(2k\pi&#x2F;n) + i * sin(2k\pi&#x2F;n)$</li>
 <li>现在知道点表示法的横坐标了，需要带入 A(x) 求出对应的纵坐标的值，直接带入计算的话，求解这n个点的时间复杂度是$O(n^2)$的，因此不可取</li>
 <li>现在起要求n是2的整数次幂，如果不足的话，后面补零</li>
-<li>将 A(x) 的奇数项和偶数项分开，设：<br>$A_1(x) &#x3D; a_0 + a_2*x + \dots + a_{n-2}<em>x^{n&#x2F;2-1}$<br>$A_2(x) &#x3D; a_1 + a_3</em>x + \dots + a_{n-1}<em>x^{n&#x2F;2-1}$<br>$A(x) &#x3D; A_1(x^2) + x</em>A_2(x^2)$</li>
-<li>当需要求解 $w_n^k$ 对应的纵坐标时，不妨同时关注$w_n^{k + n&#x2F;2}$:<br>$A(w_n^k) &#x3D; A_1(w_n^{2k}) + w_n^k<em>A_2(w_n^{2k}) &#x3D; A_1(w_{n&#x2F;2}^{k}) + w_n^k</em>A_2(w_{n&#x2F;2}^{k})$<br>$A(w_n^{k+n&#x2F;2}) &#x3D; A_1(w_n^{2k+n}) + w_n^{k+n&#x2F;2}<em>A_2(w_n^{2k+n}) &#x3D; A_1(w_{n&#x2F;2}^{k}) - w_n^k</em>A_2(w_{n&#x2F;2}^{k})$</li>
+<li>将 A(x) 的奇数项和偶数项分开，设：</li>
+</ul>
+<p>$A_1(x) &#x3D; a_0 + a_2*x + … + a_{n-2}*x^{n&#x2F;2-1}$</p>
+<p>$A_2(x) &#x3D; a_1 + a_3*x + … + a_{n-1}*x^{n&#x2F;2-1}$</p>
+<p>$A(x) &#x3D; A_1(x^2) + x*A_2(x^2)$</p>
+<ul>
+<li>当需要求解 $w_n^k$ 对应的纵坐标时，不妨同时关注$w_n^{k + n&#x2F;2}$:</li>
+</ul>
+<p>$A(w_n^k) &#x3D; A_1(w_n^{2k}) + w_n^k*A_2(w_n^{2k})$</p>
+<p>由变换可得（转化为三角形式会直观些）：</p>
+<p>$A(w_n^k) &#x3D; A_1(w_{n&#x2F;2}^{k}) + w_n^k*A_2(w_{n&#x2F;2}^{k})$</p>
+<p>同样的：</p>
+<p>$A(w_n^{k+n&#x2F;2}) &#x3D; A_1(w_n^{2k+n}) + w_n^{k+n&#x2F;2}*A_2(w_n^{2k+n})$</p>
+<p>变换得：</p>
+<p>$A(w_n^{k+n&#x2F;2}) &#x3D; A_1(w_{n&#x2F;2}^{k}) - w_n^k*A_2(w_{n&#x2F;2}^{k})$</p>
+<ul>
 <li>注意到$A(w_n^k)$ 和 $A(w_n^{k+n&#x2F;2})$ 最后分解成的式子中有公共部分，则这二者可一并计算</li>
 <li>故对于计算单个点对应的纵坐标，采用分治算法，时间复杂度 $T(n) &#x3D; 2*T(n&#x2F;2)$，为$O(logn)$</li>
 <li>总时间复杂度为 $O(n*logn)$</li>
@@ -843,6 +861,13 @@
 
 </main>
 
+
+<script src="https://cdn.bootcss.com/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script>
+    MathJax.Hub.Config({
+        tex2jax: {inlineMath: [['$', '$'], ['\(', '\)']]}
+    });
+</script>
 
 
 
