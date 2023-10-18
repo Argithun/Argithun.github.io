@@ -6,7 +6,7 @@
   <link href="https://argithun.github.io/atom.xml" rel="self"/>
   
   <link href="https://argithun.github.io/"/>
-  <updated>2023-10-15T15:26:24.015Z</updated>
+  <updated>2023-10-18T09:35:00.006Z</updated>
   <id>https://argithun.github.io/</id>
   
   <author>
@@ -17,11 +17,38 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>数据库系统——基础篇</title>
+    <link href="https://argithun.github.io/2023/10/16/db1/"/>
+    <id>https://argithun.github.io/2023/10/16/db1/</id>
+    <published>2023-10-16T01:25:00.000Z</published>
+    <updated>2023-10-18T09:35:00.006Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;数据库系统——基础篇&quot;&gt;&lt;a href=&quot;#数据库系统——基础篇&quot; class=&quot;headerlink&quot; title=&quot;数据库系统——基础篇&quot;&gt;&lt;/a&gt;数据库系统——基础篇&lt;/h1&gt;&lt;h2 id=&quot;数据库系统的结构&quot;&gt;&lt;a href=&quot;#数据库系统的结构&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="数据库" scheme="https://argithun.github.io/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+    
+    
+    <category term="数据库" scheme="https://argithun.github.io/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+    
+    <category term="SQL" scheme="https://argithun.github.io/tags/SQL/"/>
+    
+  </entry>
+  
+  <entry>
     <title>算法课程杂记 1</title>
     <link href="https://argithun.github.io/2023/10/15/alg1/"/>
     <id>https://argithun.github.io/2023/10/15/alg1/</id>
     <published>2023-10-15T01:25:00.000Z</published>
-    <updated>2023-10-15T15:26:24.015Z</updated>
+    <updated>2023-10-16T12:45:45.286Z</updated>
     
     
       
@@ -270,7 +297,7 @@
     <link href="https://argithun.github.io/2023/03/08/os-lab1/"/>
     <id>https://argithun.github.io/2023/03/08/os-lab1/</id>
     <published>2023-03-08T01:25:00.000Z</published>
-    <updated>2023-10-15T02:34:25.196Z</updated>
+    <updated>2023-10-15T15:27:08.466Z</updated>
     
     
       
@@ -283,7 +310,7 @@
     
     
     
-    <category term="操作系统" scheme="https://argithun.github.io/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/"/>
+    <category term="体系结构" scheme="https://argithun.github.io/categories/%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84/"/>
     
     
     <category term="操作系统" scheme="https://argithun.github.io/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/"/>

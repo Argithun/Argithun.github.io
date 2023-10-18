@@ -33,8 +33,8 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
-<!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.3.0"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"><link rel="alternate" href="/atom.xml" title="Argithun's Blog" type="application/atom+xml">
-</head>
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="Argithun's Blog" type="application/atom+xml">
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
 
 
 
@@ -469,7 +469,7 @@
 <p>关于如何分治：因为我们要求$A(w_n^k)$需要知道$A_1(w_{n&#x2F;2}^{k})$ 和 $A_2(w_{n&#x2F;2}^{k})$</p>
 <p>可见，子问题的形式与原问题一样，但规模减半，运用分支的递归策略即可求解</p>
 <p><strong>如何由一个点表示式推出对应多项式</strong><br>结论是：<br>将n个点的每个点$(w_n^k, A(w_n^k))$记作$(x_k, y_k)$，则多项式系数$a_k$为：<br>$a_k &#x3D; 1&#x2F;n * \sum(y_i * (w_n^{-k})^i), i \in [0, n-1]$<br>具体推导步骤<a target="_blank" rel="noopener" href="http://t.csdnimg.cn/l95Tr">见此</a></p>
-<p>那对于$a_k$的计算，如何分治呢？<br>其实这里是一个小 trick，观察$a_k$可知，我们要计算的是一个以 $w_n^{-k}$ 为参数的多项式，这与刚刚求纵坐标的方式非常类似，做相同的处理即可，在编程上可以用同一个函实现数，总复杂度为 $O(n*logn)$</p>
+<p>那对于$a_k$的计算，如何分治呢？<br>其实这里是一个小 trick，观察$a_k$可知，我们要计算的是一个以 $w_n^{-k}$ 为参数的多项式，这与刚刚求纵坐标的方式非常类似，做相同的处理即可，在编程上可以用同一个函数实现，总复杂度为 $O(n*logn)$</p>
 <h2 id="背包问题"><a href="#背包问题" class="headerlink" title="背包问题"></a>背包问题</h2><p>背包问题主要有三类：</p>
 <ul>
 <li>0-1背包问题，每个物体数量为1</li>
@@ -479,10 +479,10 @@
 <p>其中，多重背包问题可通过将同类物体视为不同转变为0-1背包问题，这里不做赘述。</p>
 <h3 id="状态转移方程辨析"><a href="#状态转移方程辨析" class="headerlink" title="状态转移方程辨析"></a>状态转移方程辨析</h3><p>递推式中，i 表示检索第 i 个物体，j表示当前背包重量，v 为物体价值数组，dp 存储检索完第 i 个物体时背包重量为 j 时，对应的背包价值。</p>
 <p>0-1背包问题：</p>
-<pre class=" language-c"><code class="language-c">dp<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">max</span><span class="token punctuation">(</span>dp<span class="token punctuation">[</span>i <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">,</span>v<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">+</span>dp<span class="token punctuation">[</span>i <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">[</span>j <span class="token operator">-</span> w<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+<pre class=" language-c"><code class="language-c">dp<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">max</span><span class="token punctuation">(</span>dp<span class="token punctuation">[</span>i <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">,</span> v<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">+</span>dp<span class="token punctuation">[</span>i <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">[</span>j <span class="token operator">-</span> w<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
 </code></pre>
 <p>完全背包问题：</p>
-<pre class=" language-c"><code class="language-c">dp<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">max</span><span class="token punctuation">(</span>dp<span class="token punctuation">[</span>i <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">,</span>v<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">+</span> dp<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j <span class="token operator">-</span> w<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+<pre class=" language-c"><code class="language-c">dp<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">max</span><span class="token punctuation">(</span>dp<span class="token punctuation">[</span>i <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">,</span> v<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">+</span> dp<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j <span class="token operator">-</span> w<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
 </code></pre>
 <p>可以看到，由于完全背包情况下物体数量无限，故决定是否放入标号为 i 的物体前，可能已放入标号为 i 的物体。</p>
 <h2 id="多项式时间复杂度中的-x-的辨析"><a href="#多项式时间复杂度中的-x-的辨析" class="headerlink" title="多项式时间复杂度中的 x 的辨析"></a>多项式时间复杂度中的 x 的辨析</h2><p>多项式时间算法：在输入规模为x的情况下，算法能够在$O(x^k)$ 时间(k为常数)内解决该问题。</p>
@@ -728,51 +728,49 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="far fa-dot-circle"></i>&nbsp;本篇
-            </div>
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2023/10/15/alg1/">
+                <a href="/2023/10/16/db1/">
                     <div class="card-image">
                         
-                        <img src="https://argithun-blog-1321510384.cos.ap-beijing.myqcloud.com/alg1.png" class="responsive-img" alt="算法课程杂记 1">
+                        <img src="https://argithun-blog-1321510384.cos.ap-beijing.myqcloud.com/db1.jpg" class="responsive-img" alt="数据库系统——基础篇">
                         
-                        <span class="card-title">算法课程杂记 1</span>
+                        <span class="card-title">数据库系统——基础篇</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            算法课上的一些延展，不知道这个系列能坚持多久hhh
+                            数据库课程基础篇总回顾，包括数据库结构、关系数据模型、SQL语言等
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-10-15
-                            </span>
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2023-10-16
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E7%AE%97%E6%B3%95/" class="post-category">
-                                    算法
+                            <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" class="post-category">
+                                    数据库
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
-
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E5%88%86%E6%B2%BB/">
-                        <span class="chip bg-color">分治</span>
+                    <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">
+                        <span class="chip bg-color">数据库</span>
                     </a>
                     
-                    <a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">
-                        <span class="chip bg-color">动态规划</span>
+                    <a href="/tags/SQL/">
+                        <span class="chip bg-color">SQL</span>
                     </a>
                     
                 </div>
