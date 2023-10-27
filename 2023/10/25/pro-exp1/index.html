@@ -406,9 +406,9 @@
 <h2 id="源码获取和安装"><a href="#源码获取和安装" class="headerlink" title="源码获取和安装"></a>源码获取和安装</h2><h3 id="源码下载"><a href="#源码下载" class="headerlink" title="源码下载"></a>源码下载</h3><p><a target="_blank" rel="noopener" href="https://github.com/llvm/llvm-project/archive/refs/tags/llvmorg-15.0.4.tar.gz">下载链接</a></p>
 <p>解压后置于根目录或根目录下的子目录即可（这样保证了磁盘分区足够）</p>
 <h3 id="源码编译和运行"><a href="#源码编译和运行" class="headerlink" title="源码编译和运行"></a>源码编译和运行</h3><p>进入源码根目录，运行：</p>
-<pre><code>cmake -S llvm -B build -G &quot;Unix Makefiles&quot; -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++ -DLLVM_USE_SANITIZER=Address -DLLVM_USE_SANITIZE_COVERAGE=On -DLLVM_BUILD_RUNTIME=Off -DCMAKE_BUILD_TYPE=Release
+<pre class=" language-c"><code class="language-c">cmake <span class="token operator">-</span>S llvm <span class="token operator">-</span>B build <span class="token operator">-</span>G <span class="token string">"Unix Makefiles"</span> <span class="token operator">-</span>DCMAKE_C_COMPILER<span class="token operator">=</span>clang <span class="token operator">-</span>DCMAKE_CXX_COMPILER<span class="token operator">=</span>clang<span class="token operator">++</span> <span class="token operator">-</span>DLLVM_USE_SANITIZER<span class="token operator">=</span>Address <span class="token operator">-</span>DLLVM_USE_SANITIZE_COVERAGE<span class="token operator">=</span>On <span class="token operator">-</span>DLLVM_BUILD_RUNTIME<span class="token operator">=</span>Off <span class="token operator">-</span>DCMAKE_BUILD_TYPE<span class="token operator">=</span>Release
 
-cmake --build build
+cmake <span class="token operator">--</span>build build
 </code></pre>
 <p>等待即可（时间较长）</p>
 <p>编译完成后，所有模块的可执行文件位于 build&#x2F;bin 目录下，查阅相关使用文档，在该目录下执行相关运行指令即可。</p>
@@ -423,193 +423,276 @@ cmake --build build
 <h3 id="变异策略设计"><a href="#变异策略设计" class="headerlink" title="变异策略设计"></a>变异策略设计</h3><h4 id="针对具体优化的设计方法"><a href="#针对具体优化的设计方法" class="headerlink" title="针对具体优化的设计方法"></a>针对具体优化的设计方法</h4><p>下面的内容中，先指出针对的变异策略，代码部分分割线上方是变异前的代码，下方是变异后的代码；可以发现，经过我们的变异设计，代码中产生了更多可触发相关优化的位点，如此增加针对优化的测试强度。</p>
 <p><strong>块内变异算子</strong></p>
 <ul>
-<li><h2 id="InstrCombine-llvm-a-add-i32-b-constant"><a href="#InstrCombine-llvm-a-add-i32-b-constant" class="headerlink" title="InstrCombine&#96;&#96;&#96;llvm%a &#x3D; add i32 %b, constant"></a>InstrCombine<br>&#96;&#96;&#96;llvm<br>%a &#x3D; add i32 %b, constant</h2><p>%a1 &#x3D; add i32 %b, constant_0<br>%a2 &#x3D; add i32 %a1, constant_1<br>……<br>%a &#x3D; add i32 %an, constant_n</p>
-<p>&#x2F;&#x2F; constant &#x3D; constant_0 + …… + constant_n</p>
-<pre><code>
-</code></pre>
-</li>
-<li><h2 id="FuncInline-llvm-a-add-i32-b-c"><a href="#FuncInline-llvm-a-add-i32-b-c" class="headerlink" title="FuncInline&#96;&#96;&#96;llvm%a &#x3D; add i32 %b, %c"></a>FuncInline<br>&#96;&#96;&#96;llvm<br>%a &#x3D; add i32 %b, %c</h2><p>define dso_local i32 @sum(i32 %d1, i32 %d2){<br>%d3 &#x3D; add i32 %d1, %d2<br>ret i32 %d3<br>}</p>
-<p>%a &#x3D; call i32 @sum(i32 %b, i32 %c)</p>
-<pre><code>
-</code></pre>
-</li>
-<li><h2 id="DeadCodeEleminate-llvminstr1instr2"><a href="#DeadCodeEleminate-llvminstr1instr2" class="headerlink" title="DeadCodeEleminate&#96;&#96;&#96;llvminstr1instr2"></a>DeadCodeEleminate<br>&#96;&#96;&#96;llvm<br>instr1<br>instr2</h2><p>instr1<br>DEAD_CODE_UNIT<br>instr2</p>
-<pre><code>DEAD_CODE_UNIT:
-* 通用的：
-      * 新建与程序无关的变量，进行无效计算
-      * 引入对主程序无影响的冗余函数
-      * 构造无意义循环
-* 特化的：
-      * 如果 instr1/instr2 为计算类指令，可插入一些互逆的冗余运算，但要保证运算值的一致性
-      * 如果 instr2 为 store/load 类指令，可在其之前插入若干对该指令对象的 store/load 指令
-</code></pre>
-</li>
-<li><h2 id="CalculateSimplify-llvm-a-add-i32-b-constant"><a href="#CalculateSimplify-llvm-a-add-i32-b-constant" class="headerlink" title="CalculateSimplify&#96;&#96;&#96;llvm%a &#x3D; add i32 %b, constant"></a>CalculateSimplify<br>&#96;&#96;&#96;llvm<br>%a &#x3D; add i32 %b, constant</h2><p>%c &#x3D; ALU_OP i32 constant_1, constant_2<br>%a &#x3D; add i32 %b, %c</p>
-<p>&#x2F;&#x2F; constant_1 ALU_OP constant_2 &#x3D; constant</p>
-<pre><code>
-</code></pre>
-</li>
-<li><h2 id="GlobalValueLocalize-llvm-a-add-i32-b-c"><a href="#GlobalValueLocalize-llvm-a-add-i32-b-c" class="headerlink" title="GlobalValueLocalize&#96;&#96;&#96;llvm%a &#x3D; add i32 %b, %c"></a>GlobalValueLocalize<br>&#96;&#96;&#96;llvm<br>%a &#x3D; add i32 %b, %c</h2><p>@GLB_a &#x3D; dso_local global i32 0</p>
-<p>%a &#x3D; add i32 %b, %c</p>
-<p>store i32 %a, i32* @GLB_a</p>
-<p>instr replace all %a with @GLB_a</p>
-<pre><code>
-</code></pre>
-</li>
+<li>InstrCombine</li>
 </ul>
-<h2 id="函数内变异算子-GVN-GCM-llvm-a-add-b-c-……-instr-use-a"><a href="#函数内变异算子-GVN-GCM-llvm-a-add-b-c-……-instr-use-a" class="headerlink" title="函数内变异算子* GVN &amp; GCM  &#96;&#96;&#96;llvm  %a &#x3D; add %b, %c  ……  instr use %a"></a><strong>函数内变异算子</strong><br>* GVN &amp; GCM<br>  &#96;&#96;&#96;llvm<br>  %a &#x3D; add %b, %c<br>  ……<br>  instr use %a</h2><p>  %a &#x3D; add %b, %c<br>  ……<br>  %d &#x3D; add %b, %c<br>  instr replace all %a with %d<br>  &#x2F;&#x2F; 需保证 %b, %c 的值在中间没有被改变 (store)</p>
-<pre><code>
-* LoopInvariantCodeMotion
-```llvm
-BB2:
-    br label %BB3
-BB3:
-    %l15 = phi i32 [ 0 , %BB2 ], [ %l9 , %BB4 ]
-    %l4 = icmp slt i32 %l15, 10
-    br i1 %l4, label %BB4, label %BB5
-BB4:
-    call void @putint(i32 %l15)
-    %l9 = add i32 %l15, 1
-    br label %BB3
-BB5:
-    ret i32 0
-------------------------------------------------
-@GLB_a = dso_local global [1 x i32] [i32 1]
+<pre class=" language-llvm"><code class="language-llvm">  %a = add i32 %b, constant
+  ---------------------------------
+  %a1 = add i32 %b, constant_0
+  %a2 = add i32 %a1, constant_1
+  ……
+  %a = add i32 %an, constant_n
 
-
-BB2:
-    br label %BB3
-BB3:
-    %l23 = phi i32 [ 0 , %BB2 ], [ %l7 , %BB4 ]
-    %l21 = phi i32 [ 0 , %BB2 ], [ %l15 , %BB4 ]
-    %l4 = icmp slt i32 %l21, 10
-    br i1 %l4, label %BB4, label %BB5
-BB5:
-    ret i32 0
-BB4:
-  /*----------------------------------------------------*/
-    %l6 = getelementptr inbounds [1 x i32], [1 x i32]* @GLB_a, i32 0, i32 0
-    %l7 = load i32, i32* %l6
-  /*----------------------------------------------------*/
-    call void @putint(i32 %l7)
-
-    call void @putint(i32 %l21)
-    %l15 = add i32 %l21, 1
-    br label %BB3
+  // constant = constant_0 + …… + constant_n
 </code></pre>
 <ul>
-<li><h2 id="LoopFusion-llvmBB2-br-label-BB3BB3-l20-phi-i32-0-BB2-l12-BB4-l18-phi-i32-0-BB2-l9-BB4-l6-icmp-slt-i32-l20-10-br-i1-l6-label-BB4-label-BB5BB5-ret-i32-0BB4-l9-add-i32-l18-1-l12-add-i32-l20-1-br-label-BB3"><a href="#LoopFusion-llvmBB2-br-label-BB3BB3-l20-phi-i32-0-BB2-l12-BB4-l18-phi-i32-0-BB2-l9-BB4-l6-icmp-slt-i32-l20-10-br-i1-l6-label-BB4-label-BB5BB5-ret-i32-0BB4-l9-add-i32-l18-1-l12-add-i32-l20-1-br-label-BB3" class="headerlink" title="LoopFusion&#96;&#96;&#96;llvmBB2:    br label %BB3BB3:    %l20 &#x3D; phi i32 [ 0 , %BB2 ], [ %l12 , %BB4 ]    %l18 &#x3D; phi i32 [ 0 , %BB2 ], [ %l9 , %BB4 ]    %l6 &#x3D; icmp slt i32 %l20, 10    br i1 %l6, label %BB4, label %BB5BB5:    ret i32 0BB4:    %l9 &#x3D; add i32 %l18, 1    %l12 &#x3D; add i32 %l20, 1    br label %BB3"></a>LoopFusion<br>&#96;&#96;&#96;llvm<br>BB2:<br>    br label %BB3<br>BB3:<br>    %l20 &#x3D; phi i32 [ 0 , %BB2 ], [ %l12 , %BB4 ]<br>    %l18 &#x3D; phi i32 [ 0 , %BB2 ], [ %l9 , %BB4 ]<br>    %l6 &#x3D; icmp slt i32 %l20, 10<br>    br i1 %l6, label %BB4, label %BB5<br>BB5:<br>    ret i32 0<br>BB4:<br>    %l9 &#x3D; add i32 %l18, 1<br>    %l12 &#x3D; add i32 %l20, 1<br>    br label %BB3</h2>BB2:<br>br label %BB3<br>BB3:<br>%l23 &#x3D; phi i32 [ 0 , %BB2 ], [ %l7 , %BB4 ]<br>%l4 &#x3D; icmp slt i32 %l23, 10<br>br i1 %l4, label %BB4, label %BB5<br>BB5:<br>br label %BB6<br>BB6:<br>%l25 &#x3D; phi i32 [ 0 , %BB5 ], [ %l17 , %BB7 ]<br>%l14 &#x3D; icmp slt i32 %l25, 10<br>br i1 %l14, label %BB7, label %BB8<br>BB8:<br>ret i32 0<br>BB7:<br>%l17 &#x3D; add i32 %l25, 1<br>br label %BB6<br>BB4:<br>%l7 &#x3D; add i32 %l23, 1<br>br label %BB3<pre><code>
+<li>FuncInline</li>
+</ul>
+<pre class=" language-llvm"><code class="language-llvm">  %a = add i32 %b, %c
+  ---------------------------------
+  define dso_local i32 @sum(i32 %d1, i32 %d2)&#123;
+      %d3 = add i32 %d1, %d2
+      ret i32 %d3
+  &#125;
+
+
+  %a = call i32 @sum(i32 %b, i32 %c)
 </code></pre>
+<ul>
+<li>DeadCodeEleminate</li>
+</ul>
+<pre class=" language-llvm"><code class="language-llvm">  instr1
+  instr2
+  ---------------------------------
+  instr1
+  DEAD_CODE_UNIT
+  instr2
+</code></pre>
+<p>  DEAD_CODE_UNIT:</p>
+<ul>
+<li><p>通用的：<br>* 新建与程序无关的变量，进行无效计算<br>* 引入对主程序无影响的冗余函数<br>* 构造无意义循环</p>
+</li>
+<li><p>特化的：<br>* 如果 instr1&#x2F;instr2 为计算类指令，可插入一些互逆的冗余运算，但要保证运算值的一致性<br>* 如果 instr2 为 store&#x2F;load 类指令，可在其之前插入若干对该指令对象的 store&#x2F;load 指令</p>
+</li>
+<li><p>CalculateSimplify</p>
 </li>
 </ul>
+<pre class=" language-llvm"><code class="language-llvm">  %a = add i32 %b, constant
+  --------------------------------
+  %c = ALU_OP i32 constant_1, constant_2
+  %a = add i32 %b, %c
+
+  // constant_1 ALU_OP constant_2 = constant
+</code></pre>
+<ul>
+<li>GlobalValueLocalize</li>
+</ul>
+<pre class=" language-llvm"><code class="language-llvm">  %a = add i32 %b, %c
+  --------------------------------
+  @GLB_a = dso_local global i32 0
+
+  %a = add i32 %b, %c
+
+  store i32 %a, i32* @GLB_a
+
+  instr replace all %a with @GLB_a
+</code></pre>
+<p><strong>函数内变异算子</strong></p>
+<ul>
+<li>GVN &amp; GCM</li>
+</ul>
+<pre class=" language-llvm"><code class="language-llvm">  %a = add %b, %c
+  ……
+  instr use %a
+  -------------------------
+  %a = add %b, %c
+  ……
+  %d = add %b, %c
+  instr replace all %a with %d
+  // 需保证 %b, %c 的值在中间没有被改变 (store)
+</code></pre>
+<ul>
+<li>LoopInvariantCodeMotion</li>
+</ul>
+<pre class=" language-llvm"><code class="language-llvm">  BB2:
+      br label %BB3
+  BB3:
+      %l15 = phi i32 [ 0 , %BB2 ], [ %l9 , %BB4 ]
+      %l4 = icmp slt i32 %l15, 10
+      br i1 %l4, label %BB4, label %BB5
+  BB4:
+      call void @putint(i32 %l15)
+      %l9 = add i32 %l15, 1
+      br label %BB3
+  BB5:
+      ret i32 0
+  ------------------------------------------------
+  @GLB_a = dso_local global [1 x i32] [i32 1]
+
+
+  BB2:
+      br label %BB3
+  BB3:
+      %l23 = phi i32 [ 0 , %BB2 ], [ %l7 , %BB4 ]
+      %l21 = phi i32 [ 0 , %BB2 ], [ %l15 , %BB4 ]
+      %l4 = icmp slt i32 %l21, 10
+      br i1 %l4, label %BB4, label %BB5
+  BB5:
+      ret i32 0
+  BB4:
+    /*----------------------------------------------------*/
+      %l6 = getelementptr inbounds [1 x i32], [1 x i32]* @GLB_a, i32 0, i32 0
+      %l7 = load i32, i32* %l6
+    /*----------------------------------------------------*/
+      call void @putint(i32 %l7)
+
+      call void @putint(i32 %l21)
+      %l15 = add i32 %l21, 1
+      br label %BB3
+</code></pre>
+<ul>
+<li>LoopFusion</li>
+</ul>
+<pre class=" language-llvm"><code class="language-llvm">  BB2:
+      br label %BB3
+  BB3:
+      %l20 = phi i32 [ 0 , %BB2 ], [ %l12 , %BB4 ]
+      %l18 = phi i32 [ 0 , %BB2 ], [ %l9 , %BB4 ]
+      %l6 = icmp slt i32 %l20, 10
+      br i1 %l6, label %BB4, label %BB5
+  BB5:
+      ret i32 0
+  BB4:
+      %l9 = add i32 %l18, 1
+      %l12 = add i32 %l20, 1
+      br label %BB3
+  -------------------------------------------------
+  BB2:
+      br label %BB3
+  BB3:
+      %l23 = phi i32 [ 0 , %BB2 ], [ %l7 , %BB4 ]
+      %l4 = icmp slt i32 %l23, 10
+      br i1 %l4, label %BB4, label %BB5
+  BB5:
+      br label %BB6
+  BB6:
+      %l25 = phi i32 [ 0 , %BB5 ], [ %l17 , %BB7 ]
+      %l14 = icmp slt i32 %l25, 10
+      br i1 %l14, label %BB7, label %BB8
+  BB8:
+      ret i32 0
+  BB7:
+      %l17 = add i32 %l25, 1
+      br label %BB6
+  BB4:
+      %l7 = add i32 %l23, 1
+      br label %BB3
+</code></pre>
 <h4 id="策略在-llvm-源码上的添加"><a href="#策略在-llvm-源码上的添加" class="headerlink" title="策略在 llvm 源码上的添加"></a>策略在 llvm 源码上的添加</h4><p>在 llvm 中，模糊测试的框架已经为我们搭建完成，但其中采用的变异策略十分随机，过于简单，我们可以在其源码中添加我们编写的针对优化的变异策略进行效果测试。</p>
 <p>我们以针对 FuncInline 的变异策略为例：</p>
 <p>首先，找到 llvm&#x2F;include&#x2F;llvm&#x2F;FuzzMutate&#x2F;IRMutator.h 仿照已经建立的变异策略新建变异策略类：</p>
-<pre class=" language-cpp"><code class="language-cpp"><span class="token comment" spellcheck="true">//针对函数内联优化</span>
-<span class="token keyword">class</span> <span class="token class-name">ForFuncInlineIRStrategy</span> <span class="token operator">:</span> <span class="token keyword">public</span> IRMutationStrategy <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
-<span class="token keyword">public</span><span class="token operator">:</span>
-  uint64_t <span class="token function">getWeight</span><span class="token punctuation">(</span>size_t CurrentSize<span class="token punctuation">,</span> size_t MaxSize<span class="token punctuation">,</span>
-                     uint64_t CurrentWeight<span class="token punctuation">)</span> override <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
-    <span class="token keyword">return</span> <span class="token number">100000</span><span class="token punctuation">;</span>
-  <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+<pre class=" language-c++"><code class="language-c++">//针对函数内联优化
+class ForFuncInlineIRStrategy : public IRMutationStrategy &#123;
+public:
+  uint64_t getWeight(size_t CurrentSize, size_t MaxSize,
+                     uint64_t CurrentWeight) override &#123;
+    return 100000;
+  &#125;
 
-  <span class="token keyword">using</span> IRMutationStrategy<span class="token operator">::</span>mutate<span class="token punctuation">;</span>
-  <span class="token keyword">void</span> <span class="token function">mutate</span><span class="token punctuation">(</span>BasicBlock <span class="token operator">&amp;</span>BB<span class="token punctuation">,</span> RandomIRBuilder <span class="token operator">&amp;</span>IB<span class="token punctuation">)</span> override<span class="token punctuation">;</span>
-<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span><span class="token punctuation">;</span>
+  using IRMutationStrategy::mutate;
+  void mutate(BasicBlock &BB, RandomIRBuilder &IB) override;
+&#125;;
 </code></pre>
 <p>这里将权重设置为 10000 以确保随机采用变异策略时几乎每次都能触发此策略，这便于我们后续运行查看效果。</p>
 <p>下一步，找到 llvm&#x2F;lib&#x2F;FuzzMutate&#x2F;IRMutator.cpp 添加新建策略类的 mutate 方法的定义：</p>
-<pre class=" language-cpp"><code class="language-cpp"><span class="token comment" spellcheck="true">//针对函数内联</span>
-<span class="token keyword">static</span> <span class="token keyword">int</span> v_block_id <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
-<span class="token keyword">static</span> <span class="token keyword">int</span> v_func_id <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+<pre class=" language-c++"><code class="language-c++">//针对函数内联
+static int v_block_id = 1;
+static int v_func_id = 1;
 
-<span class="token keyword">void</span> llvm<span class="token operator">::</span>ForFuncInlineIRStrategy<span class="token operator">::</span><span class="token function">mutate</span><span class="token punctuation">(</span>BasicBlock <span class="token operator">&amp;</span>BB<span class="token punctuation">,</span>
-                                           RandomIRBuilder <span class="token operator">&amp;</span>IB<span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
-  <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">auto</span> <span class="token operator">&amp;</span>inst <span class="token operator">:</span> BB<span class="token punctuation">.</span><span class="token function">getInstList</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
-    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>inst<span class="token punctuation">.</span><span class="token function">isBinaryOp</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
-      <span class="token keyword">continue</span><span class="token punctuation">;</span>
-    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+void llvm::ForFuncInlineIRStrategy::mutate(BasicBlock &BB,
+                                           RandomIRBuilder &IB) &#123;
+  for (auto &inst : BB.getInstList()) &#123;
+    if (!inst.isBinaryOp()) &#123;
+      continue;
+    &#125;
 
-    <span class="token keyword">int</span> opcode <span class="token operator">=</span> inst<span class="token punctuation">.</span><span class="token function">getOpcode</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    Value <span class="token operator">*</span>val1 <span class="token operator">=</span> <span class="token constant">NULL</span><span class="token punctuation">;</span>
-    Value <span class="token operator">*</span>val2 <span class="token operator">=</span> <span class="token constant">NULL</span><span class="token punctuation">;</span>
-    Use <span class="token operator">*</span>oprands <span class="token operator">=</span> inst<span class="token punctuation">.</span><span class="token function">getOperandList</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token keyword">for</span> <span class="token punctuation">(</span>Use <span class="token operator">*</span>oprand <span class="token operator">=</span> oprands<span class="token punctuation">,</span> <span class="token operator">*</span>E <span class="token operator">=</span> inst<span class="token punctuation">.</span><span class="token function">getNumOperands</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">+</span> oprands<span class="token punctuation">;</span>
-         oprand <span class="token operator">!=</span> E<span class="token punctuation">;</span> <span class="token operator">++</span>oprand<span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
-      <span class="token keyword">if</span> <span class="token punctuation">(</span>oprand <span class="token operator">==</span> oprands<span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
-        val1 <span class="token operator">=</span> oprand<span class="token operator">-</span><span class="token operator">></span><span class="token function">get</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-      <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span> <span class="token keyword">else</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
-        val2 <span class="token operator">=</span> oprand<span class="token operator">-</span><span class="token operator">></span><span class="token function">get</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token keyword">break</span><span class="token punctuation">;</span>
-      <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
-    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+    int opcode = inst.getOpcode();
+    Value *val1 = NULL;
+    Value *val2 = NULL;
+    Use *oprands = inst.getOperandList();
+    for (Use *oprand = oprands, *E = inst.getNumOperands() + oprands;
+         oprand != E; ++oprand) &#123;
+      if (oprand == oprands) &#123;
+        val1 = oprand->get();
+      &#125; else &#123;
+        val2 = oprand->get();
+        break;
+      &#125;
+    &#125;
 
-    <span class="token keyword">if</span> <span class="token punctuation">(</span>val1 <span class="token operator">==</span> <span class="token constant">NULL</span> <span class="token operator">||</span> val2 <span class="token operator">==</span> <span class="token constant">NULL</span><span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
-      <span class="token keyword">continue</span><span class="token punctuation">;</span>
-    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+    if (val1 == NULL || val2 == NULL) &#123;
+      continue;
+    &#125;
     
-    Type <span class="token operator">*</span>types<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>val1<span class="token operator">-</span><span class="token operator">></span><span class="token function">getType</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> val2<span class="token operator">-</span><span class="token operator">></span><span class="token function">getType</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span><span class="token punctuation">;</span>
-    FunctionType <span class="token operator">*</span>funcType <span class="token operator">=</span> FunctionType<span class="token operator">::</span><span class="token function">get</span><span class="token punctuation">(</span>inst<span class="token punctuation">.</span><span class="token function">getType</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> ArrayRef<span class="token operator">&lt;</span>Type <span class="token operator">*</span><span class="token operator">></span><span class="token punctuation">(</span>types<span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    Function <span class="token operator">*</span>func <span class="token operator">=</span> Function<span class="token operator">::</span><span class="token function">Create</span><span class="token punctuation">(</span>funcType<span class="token punctuation">,</span> 
-      llvm<span class="token operator">::</span>GlobalValue<span class="token operator">::</span>LinkageTypes<span class="token operator">::</span>ExternalLinkage<span class="token punctuation">,</span> <span class="token string">"my_func_"</span> <span class="token operator">+</span> std<span class="token operator">::</span><span class="token function">to_string</span><span class="token punctuation">(</span>v_func_id<span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">,</span> inst<span class="token punctuation">.</span><span class="token function">getModule</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    Type *types[2] = &#123;val1->getType(), val2->getType()&#125;;
+    FunctionType *funcType = FunctionType::get(inst.getType(), ArrayRef<Type *>(types, 2), false);
+    Function *func = Function::Create(funcType, 
+      llvm::GlobalValue::LinkageTypes::ExternalLinkage, "my_func_" + std::to_string(v_func_id++), inst.getModule());
 
-    llvm<span class="token operator">::</span>LLVMContext <span class="token operator">&amp;</span>llvmContext <span class="token operator">=</span> inst<span class="token punctuation">.</span><span class="token function">getModule</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">getContext</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    BasicBlock <span class="token operator">*</span>block <span class="token operator">=</span> BasicBlock<span class="token operator">::</span><span class="token function">Create</span><span class="token punctuation">(</span>llvmContext<span class="token punctuation">,</span> <span class="token string">"my_block_"</span> <span class="token operator">+</span> std<span class="token operator">::</span><span class="token function">to_string</span><span class="token punctuation">(</span>v_block_id<span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">,</span> func<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    llvm::LLVMContext &llvmContext = inst.getModule()->getContext();
+    BasicBlock *block = BasicBlock::Create(llvmContext, "my_block_" + std::to_string(v_block_id++), func);
 
-    Instruction <span class="token operator">*</span>newInst <span class="token operator">=</span> inst<span class="token punctuation">.</span><span class="token function">clone</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    newInst<span class="token operator">-</span><span class="token operator">></span><span class="token function">setName</span><span class="token punctuation">(</span><span class="token string">"my_new_inst_"</span> <span class="token operator">+</span> std<span class="token operator">::</span><span class="token function">to_string</span><span class="token punctuation">(</span>v_block_id<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    block<span class="token operator">-</span><span class="token operator">></span><span class="token function">getInstList</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">push_back</span><span class="token punctuation">(</span>newInst<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    Function<span class="token operator">::</span>arg_iterator arg_it <span class="token operator">=</span> func<span class="token operator">-</span><span class="token operator">></span><span class="token function">arg_begin</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    newInst<span class="token operator">-</span><span class="token operator">></span><span class="token function">setOperand</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token operator">&amp;</span><span class="token punctuation">(</span><span class="token operator">*</span>arg_it<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    arg_it<span class="token operator">++</span><span class="token punctuation">;</span>
-    newInst<span class="token operator">-</span><span class="token operator">></span><span class="token function">setOperand</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token operator">&amp;</span><span class="token punctuation">(</span><span class="token operator">*</span>arg_it<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    Instruction *newInst = inst.clone();
+    newInst->setName("my_new_inst_" + std::to_string(v_block_id));
+    block->getInstList().push_back(newInst);
+    Function::arg_iterator arg_it = func->arg_begin();
+    newInst->setOperand(0, &(*arg_it));
+    arg_it++;
+    newInst->setOperand(1, &(*arg_it));
 
-    IRBuilder<span class="token operator">&lt;</span><span class="token operator">></span> <span class="token function">builder</span><span class="token punctuation">(</span>llvmContext<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    IRBuilder<> builder(llvmContext);
 
-    ReturnInst <span class="token operator">*</span>retInst <span class="token operator">=</span> builder<span class="token punctuation">.</span><span class="token function">CreateRet</span><span class="token punctuation">(</span>newInst<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    block<span class="token operator">-</span><span class="token operator">></span><span class="token function">getInstList</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">push_back</span><span class="token punctuation">(</span>retInst<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    ReturnInst *retInst = builder.CreateRet(newInst);
+    block->getInstList().push_back(retInst);
 
-    Value <span class="token operator">*</span>params<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>val1<span class="token punctuation">,</span> val2<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span><span class="token punctuation">;</span>
+    Value *params[2] = &#123;val1, val2&#125;;
 
-    CallInst<span class="token operator">*</span> callInst <span class="token operator">=</span> builder<span class="token punctuation">.</span><span class="token function">CreateCall</span><span class="token punctuation">(</span>func<span class="token punctuation">,</span> ArrayRef<span class="token operator">&lt;</span>Value <span class="token operator">*</span><span class="token operator">></span><span class="token punctuation">(</span>params<span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token string">""</span><span class="token punctuation">,</span> <span class="token constant">NULL</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    callInst<span class="token operator">-</span><span class="token operator">></span><span class="token function">insertAfter</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>inst<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    CallInst* callInst = builder.CreateCall(func, ArrayRef<Value *>(params, 2), "", NULL);
+    callInst->insertAfter(&inst);
     
-    inst<span class="token punctuation">.</span><span class="token function">replaceAllUsesWith</span><span class="token punctuation">(</span>callInst<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    inst<span class="token punctuation">.</span><span class="token function">eraseFromParent</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    inst.replaceAllUsesWith(callInst);
+    inst.eraseFromParent();
 
-    <span class="token keyword">return</span> <span class="token punctuation">;</span>    <span class="token comment" spellcheck="true">//wait to opt, we have to ret here cause erase will damage the iterator!!!</span>
-  <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+    return ;    //wait to opt, we have to ret here cause erase will damage the iterator!!!
+  &#125;
 
-<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+&#125;
 </code></pre>
 <p>这里需要使用很多 llvm 提供的接口来改变 IR 的结构，推荐使用 IDE 进行代码编辑或查阅相关文档。</p>
 <p>最后，找到 llvm&#x2F;tools&#x2F;llvm-opt-fuzzer&#x2F;llvm-opt-fuzzer.cpp 将新建的策略放入策略表中以供测试时选取：</p>
-<pre class=" language-cpp"><code class="language-cpp">Strategies<span class="token punctuation">.</span><span class="token function">push_back</span><span class="token punctuation">(</span>std<span class="token operator">::</span>make_unique<span class="token operator">&lt;</span>ForFuncInlineIRStrategy<span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<pre class=" language-c++"><code class="language-c++">Strategies.push_back(std::make_unique<ForFuncInlineIRStrategy>());
 </code></pre>
 <p>至此，我们为 llvm 的模糊测试架构添加了一个新的变异策略。</p>
 <h4 id="策略的运行和测试"><a href="#策略的运行和测试" class="headerlink" title="策略的运行和测试"></a>策略的运行和测试</h4><p>我们修改了 llvm 的源码，显然，我们不想再经历一次整个项目的 make；因此，我们可以采用 ninja 工具：</p>
 <ul>
-<li>进入源码根目录，运行：<pre><code>cmake -S llvm -B buildnin -G Ninja -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++ -DLLVM_USE_SANITIZER=Address -DLLVM_USE_SANITIZE_COVERAGE=On -DLLVM_BUILD_RUNTIME=Off -DCMAKE_BUILD_TYPE=Release
+<li>进入源码根目录，运行：</li>
+</ul>
+<pre class=" language-c"><code class="language-c">  cmake <span class="token operator">-</span>S llvm <span class="token operator">-</span>B buildnin <span class="token operator">-</span>G Ninja <span class="token operator">-</span>DCMAKE_C_COMPILER<span class="token operator">=</span>clang <span class="token operator">-</span>DCMAKE_CXX_COMPILER<span class="token operator">=</span>clang<span class="token operator">++</span> <span class="token operator">-</span>DLLVM_USE_SANITIZER<span class="token operator">=</span>Address <span class="token operator">-</span>DLLVM_USE_SANITIZE_COVERAGE<span class="token operator">=</span>On <span class="token operator">-</span>DLLVM_BUILD_RUNTIME<span class="token operator">=</span>Off <span class="token operator">-</span>DCMAKE_BUILD_TYPE<span class="token operator">=</span>Release
 </code></pre>
-</li>
-<li>进入源码根目录下的 buildnin 目录，运行：<pre><code>ninja llvm-opt-fuzzer
+<ul>
+<li>进入源码根目录下的 buildnin 目录，运行：</li>
+</ul>
+<pre class=" language-c"><code class="language-c">  ninja llvm<span class="token operator">-</span>opt<span class="token operator">-</span>fuzzer
 </code></pre>
-</li>
+<ul>
 <li>编译完成后，在 buildnin&#x2F;bin 下即可找到 llvm-opt-fuzzer 的可执行文件</li>
 </ul>
 <p>至此，我们可以试运行以测试刚刚的变异策略是否有效：</p>
 <ul>
-<li>在 buildnin&#x2F;bin 下运行<pre><code>./llvm-opt-fuzzer test -ignore_remaining_args=1 -mtriple x86_64 -passes instcombine
-</code></pre>
-其中 -passes 后指明了测试针对的优化，也可以更换成其他的来进行测试。<br>该命令可以手动终止（Ctrl + z）</li>
-<li>此时 buildnin&#x2F;bin 下生成的 test 文件中包含了一系列字节码文件，使用 build&#x2F;bin 目录下的 llvm-dis 将其反汇编为 .ll 文件即可查看变异效果：<pre><code>./llvm-dis ~/LLVM/llvm-project-llvmorg-15.0.4/buildnin/bin/test/*
-</code></pre>
-其中的 test 目录所在位置依据存放的实际位置来编写。</li>
+<li>在 buildnin&#x2F;bin 下运行：</li>
 </ul>
+<pre class=" language-c"><code class="language-c">  <span class="token punctuation">.</span><span class="token operator">/</span>llvm<span class="token operator">-</span>opt<span class="token operator">-</span>fuzzer test <span class="token operator">-</span>ignore_remaining_args<span class="token operator">=</span><span class="token number">1</span> <span class="token operator">-</span>mtriple x86_64 <span class="token operator">-</span>passes instcombine
+</code></pre>
+<p>  其中 -passes 后指明了测试针对的优化，也可以更换成其他的来进行测试。<br>  该命令可以手动终止（Ctrl + z）</p>
+<ul>
+<li>此时 buildnin&#x2F;bin 下生成的 test 文件中包含了一系列字节码文件，使用 build&#x2F;bin 目录下的 llvm-dis 将其反汇编为 .ll 文件即可查看变异效果：</li>
+</ul>
+<pre class=" language-c"><code class="language-c">  <span class="token punctuation">.</span><span class="token operator">/</span>llvm<span class="token operator">-</span>dis <span class="token operator">~</span><span class="token operator">/</span>LLVM<span class="token operator">/</span>llvm<span class="token operator">-</span>project<span class="token operator">-</span>llvmorg<span class="token number">-15.0</span><span class="token punctuation">.</span><span class="token number">4</span><span class="token operator">/</span>buildnin<span class="token operator">/</span>bin<span class="token operator">/</span>test<span class="token operator">/</span><span class="token operator">*</span>
+</code></pre>
+<p>  其中的 test 目录所在位置依据存放的实际位置来编写。</p>
 <p>针对函数内联的变异测试中，其中一个文件经过多次变异前后的效果如下：<br><img src="https://argithun-blog-1321510384.cos.ap-beijing.myqcloud.com/pro-exp1_3.jpg"></p>
 <hr>
 <h3 id="用户接口设计"><a href="#用户接口设计" class="headerlink" title="用户接口设计"></a>用户接口设计</h3><h4 id="测试器运行接口"><a href="#测试器运行接口" class="headerlink" title="测试器运行接口"></a>测试器运行接口</h4><p>该编译优化器模糊测试工具提供命令行接口供用户进行针对优化测试或全局优化测试，命令行初步设计如下：</p>
-<pre><code>llvm-opt-test [-d DIRECTORY] [-passes (OPT_STRATEGY)*]
+<pre class=" language-c"><code class="language-c">llvm<span class="token operator">-</span>opt<span class="token operator">-</span>test <span class="token punctuation">[</span><span class="token operator">-</span>d DIRECTORY<span class="token punctuation">]</span> <span class="token punctuation">[</span><span class="token operator">-</span><span class="token function">passes</span> <span class="token punctuation">(</span>OPT_STRATEGY<span class="token punctuation">)</span><span class="token operator">*</span><span class="token punctuation">]</span>
 </code></pre>
 <p>其中 –d DIRECTORY 指示了初始输入文件所在目录的位置，若缺省则默认为当前目录，-passes (OPT_STRATEGY)* 指示了测试针对的若干具体优化策略，若缺省则表示对所有优化策略进行测试，即全局优化测试。</p>
 <p>具体的，OPT_STRATEGY初步设计的部分可选参数如下：</p>
@@ -658,7 +741,7 @@ BB4:
 </tr>
 </tbody></table>
 <h4 id="新增针对测试接口"><a href="#新增针对测试接口" class="headerlink" title="新增针对测试接口"></a>新增针对测试接口</h4><p>在编译器的实际测试中，开发人员也可能新增一些编译优化策略，该编译优化器模糊测试工具也提供了命令行接口使用户可以自定义OPT_STRATEGY选项的内容以针对新增的优化策略进行测试，命令行初步设计如下：</p>
-<pre><code>add-test-pass –pass NEW_STRATEGY –cmd CMD_TO_OPEN_STRATEGY
+<pre class=" language-c"><code class="language-c">add<span class="token operator">-</span>test<span class="token operator">-</span>pass –pass NEW_STRATEGY –cmd CMD_TO_OPEN_STRATEGY
 </code></pre>
 <p>其中，NEW_STRATEGY为用户自定义的新优化策略的字符串表示，由数字、字母和下划线构成，可用于测试命令的OPT_STRATEGY选项，CMD_TO_OPEN_STRATEGY为用户提供的在运行待测试编译器时打开该优化的指令接口（可以理解成编译待测试的编译器时打开相关优化以得到具备这种优化功能的可执行文件的编译选项）。</p>
 <hr>
