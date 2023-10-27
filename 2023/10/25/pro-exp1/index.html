@@ -1,0 +1,1339 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="华为“毕昇”编译器模糊测试——项目一期, Argithun&#39;s Blog">
+    <meta name="description" content="计算机科学与技术专业的学生博客，记录课设、科研和实习项目的心得，欢迎任何技术层面的探讨~">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>华为“毕昇”编译器模糊测试——项目一期 | Argithun&#39;s Blog</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+
+    <script src="/libs/jquery/jquery.min.js"></script>
+
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="Argithun's Blog" type="application/atom+xml">
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+
+
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">Argithun&#39;s Blog</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/contact" class="waves-effect waves-light">
+      
+      <i class="fas fa-comments" style="zoom: 0.6;"></i>
+      
+      <span>留言板</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/friends" class="waves-effect waves-light">
+      
+      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
+      
+      <span>友情链接</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">Argithun&#39;s Blog</div>
+        <div class="logo-desc">
+            
+            计算机科学与技术专业的学生博客，记录课设、科研和实习项目的心得，欢迎任何技术层面的探讨~
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			分类
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/contact" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-comments"></i>
+			
+			留言板
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/friends" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-address-book"></i>
+			
+			友情链接
+		</a>
+          
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/Argithun" class="waves-effect waves-light" target="_blank">
+                <i class="fab fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/Argithun" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+    
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('https://argithun-blog-1321510384.cos.ap-beijing.myqcloud.com/pro-exp1_1.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">华为“毕昇”编译器模糊测试——项目一期</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="container content">
+
+    
+    <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95/">
+                                <span class="chip bg-color">软件测试</span>
+                            </a>
+                        
+                            <a href="/tags/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/">
+                                <span class="chip bg-color">编译原理</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/%E9%A1%B9%E7%9B%AE%E5%AE%9E%E8%AE%AD/" class="post-category">
+                                项目实训
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2023-10-25
+                </div>
+                
+
+                
+
+                
+
+                
+
+                
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h1 id="华为“毕昇”编译器模糊测试——项目一期"><a href="#华为“毕昇”编译器模糊测试——项目一期" class="headerlink" title="华为“毕昇”编译器模糊测试——项目一期"></a>华为“毕昇”编译器模糊测试——项目一期</h1><p>暑期“毕昇杯”比赛的获奖经历使本人在课设实验中获得了宝贵的开摆机会，又有机缘巧合，遂加入华为“毕昇”编译器模糊测试联合项目组。<br>我负责的是该编译器优化器模块的模糊测试；在第一阶段的工作中，我们尚无权限接触“毕昇”编译器源码，故在该编译器基于的 llvm 经典编译器源码上进行架构设计和相关实验。</p>
+<h2 id="环境要求"><a href="#环境要求" class="headerlink" title="环境要求"></a>环境要求</h2><ul>
+<li>Ubuntu 20.04 (或一些较新版本的 linux 系统)<ul>
+<li>推荐 4 GB 内存</li>
+<li>预留至少 30 GB 的存储空间</li>
+</ul>
+</li>
+<li>GNU 工具包</li>
+<li>ninja 工具</li>
+<li>集成开发环境（可选）</li>
+</ul>
+<h2 id="源码获取和安装"><a href="#源码获取和安装" class="headerlink" title="源码获取和安装"></a>源码获取和安装</h2><h3 id="源码下载"><a href="#源码下载" class="headerlink" title="源码下载"></a>源码下载</h3><p><a target="_blank" rel="noopener" href="https://github.com/llvm/llvm-project/archive/refs/tags/llvmorg-15.0.4.tar.gz">下载链接</a></p>
+<p>解压后置于根目录或根目录下的子目录即可（这样保证了磁盘分区足够）</p>
+<h3 id="源码编译和运行"><a href="#源码编译和运行" class="headerlink" title="源码编译和运行"></a>源码编译和运行</h3><p>进入源码根目录，运行：</p>
+<pre><code>cmake -S llvm -B build -G &quot;Unix Makefiles&quot; -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++ -DLLVM_USE_SANITIZER=Address -DLLVM_USE_SANITIZE_COVERAGE=On -DLLVM_BUILD_RUNTIME=Off -DCMAKE_BUILD_TYPE=Release
+
+cmake --build build
+</code></pre>
+<p>等待即可（时间较长）</p>
+<p>编译完成后，所有模块的可执行文件位于 build&#x2F;bin 目录下，查阅相关使用文档，在该目录下执行相关运行指令即可。</p>
+<hr>
+<h2 id="优化器模糊测试设计"><a href="#优化器模糊测试设计" class="headerlink" title="优化器模糊测试设计"></a>优化器模糊测试设计</h2><h3 id="整体架构"><a href="#整体架构" class="headerlink" title="整体架构"></a>整体架构</h3><p>编译优化器模糊测试的整体架构如图所示，其可以自动生成或由用户指定输入一系列初始输入文件（初始种子）置于输入池中，由变异模块采取不同的变异策略对输入文件进行有针对性的变异，检测分析模块依据编译器优化模块对这些变异文件的执行结果，生成测试报告，并依据 libFuzzer 覆盖率统计导向选取其中对当前测试目标有较新覆盖的变异文件放入输入池中进一步变异以继续测试。</p>
+<p><img src="https://argithun-blog-1321510384.cos.ap-beijing.myqcloud.com/pro-exp1_2.jpg"></p>
+<p>在编译优化器模糊测试架构下，主要可分为4个子模块：<br>（1）	输入预处理模块<br>处理用户命令行输入，对用户提供的含有初始输入 llvm 字节码文件的初始种子目录进行扫描，依次读入文件供给变异模块；若用户提供的文件非法或不存在，则调用样例自动生成器。<br>样例自动生成器的初步设计是事先给定一个较大的语料库，当需要调用自动生成模块时，从语料库中随机选出指令文件并进行随机的初步简单变异放入输入池中；值得注意的是，后续优化测试中生成的具有较新覆盖的变异文件也会可能被填充进入语料库中。</p>
+<p>（2）	针对优化的变异模块<br>对初始的输入文件进行针对优化导向的变异；具体的，变异模块内部采取多种针对不同优化策略的变异策略（具体变异策略详见变异设计），每个变异策略具有一定的权重，变异时会依据设定的权重随机对每个输入文件进行多次多种变异，生成较多的变异体供给编译器的优化模块执行。</p>
+<p>（3）	运行检测分析模块<br>对编译器优化器执行的结果进行评估，若执行时崩溃或执行后得到的优化 IR 无法正常执行，则可以说明在变异模块不引入错误的情况下，变异针对的优化策略的程序中可能存在缺陷，模块会记录优化程序和优化后的 IR 的执行日志信息，结合 Sanitizer 检测，标注可能存在缺陷的编译器优化模块，生成测试报告。</p>
+<p>（4）	覆盖率检测模块<br>将 libFuzzer 和待测试的编译器优化模块链接，通过在编译器优化模块代码中插桩，检测优化模块执行变异体的执行路径，从而统计测试的覆盖率，如果覆盖率提高，证明执行的变异体是较优的，将该变异体放入测试输入池中，同时也可选择将其放入语料库中以供随机测试输入的生成。</p>
+<hr>
+<h3 id="变异策略设计"><a href="#变异策略设计" class="headerlink" title="变异策略设计"></a>变异策略设计</h3><h4 id="针对具体优化的设计方法"><a href="#针对具体优化的设计方法" class="headerlink" title="针对具体优化的设计方法"></a>针对具体优化的设计方法</h4><p>下面的内容中，先指出针对的变异策略，代码部分分割线上方是变异前的代码，下方是变异后的代码；可以发现，经过我们的变异设计，代码中产生了更多可触发相关优化的位点，如此增加针对优化的测试强度。</p>
+<p><strong>块内变异算子</strong></p>
+<ul>
+<li><h2 id="InstrCombine-llvm-a-add-i32-b-constant"><a href="#InstrCombine-llvm-a-add-i32-b-constant" class="headerlink" title="InstrCombine&#96;&#96;&#96;llvm%a &#x3D; add i32 %b, constant"></a>InstrCombine<br>&#96;&#96;&#96;llvm<br>%a &#x3D; add i32 %b, constant</h2><p>%a1 &#x3D; add i32 %b, constant_0<br>%a2 &#x3D; add i32 %a1, constant_1<br>……<br>%a &#x3D; add i32 %an, constant_n</p>
+<p>&#x2F;&#x2F; constant &#x3D; constant_0 + …… + constant_n</p>
+<pre><code>
+</code></pre>
+</li>
+<li><h2 id="FuncInline-llvm-a-add-i32-b-c"><a href="#FuncInline-llvm-a-add-i32-b-c" class="headerlink" title="FuncInline&#96;&#96;&#96;llvm%a &#x3D; add i32 %b, %c"></a>FuncInline<br>&#96;&#96;&#96;llvm<br>%a &#x3D; add i32 %b, %c</h2><p>define dso_local i32 @sum(i32 %d1, i32 %d2){<br>%d3 &#x3D; add i32 %d1, %d2<br>ret i32 %d3<br>}</p>
+<p>%a &#x3D; call i32 @sum(i32 %b, i32 %c)</p>
+<pre><code>
+</code></pre>
+</li>
+<li><h2 id="DeadCodeEleminate-llvminstr1instr2"><a href="#DeadCodeEleminate-llvminstr1instr2" class="headerlink" title="DeadCodeEleminate&#96;&#96;&#96;llvminstr1instr2"></a>DeadCodeEleminate<br>&#96;&#96;&#96;llvm<br>instr1<br>instr2</h2><p>instr1<br>DEAD_CODE_UNIT<br>instr2</p>
+<pre><code>DEAD_CODE_UNIT:
+* 通用的：
+      * 新建与程序无关的变量，进行无效计算
+      * 引入对主程序无影响的冗余函数
+      * 构造无意义循环
+* 特化的：
+      * 如果 instr1/instr2 为计算类指令，可插入一些互逆的冗余运算，但要保证运算值的一致性
+      * 如果 instr2 为 store/load 类指令，可在其之前插入若干对该指令对象的 store/load 指令
+</code></pre>
+</li>
+<li><h2 id="CalculateSimplify-llvm-a-add-i32-b-constant"><a href="#CalculateSimplify-llvm-a-add-i32-b-constant" class="headerlink" title="CalculateSimplify&#96;&#96;&#96;llvm%a &#x3D; add i32 %b, constant"></a>CalculateSimplify<br>&#96;&#96;&#96;llvm<br>%a &#x3D; add i32 %b, constant</h2><p>%c &#x3D; ALU_OP i32 constant_1, constant_2<br>%a &#x3D; add i32 %b, %c</p>
+<p>&#x2F;&#x2F; constant_1 ALU_OP constant_2 &#x3D; constant</p>
+<pre><code>
+</code></pre>
+</li>
+<li><h2 id="GlobalValueLocalize-llvm-a-add-i32-b-c"><a href="#GlobalValueLocalize-llvm-a-add-i32-b-c" class="headerlink" title="GlobalValueLocalize&#96;&#96;&#96;llvm%a &#x3D; add i32 %b, %c"></a>GlobalValueLocalize<br>&#96;&#96;&#96;llvm<br>%a &#x3D; add i32 %b, %c</h2><p>@GLB_a &#x3D; dso_local global i32 0</p>
+<p>%a &#x3D; add i32 %b, %c</p>
+<p>store i32 %a, i32* @GLB_a</p>
+<p>instr replace all %a with @GLB_a</p>
+<pre><code>
+</code></pre>
+</li>
+</ul>
+<h2 id="函数内变异算子-GVN-GCM-llvm-a-add-b-c-……-instr-use-a"><a href="#函数内变异算子-GVN-GCM-llvm-a-add-b-c-……-instr-use-a" class="headerlink" title="函数内变异算子* GVN &amp; GCM  &#96;&#96;&#96;llvm  %a &#x3D; add %b, %c  ……  instr use %a"></a><strong>函数内变异算子</strong><br>* GVN &amp; GCM<br>  &#96;&#96;&#96;llvm<br>  %a &#x3D; add %b, %c<br>  ……<br>  instr use %a</h2><p>  %a &#x3D; add %b, %c<br>  ……<br>  %d &#x3D; add %b, %c<br>  instr replace all %a with %d<br>  &#x2F;&#x2F; 需保证 %b, %c 的值在中间没有被改变 (store)</p>
+<pre><code>
+* LoopInvariantCodeMotion
+```llvm
+BB2:
+    br label %BB3
+BB3:
+    %l15 = phi i32 [ 0 , %BB2 ], [ %l9 , %BB4 ]
+    %l4 = icmp slt i32 %l15, 10
+    br i1 %l4, label %BB4, label %BB5
+BB4:
+    call void @putint(i32 %l15)
+    %l9 = add i32 %l15, 1
+    br label %BB3
+BB5:
+    ret i32 0
+------------------------------------------------
+@GLB_a = dso_local global [1 x i32] [i32 1]
+
+
+BB2:
+    br label %BB3
+BB3:
+    %l23 = phi i32 [ 0 , %BB2 ], [ %l7 , %BB4 ]
+    %l21 = phi i32 [ 0 , %BB2 ], [ %l15 , %BB4 ]
+    %l4 = icmp slt i32 %l21, 10
+    br i1 %l4, label %BB4, label %BB5
+BB5:
+    ret i32 0
+BB4:
+  /*----------------------------------------------------*/
+    %l6 = getelementptr inbounds [1 x i32], [1 x i32]* @GLB_a, i32 0, i32 0
+    %l7 = load i32, i32* %l6
+  /*----------------------------------------------------*/
+    call void @putint(i32 %l7)
+
+    call void @putint(i32 %l21)
+    %l15 = add i32 %l21, 1
+    br label %BB3
+</code></pre>
+<ul>
+<li><h2 id="LoopFusion-llvmBB2-br-label-BB3BB3-l20-phi-i32-0-BB2-l12-BB4-l18-phi-i32-0-BB2-l9-BB4-l6-icmp-slt-i32-l20-10-br-i1-l6-label-BB4-label-BB5BB5-ret-i32-0BB4-l9-add-i32-l18-1-l12-add-i32-l20-1-br-label-BB3"><a href="#LoopFusion-llvmBB2-br-label-BB3BB3-l20-phi-i32-0-BB2-l12-BB4-l18-phi-i32-0-BB2-l9-BB4-l6-icmp-slt-i32-l20-10-br-i1-l6-label-BB4-label-BB5BB5-ret-i32-0BB4-l9-add-i32-l18-1-l12-add-i32-l20-1-br-label-BB3" class="headerlink" title="LoopFusion&#96;&#96;&#96;llvmBB2:    br label %BB3BB3:    %l20 &#x3D; phi i32 [ 0 , %BB2 ], [ %l12 , %BB4 ]    %l18 &#x3D; phi i32 [ 0 , %BB2 ], [ %l9 , %BB4 ]    %l6 &#x3D; icmp slt i32 %l20, 10    br i1 %l6, label %BB4, label %BB5BB5:    ret i32 0BB4:    %l9 &#x3D; add i32 %l18, 1    %l12 &#x3D; add i32 %l20, 1    br label %BB3"></a>LoopFusion<br>&#96;&#96;&#96;llvm<br>BB2:<br>    br label %BB3<br>BB3:<br>    %l20 &#x3D; phi i32 [ 0 , %BB2 ], [ %l12 , %BB4 ]<br>    %l18 &#x3D; phi i32 [ 0 , %BB2 ], [ %l9 , %BB4 ]<br>    %l6 &#x3D; icmp slt i32 %l20, 10<br>    br i1 %l6, label %BB4, label %BB5<br>BB5:<br>    ret i32 0<br>BB4:<br>    %l9 &#x3D; add i32 %l18, 1<br>    %l12 &#x3D; add i32 %l20, 1<br>    br label %BB3</h2>BB2:<br>br label %BB3<br>BB3:<br>%l23 &#x3D; phi i32 [ 0 , %BB2 ], [ %l7 , %BB4 ]<br>%l4 &#x3D; icmp slt i32 %l23, 10<br>br i1 %l4, label %BB4, label %BB5<br>BB5:<br>br label %BB6<br>BB6:<br>%l25 &#x3D; phi i32 [ 0 , %BB5 ], [ %l17 , %BB7 ]<br>%l14 &#x3D; icmp slt i32 %l25, 10<br>br i1 %l14, label %BB7, label %BB8<br>BB8:<br>ret i32 0<br>BB7:<br>%l17 &#x3D; add i32 %l25, 1<br>br label %BB6<br>BB4:<br>%l7 &#x3D; add i32 %l23, 1<br>br label %BB3<pre><code>
+</code></pre>
+</li>
+</ul>
+<h4 id="策略在-llvm-源码上的添加"><a href="#策略在-llvm-源码上的添加" class="headerlink" title="策略在 llvm 源码上的添加"></a>策略在 llvm 源码上的添加</h4><p>在 llvm 中，模糊测试的框架已经为我们搭建完成，但其中采用的变异策略十分随机，过于简单，我们可以在其源码中添加我们编写的针对优化的变异策略进行效果测试。</p>
+<p>我们以针对 FuncInline 的变异策略为例：</p>
+<p>首先，找到 llvm&#x2F;include&#x2F;llvm&#x2F;FuzzMutate&#x2F;IRMutator.h 仿照已经建立的变异策略新建变异策略类：</p>
+<pre class=" language-cpp"><code class="language-cpp"><span class="token comment" spellcheck="true">//针对函数内联优化</span>
+<span class="token keyword">class</span> <span class="token class-name">ForFuncInlineIRStrategy</span> <span class="token operator">:</span> <span class="token keyword">public</span> IRMutationStrategy <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+<span class="token keyword">public</span><span class="token operator">:</span>
+  uint64_t <span class="token function">getWeight</span><span class="token punctuation">(</span>size_t CurrentSize<span class="token punctuation">,</span> size_t MaxSize<span class="token punctuation">,</span>
+                     uint64_t CurrentWeight<span class="token punctuation">)</span> override <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> <span class="token number">100000</span><span class="token punctuation">;</span>
+  <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+
+  <span class="token keyword">using</span> IRMutationStrategy<span class="token operator">::</span>mutate<span class="token punctuation">;</span>
+  <span class="token keyword">void</span> <span class="token function">mutate</span><span class="token punctuation">(</span>BasicBlock <span class="token operator">&amp;</span>BB<span class="token punctuation">,</span> RandomIRBuilder <span class="token operator">&amp;</span>IB<span class="token punctuation">)</span> override<span class="token punctuation">;</span>
+<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span><span class="token punctuation">;</span>
+</code></pre>
+<p>这里将权重设置为 10000 以确保随机采用变异策略时几乎每次都能触发此策略，这便于我们后续运行查看效果。</p>
+<p>下一步，找到 llvm&#x2F;lib&#x2F;FuzzMutate&#x2F;IRMutator.cpp 添加新建策略类的 mutate 方法的定义：</p>
+<pre class=" language-cpp"><code class="language-cpp"><span class="token comment" spellcheck="true">//针对函数内联</span>
+<span class="token keyword">static</span> <span class="token keyword">int</span> v_block_id <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+<span class="token keyword">static</span> <span class="token keyword">int</span> v_func_id <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+
+<span class="token keyword">void</span> llvm<span class="token operator">::</span>ForFuncInlineIRStrategy<span class="token operator">::</span><span class="token function">mutate</span><span class="token punctuation">(</span>BasicBlock <span class="token operator">&amp;</span>BB<span class="token punctuation">,</span>
+                                           RandomIRBuilder <span class="token operator">&amp;</span>IB<span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+  <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">auto</span> <span class="token operator">&amp;</span>inst <span class="token operator">:</span> BB<span class="token punctuation">.</span><span class="token function">getInstList</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>inst<span class="token punctuation">.</span><span class="token function">isBinaryOp</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+      <span class="token keyword">continue</span><span class="token punctuation">;</span>
+    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">int</span> opcode <span class="token operator">=</span> inst<span class="token punctuation">.</span><span class="token function">getOpcode</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    Value <span class="token operator">*</span>val1 <span class="token operator">=</span> <span class="token constant">NULL</span><span class="token punctuation">;</span>
+    Value <span class="token operator">*</span>val2 <span class="token operator">=</span> <span class="token constant">NULL</span><span class="token punctuation">;</span>
+    Use <span class="token operator">*</span>oprands <span class="token operator">=</span> inst<span class="token punctuation">.</span><span class="token function">getOperandList</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span>Use <span class="token operator">*</span>oprand <span class="token operator">=</span> oprands<span class="token punctuation">,</span> <span class="token operator">*</span>E <span class="token operator">=</span> inst<span class="token punctuation">.</span><span class="token function">getNumOperands</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">+</span> oprands<span class="token punctuation">;</span>
+         oprand <span class="token operator">!=</span> E<span class="token punctuation">;</span> <span class="token operator">++</span>oprand<span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+      <span class="token keyword">if</span> <span class="token punctuation">(</span>oprand <span class="token operator">==</span> oprands<span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+        val1 <span class="token operator">=</span> oprand<span class="token operator">-</span><span class="token operator">></span><span class="token function">get</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span> <span class="token keyword">else</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+        val2 <span class="token operator">=</span> oprand<span class="token operator">-</span><span class="token operator">></span><span class="token function">get</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">break</span><span class="token punctuation">;</span>
+      <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>val1 <span class="token operator">==</span> <span class="token constant">NULL</span> <span class="token operator">||</span> val2 <span class="token operator">==</span> <span class="token constant">NULL</span><span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+      <span class="token keyword">continue</span><span class="token punctuation">;</span>
+    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+    
+    Type <span class="token operator">*</span>types<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>val1<span class="token operator">-</span><span class="token operator">></span><span class="token function">getType</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> val2<span class="token operator">-</span><span class="token operator">></span><span class="token function">getType</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span><span class="token punctuation">;</span>
+    FunctionType <span class="token operator">*</span>funcType <span class="token operator">=</span> FunctionType<span class="token operator">::</span><span class="token function">get</span><span class="token punctuation">(</span>inst<span class="token punctuation">.</span><span class="token function">getType</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> ArrayRef<span class="token operator">&lt;</span>Type <span class="token operator">*</span><span class="token operator">></span><span class="token punctuation">(</span>types<span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    Function <span class="token operator">*</span>func <span class="token operator">=</span> Function<span class="token operator">::</span><span class="token function">Create</span><span class="token punctuation">(</span>funcType<span class="token punctuation">,</span> 
+      llvm<span class="token operator">::</span>GlobalValue<span class="token operator">::</span>LinkageTypes<span class="token operator">::</span>ExternalLinkage<span class="token punctuation">,</span> <span class="token string">"my_func_"</span> <span class="token operator">+</span> std<span class="token operator">::</span><span class="token function">to_string</span><span class="token punctuation">(</span>v_func_id<span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">,</span> inst<span class="token punctuation">.</span><span class="token function">getModule</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    llvm<span class="token operator">::</span>LLVMContext <span class="token operator">&amp;</span>llvmContext <span class="token operator">=</span> inst<span class="token punctuation">.</span><span class="token function">getModule</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">getContext</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    BasicBlock <span class="token operator">*</span>block <span class="token operator">=</span> BasicBlock<span class="token operator">::</span><span class="token function">Create</span><span class="token punctuation">(</span>llvmContext<span class="token punctuation">,</span> <span class="token string">"my_block_"</span> <span class="token operator">+</span> std<span class="token operator">::</span><span class="token function">to_string</span><span class="token punctuation">(</span>v_block_id<span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">,</span> func<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    Instruction <span class="token operator">*</span>newInst <span class="token operator">=</span> inst<span class="token punctuation">.</span><span class="token function">clone</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    newInst<span class="token operator">-</span><span class="token operator">></span><span class="token function">setName</span><span class="token punctuation">(</span><span class="token string">"my_new_inst_"</span> <span class="token operator">+</span> std<span class="token operator">::</span><span class="token function">to_string</span><span class="token punctuation">(</span>v_block_id<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    block<span class="token operator">-</span><span class="token operator">></span><span class="token function">getInstList</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">push_back</span><span class="token punctuation">(</span>newInst<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    Function<span class="token operator">::</span>arg_iterator arg_it <span class="token operator">=</span> func<span class="token operator">-</span><span class="token operator">></span><span class="token function">arg_begin</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    newInst<span class="token operator">-</span><span class="token operator">></span><span class="token function">setOperand</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token operator">&amp;</span><span class="token punctuation">(</span><span class="token operator">*</span>arg_it<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    arg_it<span class="token operator">++</span><span class="token punctuation">;</span>
+    newInst<span class="token operator">-</span><span class="token operator">></span><span class="token function">setOperand</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token operator">&amp;</span><span class="token punctuation">(</span><span class="token operator">*</span>arg_it<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    IRBuilder<span class="token operator">&lt;</span><span class="token operator">></span> <span class="token function">builder</span><span class="token punctuation">(</span>llvmContext<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    ReturnInst <span class="token operator">*</span>retInst <span class="token operator">=</span> builder<span class="token punctuation">.</span><span class="token function">CreateRet</span><span class="token punctuation">(</span>newInst<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    block<span class="token operator">-</span><span class="token operator">></span><span class="token function">getInstList</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">push_back</span><span class="token punctuation">(</span>retInst<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    Value <span class="token operator">*</span>params<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>val1<span class="token punctuation">,</span> val2<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span><span class="token punctuation">;</span>
+
+    CallInst<span class="token operator">*</span> callInst <span class="token operator">=</span> builder<span class="token punctuation">.</span><span class="token function">CreateCall</span><span class="token punctuation">(</span>func<span class="token punctuation">,</span> ArrayRef<span class="token operator">&lt;</span>Value <span class="token operator">*</span><span class="token operator">></span><span class="token punctuation">(</span>params<span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token string">""</span><span class="token punctuation">,</span> <span class="token constant">NULL</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    callInst<span class="token operator">-</span><span class="token operator">></span><span class="token function">insertAfter</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>inst<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    
+    inst<span class="token punctuation">.</span><span class="token function">replaceAllUsesWith</span><span class="token punctuation">(</span>callInst<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    inst<span class="token punctuation">.</span><span class="token function">eraseFromParent</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">return</span> <span class="token punctuation">;</span>    <span class="token comment" spellcheck="true">//wait to opt, we have to ret here cause erase will damage the iterator!!!</span>
+  <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+
+<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+</code></pre>
+<p>这里需要使用很多 llvm 提供的接口来改变 IR 的结构，推荐使用 IDE 进行代码编辑或查阅相关文档。</p>
+<p>最后，找到 llvm&#x2F;tools&#x2F;llvm-opt-fuzzer&#x2F;llvm-opt-fuzzer.cpp 将新建的策略放入策略表中以供测试时选取：</p>
+<pre class=" language-cpp"><code class="language-cpp">Strategies<span class="token punctuation">.</span><span class="token function">push_back</span><span class="token punctuation">(</span>std<span class="token operator">::</span>make_unique<span class="token operator">&lt;</span>ForFuncInlineIRStrategy<span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<p>至此，我们为 llvm 的模糊测试架构添加了一个新的变异策略。</p>
+<h4 id="策略的运行和测试"><a href="#策略的运行和测试" class="headerlink" title="策略的运行和测试"></a>策略的运行和测试</h4><p>我们修改了 llvm 的源码，显然，我们不想再经历一次整个项目的 make；因此，我们可以采用 ninja 工具：</p>
+<ul>
+<li>进入源码根目录，运行：<pre><code>cmake -S llvm -B buildnin -G Ninja -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++ -DLLVM_USE_SANITIZER=Address -DLLVM_USE_SANITIZE_COVERAGE=On -DLLVM_BUILD_RUNTIME=Off -DCMAKE_BUILD_TYPE=Release
+</code></pre>
+</li>
+<li>进入源码根目录下的 buildnin 目录，运行：<pre><code>ninja llvm-opt-fuzzer
+</code></pre>
+</li>
+<li>编译完成后，在 buildnin&#x2F;bin 下即可找到 llvm-opt-fuzzer 的可执行文件</li>
+</ul>
+<p>至此，我们可以试运行以测试刚刚的变异策略是否有效：</p>
+<ul>
+<li>在 buildnin&#x2F;bin 下运行<pre><code>./llvm-opt-fuzzer test -ignore_remaining_args=1 -mtriple x86_64 -passes instcombine
+</code></pre>
+其中 -passes 后指明了测试针对的优化，也可以更换成其他的来进行测试。<br>该命令可以手动终止（Ctrl + z）</li>
+<li>此时 buildnin&#x2F;bin 下生成的 test 文件中包含了一系列字节码文件，使用 build&#x2F;bin 目录下的 llvm-dis 将其反汇编为 .ll 文件即可查看变异效果：<pre><code>./llvm-dis ~/LLVM/llvm-project-llvmorg-15.0.4/buildnin/bin/test/*
+</code></pre>
+其中的 test 目录所在位置依据存放的实际位置来编写。</li>
+</ul>
+<p>针对函数内联的变异测试中，其中一个文件经过多次变异前后的效果如下：<br><img src="https://argithun-blog-1321510384.cos.ap-beijing.myqcloud.com/pro-exp1_3.jpg"></p>
+<hr>
+<h3 id="用户接口设计"><a href="#用户接口设计" class="headerlink" title="用户接口设计"></a>用户接口设计</h3><h4 id="测试器运行接口"><a href="#测试器运行接口" class="headerlink" title="测试器运行接口"></a>测试器运行接口</h4><p>该编译优化器模糊测试工具提供命令行接口供用户进行针对优化测试或全局优化测试，命令行初步设计如下：</p>
+<pre><code>llvm-opt-test [-d DIRECTORY] [-passes (OPT_STRATEGY)*]
+</code></pre>
+<p>其中 –d DIRECTORY 指示了初始输入文件所在目录的位置，若缺省则默认为当前目录，-passes (OPT_STRATEGY)* 指示了测试针对的若干具体优化策略，若缺省则表示对所有优化策略进行测试，即全局优化测试。</p>
+<p>具体的，OPT_STRATEGY初步设计的部分可选参数如下：</p>
+<table>
+<thead>
+<tr>
+<th>OPT_STRATEGY</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>缺省</td>
+<td>默认对所有优化策略进行测试</td>
+</tr>
+<tr>
+<td>*</td>
+<td>对所有优化策略进行测试</td>
+</tr>
+<tr>
+<td>dce</td>
+<td>针对死代码删除优化的测试</td>
+</tr>
+<tr>
+<td>cprog</td>
+<td>针对常量传播优化的测试</td>
+</tr>
+<tr>
+<td>gcm</td>
+<td>针对全局代码移动优化的测试</td>
+</tr>
+<tr>
+<td>instcombine</td>
+<td>针对指令合并优化的测试</td>
+</tr>
+<tr>
+<td>funcinline</td>
+<td>针对函数内联优化的测试</td>
+</tr>
+<tr>
+<td>glbopt</td>
+<td>针对全局变量或函数优化集合的测试</td>
+</tr>
+<tr>
+<td>loopopt</td>
+<td>针对循环相关优化的测试</td>
+</tr>
+</tbody></table>
+<h4 id="新增针对测试接口"><a href="#新增针对测试接口" class="headerlink" title="新增针对测试接口"></a>新增针对测试接口</h4><p>在编译器的实际测试中，开发人员也可能新增一些编译优化策略，该编译优化器模糊测试工具也提供了命令行接口使用户可以自定义OPT_STRATEGY选项的内容以针对新增的优化策略进行测试，命令行初步设计如下：</p>
+<pre><code>add-test-pass –pass NEW_STRATEGY –cmd CMD_TO_OPEN_STRATEGY
+</code></pre>
+<p>其中，NEW_STRATEGY为用户自定义的新优化策略的字符串表示，由数字、字母和下划线构成，可用于测试命令的OPT_STRATEGY选项，CMD_TO_OPEN_STRATEGY为用户提供的在运行待测试编译器时打开该优化的指令接口（可以理解成编译待测试的编译器时打开相关优化以得到具备这种优化功能的可执行文件的编译选项）。</p>
+<hr>
+<h2 id="后续工作"><a href="#后续工作" class="headerlink" title="后续工作"></a>后续工作</h2><ul>
+<li>继续完成剩余的针对各种优化的测试的变异策略</li>
+<li>着手依照测试架构搭建测试工具的框架</li>
+</ul>
+
+                
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">Argithun</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://argithun.github.io/2023/10/25/pro-exp1/">https://argithun.github.io/2023/10/25/pro-exp1/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="/about" target="_blank">Argithun</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95/">
+                                    <span class="chip bg-color">软件测试</span>
+                                </a>
+                            
+                                <a href="/tags/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/">
+                                    <span class="chip bg-color">编译原理</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+                <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.4rem;
+        line-height: 38px;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 320px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .close:hover {
+        color: #ef5350;
+        transform: scale(1.3);
+        -moz-transform:scale(1.3);
+        -webkit-transform:scale(1.3);
+        -o-transform:scale(1.3);
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 210px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-content ul {
+        padding-left: 0 !important;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        background-color: #ccc;
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff !important;
+        background-color: #22AB38 !important;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff !important;
+        background-color: #019FE8 !important;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.jpg" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
+            <div class="card">
+                <a href="/2023/10/25/pro-exp1/">
+                    <div class="card-image">
+                        
+                        <img src="https://argithun-blog-1321510384.cos.ap-beijing.myqcloud.com/pro-exp1_1.jpg" class="responsive-img" alt="华为“毕昇”编译器模糊测试——项目一期">
+                        
+                        <span class="card-title">华为“毕昇”编译器模糊测试——项目一期</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            优化器测试架构和基本变异策略
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-10-25
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E9%A1%B9%E7%9B%AE%E5%AE%9E%E8%AE%AD/" class="post-category">
+                                    项目实训
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95/">
+                        <span class="chip bg-color">软件测试</span>
+                    </a>
+                    
+                    <a href="/tags/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/">
+                        <span class="chip bg-color">编译原理</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2023/10/16/db1/">
+                    <div class="card-image">
+                        
+                        <img src="https://argithun-blog-1321510384.cos.ap-beijing.myqcloud.com/db1.jpg" class="responsive-img" alt="数据库系统——基础篇">
+                        
+                        <span class="card-title">数据库系统——基础篇</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            数据库课程基础篇总回顾，包括数据库结构、关系数据模型、SQL语言等
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-10-16
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" class="post-category">
+                                    数据库
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">
+                        <span class="chip bg-color">数据库</span>
+                    </a>
+                    
+                    <a href="/tags/SQL/">
+                        <span class="chip bg-color">SQL</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+    
+
+</main>
+
+
+<script src="https://cdn.bootcss.com/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script>
+    MathJax.Hub.Config({
+        tex2jax: {inlineMath: [['$', '$'], ['\(', '\)']]}
+    });
+</script>
+
+
+
+    <footer class="page-footer bg-color">
+    
+        <link rel="stylesheet" href="/libs/aplayer/APlayer.min.css">
+<style>
+    .aplayer .aplayer-lrc p {
+        
+        display: none;
+        
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 16px !important;
+    }
+
+    .aplayer .aplayer-lrc p.aplayer-lrc-current {
+        
+        display: none;
+        
+        font-size: 15px;
+        color: #42b983;
+    }
+
+    
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body {
+        left: -66px !important;
+    }
+
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body:hover {
+        left: 0px !important;
+    }
+
+    
+</style>
+<div class="">
+    
+    <div class="row">
+        <meting-js class="col l8 offset-l2 m10 offset-m1 s12"
+                   server="netease"
+                   type="playlist"
+                   id="503838841"
+                   fixed='true'
+                   autoplay='false'
+                   theme='#42b983'
+                   loop='all'
+                   order='random'
+                   preload='auto'
+                   volume='0.7'
+                   list-folded='true'
+        >
+        </meting-js>
+    </div>
+</div>
+
+<script src="/libs/aplayer/APlayer.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+
+    
+    <div class="container row center-align" style="margin-bottom: 0px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2019-2023</span>
+            
+            <span id="year">2019</span>
+            <a href="/about" target="_blank">Argithun Pan</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/Argithun" target="_blank">Matery</a>
+            <br>
+            
+            
+            
+            
+            
+            
+            <span id="busuanzi_container_site_pv">
+                |&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;<span id="busuanzi_value_site_pv"
+                    class="white-color"></span>&nbsp;次
+            </span>
+            
+            
+            <span id="busuanzi_container_site_uv">
+                |&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;<span id="busuanzi_value_site_uv"
+                    class="white-color"></span>&nbsp;人
+            </span>
+            
+            <br>
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/Argithun" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:21371249@buaa.edu.cn" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+    <a href="https://twitter.com/Vanthon1024" class="tooltipped" target="_blank" data-tooltip="关注我的Twitter: https://twitter.com/Vanthon1024" data-position="top" data-delay="50">
+        <i class="fab fa-twitter"></i>
+    </a>
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=3063559416" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 3063559416" data-position="top" data-delay="50">
+        <i class="fab fa-qq"></i>
+    </a>
+
+
+
+
+
+
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <script src="/libs/others/clicklove.js" async="async"></script>
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+	
+    
+
+    
+
+    
+
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+</body>
+
+</html>
