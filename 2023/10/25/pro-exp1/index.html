@@ -594,68 +594,68 @@ public:
 </code></pre>
 <p>这里将权重设置为 10000 以确保随机采用变异策略时几乎每次都能触发此策略，这便于我们后续运行查看效果。</p>
 <p>下一步，找到 llvm&#x2F;lib&#x2F;FuzzMutate&#x2F;IRMutator.cpp 添加新建策略类的 mutate 方法的定义：</p>
-<pre class=" language-c++"><code class="language-c++">//针对函数内联
-static int v_block_id = 1;
-static int v_func_id = 1;
+<pre class=" language-cpp"><code class="language-cpp"><span class="token comment" spellcheck="true">//针对函数内联</span>
+<span class="token keyword">static</span> <span class="token keyword">int</span> v_block_id <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+<span class="token keyword">static</span> <span class="token keyword">int</span> v_func_id <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
 
-void llvm::ForFuncInlineIRStrategy::mutate(BasicBlock &BB,
-                                           RandomIRBuilder &IB) &#123;
-  for (auto &inst : BB.getInstList()) &#123;
-    if (!inst.isBinaryOp()) &#123;
-      continue;
-    &#125;
+<span class="token keyword">void</span> llvm<span class="token operator">::</span>ForFuncInlineIRStrategy<span class="token operator">::</span><span class="token function">mutate</span><span class="token punctuation">(</span>BasicBlock <span class="token operator">&amp;</span>BB<span class="token punctuation">,</span>
+                                           RandomIRBuilder <span class="token operator">&amp;</span>IB<span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+  <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">auto</span> <span class="token operator">&amp;</span>inst <span class="token operator">:</span> BB<span class="token punctuation">.</span><span class="token function">getInstList</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>inst<span class="token punctuation">.</span><span class="token function">isBinaryOp</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+      <span class="token keyword">continue</span><span class="token punctuation">;</span>
+    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
 
-    int opcode = inst.getOpcode();
-    Value *val1 = NULL;
-    Value *val2 = NULL;
-    Use *oprands = inst.getOperandList();
-    for (Use *oprand = oprands, *E = inst.getNumOperands() + oprands;
-         oprand != E; ++oprand) &#123;
-      if (oprand == oprands) &#123;
-        val1 = oprand->get();
-      &#125; else &#123;
-        val2 = oprand->get();
-        break;
-      &#125;
-    &#125;
+    <span class="token keyword">int</span> opcode <span class="token operator">=</span> inst<span class="token punctuation">.</span><span class="token function">getOpcode</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    Value <span class="token operator">*</span>val1 <span class="token operator">=</span> <span class="token constant">NULL</span><span class="token punctuation">;</span>
+    Value <span class="token operator">*</span>val2 <span class="token operator">=</span> <span class="token constant">NULL</span><span class="token punctuation">;</span>
+    Use <span class="token operator">*</span>oprands <span class="token operator">=</span> inst<span class="token punctuation">.</span><span class="token function">getOperandList</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span>Use <span class="token operator">*</span>oprand <span class="token operator">=</span> oprands<span class="token punctuation">,</span> <span class="token operator">*</span>E <span class="token operator">=</span> inst<span class="token punctuation">.</span><span class="token function">getNumOperands</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">+</span> oprands<span class="token punctuation">;</span>
+         oprand <span class="token operator">!=</span> E<span class="token punctuation">;</span> <span class="token operator">++</span>oprand<span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+      <span class="token keyword">if</span> <span class="token punctuation">(</span>oprand <span class="token operator">==</span> oprands<span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+        val1 <span class="token operator">=</span> oprand<span class="token operator">-</span><span class="token operator">></span><span class="token function">get</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span> <span class="token keyword">else</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+        val2 <span class="token operator">=</span> oprand<span class="token operator">-</span><span class="token operator">></span><span class="token function">get</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">break</span><span class="token punctuation">;</span>
+      <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
 
-    if (val1 == NULL || val2 == NULL) &#123;
-      continue;
-    &#125;
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>val1 <span class="token operator">==</span> <span class="token constant">NULL</span> <span class="token operator">||</span> val2 <span class="token operator">==</span> <span class="token constant">NULL</span><span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+      <span class="token keyword">continue</span><span class="token punctuation">;</span>
+    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
     
-    Type *types[2] = &#123;val1->getType(), val2->getType()&#125;;
-    FunctionType *funcType = FunctionType::get(inst.getType(), ArrayRef<Type *>(types, 2), false);
-    Function *func = Function::Create(funcType, 
-      llvm::GlobalValue::LinkageTypes::ExternalLinkage, "my_func_" + std::to_string(v_func_id++), inst.getModule());
+    Type <span class="token operator">*</span>types<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>val1<span class="token operator">-</span><span class="token operator">></span><span class="token function">getType</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> val2<span class="token operator">-</span><span class="token operator">></span><span class="token function">getType</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span><span class="token punctuation">;</span>
+    FunctionType <span class="token operator">*</span>funcType <span class="token operator">=</span> FunctionType<span class="token operator">::</span><span class="token function">get</span><span class="token punctuation">(</span>inst<span class="token punctuation">.</span><span class="token function">getType</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> ArrayRef<span class="token operator">&lt;</span>Type <span class="token operator">*</span><span class="token operator">></span><span class="token punctuation">(</span>types<span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    Function <span class="token operator">*</span>func <span class="token operator">=</span> Function<span class="token operator">::</span><span class="token function">Create</span><span class="token punctuation">(</span>funcType<span class="token punctuation">,</span> 
+      llvm<span class="token operator">::</span>GlobalValue<span class="token operator">::</span>LinkageTypes<span class="token operator">::</span>ExternalLinkage<span class="token punctuation">,</span> <span class="token string">"my_func_"</span> <span class="token operator">+</span> std<span class="token operator">::</span><span class="token function">to_string</span><span class="token punctuation">(</span>v_func_id<span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">,</span> inst<span class="token punctuation">.</span><span class="token function">getModule</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-    llvm::LLVMContext &llvmContext = inst.getModule()->getContext();
-    BasicBlock *block = BasicBlock::Create(llvmContext, "my_block_" + std::to_string(v_block_id++), func);
+    llvm<span class="token operator">::</span>LLVMContext <span class="token operator">&amp;</span>llvmContext <span class="token operator">=</span> inst<span class="token punctuation">.</span><span class="token function">getModule</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">getContext</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    BasicBlock <span class="token operator">*</span>block <span class="token operator">=</span> BasicBlock<span class="token operator">::</span><span class="token function">Create</span><span class="token punctuation">(</span>llvmContext<span class="token punctuation">,</span> <span class="token string">"my_block_"</span> <span class="token operator">+</span> std<span class="token operator">::</span><span class="token function">to_string</span><span class="token punctuation">(</span>v_block_id<span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">,</span> func<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-    Instruction *newInst = inst.clone();
-    newInst->setName("my_new_inst_" + std::to_string(v_block_id));
-    block->getInstList().push_back(newInst);
-    Function::arg_iterator arg_it = func->arg_begin();
-    newInst->setOperand(0, &(*arg_it));
-    arg_it++;
-    newInst->setOperand(1, &(*arg_it));
+    Instruction <span class="token operator">*</span>newInst <span class="token operator">=</span> inst<span class="token punctuation">.</span><span class="token function">clone</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    newInst<span class="token operator">-</span><span class="token operator">></span><span class="token function">setName</span><span class="token punctuation">(</span><span class="token string">"my_new_inst_"</span> <span class="token operator">+</span> std<span class="token operator">::</span><span class="token function">to_string</span><span class="token punctuation">(</span>v_block_id<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    block<span class="token operator">-</span><span class="token operator">></span><span class="token function">getInstList</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">push_back</span><span class="token punctuation">(</span>newInst<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    Function<span class="token operator">::</span>arg_iterator arg_it <span class="token operator">=</span> func<span class="token operator">-</span><span class="token operator">></span><span class="token function">arg_begin</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    newInst<span class="token operator">-</span><span class="token operator">></span><span class="token function">setOperand</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token operator">&amp;</span><span class="token punctuation">(</span><span class="token operator">*</span>arg_it<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    arg_it<span class="token operator">++</span><span class="token punctuation">;</span>
+    newInst<span class="token operator">-</span><span class="token operator">></span><span class="token function">setOperand</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token operator">&amp;</span><span class="token punctuation">(</span><span class="token operator">*</span>arg_it<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-    IRBuilder<> builder(llvmContext);
+    IRBuilder<span class="token operator">&lt;</span><span class="token operator">></span> <span class="token function">builder</span><span class="token punctuation">(</span>llvmContext<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-    ReturnInst *retInst = builder.CreateRet(newInst);
-    block->getInstList().push_back(retInst);
+    ReturnInst <span class="token operator">*</span>retInst <span class="token operator">=</span> builder<span class="token punctuation">.</span><span class="token function">CreateRet</span><span class="token punctuation">(</span>newInst<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    block<span class="token operator">-</span><span class="token operator">></span><span class="token function">getInstList</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">push_back</span><span class="token punctuation">(</span>retInst<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-    Value *params[2] = &#123;val1, val2&#125;;
+    Value <span class="token operator">*</span>params<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>val1<span class="token punctuation">,</span> val2<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span><span class="token punctuation">;</span>
 
-    CallInst* callInst = builder.CreateCall(func, ArrayRef<Value *>(params, 2), "", NULL);
-    callInst->insertAfter(&inst);
+    CallInst<span class="token operator">*</span> callInst <span class="token operator">=</span> builder<span class="token punctuation">.</span><span class="token function">CreateCall</span><span class="token punctuation">(</span>func<span class="token punctuation">,</span> ArrayRef<span class="token operator">&lt;</span>Value <span class="token operator">*</span><span class="token operator">></span><span class="token punctuation">(</span>params<span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token string">""</span><span class="token punctuation">,</span> <span class="token constant">NULL</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    callInst<span class="token operator">-</span><span class="token operator">></span><span class="token function">insertAfter</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>inst<span class="token punctuation">)</span><span class="token punctuation">;</span>
     
-    inst.replaceAllUsesWith(callInst);
-    inst.eraseFromParent();
+    inst<span class="token punctuation">.</span><span class="token function">replaceAllUsesWith</span><span class="token punctuation">(</span>callInst<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    inst<span class="token punctuation">.</span><span class="token function">eraseFromParent</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-    return ;    //wait to opt, we have to ret here cause erase will damage the iterator!!!
-  &#125;
+    <span class="token keyword">return</span> <span class="token punctuation">;</span>    <span class="token comment" spellcheck="true">//wait to opt, we have to ret here cause erase will damage the iterator!!!</span>
+  <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
 
-&#125;
+<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
 </code></pre>
 <p>这里需要使用很多 llvm 提供的接口来改变 IR 的结构，推荐使用 IDE 进行代码编辑或查阅相关文档。</p>
 <p>最后，找到 llvm&#x2F;tools&#x2F;llvm-opt-fuzzer&#x2F;llvm-opt-fuzzer.cpp 将新建的策略放入策略表中以供测试时选取：</p>
@@ -988,29 +988,28 @@ void llvm::ForFuncInlineIRStrategy::mutate(BasicBlock &BB,
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="far fa-dot-circle"></i>&nbsp;本篇
-            </div>
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2023/10/25/pro-exp1/">
+                <a href="/2023/12/01/ruby/">
                     <div class="card-image">
                         
-                        <img src="https://argithun-blog-1321510384.cos.ap-beijing.myqcloud.com/pro-exp1_1.jpg" class="responsive-img" alt="华为“毕昇”编译器模糊测试——项目一期">
+                        <img src="https://argithun-blog-1321510384.cos.ap-beijing.myqcloud.com/ruby_1.jpg" class="responsive-img" alt="Ruby on Rails 敏捷开发">
                         
-                        <span class="card-title">华为“毕昇”编译器模糊测试——项目一期</span>
+                        <span class="card-title">Ruby on Rails 敏捷开发</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            优化器测试架构和基本变异策略
+                            一个玩具级别的电商平台的 Ruby on Ralis 开发
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-10-25
-                            </span>
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2023-12-01
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -1023,16 +1022,15 @@ void llvm::ForFuncInlineIRStrategy::mutate(BasicBlock &BB,
                         </span>
                     </div>
                 </div>
-
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95/">
-                        <span class="chip bg-color">软件测试</span>
+                    <a href="/tags/Ruby/">
+                        <span class="chip bg-color">Ruby</span>
                     </a>
                     
-                    <a href="/tags/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/">
-                        <span class="chip bg-color">编译原理</span>
+                    <a href="/tags/Web-%E5%BC%80%E5%8F%91/">
+                        <span class="chip bg-color">Web 开发</span>
                     </a>
                     
                 </div>
