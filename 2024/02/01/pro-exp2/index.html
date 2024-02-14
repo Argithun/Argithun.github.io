@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="PostgreSQL 源码分析, Argithun&#39;s Blog">
+    <meta name="keywords" content="华为“毕昇”编译器模糊测试——项目二期, Argithun&#39;s Blog">
     <meta name="description" content="计算机科学与技术专业的学生博客，记录课设、科研和实习项目的心得，欢迎任何技术层面的探讨~">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>PostgreSQL 源码分析 | Argithun&#39;s Blog</title>
+    <title>华为“毕昇”编译器模糊测试——项目二期 | Argithun&#39;s Blog</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -315,12 +315,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('https://argithun-blog-1321510384.cos.ap-beijing.myqcloud.com/db4_1.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('https://argithun-blog-1321510384.cos.ap-beijing.myqcloud.com/pro_exp2.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">PostgreSQL 源码分析</h1>
+                    <h1 class="description center-align post-title">华为“毕昇”编译器模糊测试——项目二期</h1>
                 </div>
             </div>
         </div>
@@ -342,12 +342,12 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">
-                                <span class="chip bg-color">数据库</span>
+                            <a href="/tags/%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95/">
+                                <span class="chip bg-color">软件测试</span>
                             </a>
                         
-                            <a href="/tags/PostgreSQL/">
-                                <span class="chip bg-color">PostgreSQL</span>
+                            <a href="/tags/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/">
+                                <span class="chip bg-color">编译原理</span>
                             </a>
                         
                     </div>
@@ -358,8 +358,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" class="post-category">
-                                数据库
+                            <a href="/categories/%E9%A1%B9%E7%9B%AE%E5%AE%9E%E8%AE%AD/" class="post-category">
+                                项目实训
                             </a>
                         
                     </div>
@@ -371,7 +371,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2024-01-03
+                    2024-02-01
                 </div>
                 
 
@@ -392,13 +392,186 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="PostgreSQL-源码分析"><a href="#PostgreSQL-源码分析" class="headerlink" title="PostgreSQL 源码分析"></a>PostgreSQL 源码分析</h1><p>本学期的数据库课程大作业首次开放了源码分析赛道，经过挑选的三个小组将分别负责著名的开源数据库 PostgreSQL 的三个部分的源码解析：</p>
+                <h1 id="华为“毕昇”编译器模糊测试——项目二期"><a href="#华为“毕昇”编译器模糊测试——项目二期" class="headerlink" title="华为“毕昇”编译器模糊测试——项目二期"></a>华为“毕昇”编译器模糊测试——项目二期</h1><p>在项目一期中，我们构建了针对编译优化模块的变异策略以服务于模糊测试，但该模块只能产生一系列 ir，这些 ir 经指定的优化模块处理后可以得到优化后的 ir，在优化处理过程中，内存的溢出或直接崩溃往往暗示了优化模块可能存在的 bug。<br>但这种检测是不够的，因为这种严重的 crash 在发生的可能性上往往很小，故我们需要对 ir 的执行结果进行差分测试，对比优化前后的 ir 的执行结果，若有差异则也可进行对比溯源，找到可能存在的 bug。</p>
+<h2 id="优化测试模块总体架构"><a href="#优化测试模块总体架构" class="headerlink" title="优化测试模块总体架构"></a>优化测试模块总体架构</h2><p><img src="https://argithun-blog-1321510384.cos.ap-beijing.myqcloud.com/pro_exp2_1.png"></p>
+<h2 id="输出指令插入算法"><a href="#输出指令插入算法" class="headerlink" title="输出指令插入算法"></a>输出指令插入算法</h2><p>在我们变异生成的 ir 中，虽然有一些指令的处理逻辑，但这些被处理的变量没有输出，这样我们的差分模块就只能打开内存进行执行结果对比（难度太高，反正我短期内找不到识别内存中有效变量的值并进行差分的办法），故我们还是采用传统的输出对比的方式。<br>这就涉及输出指令（printf）的插入，直观的，不能为所有中间变量都插入输出指令，这会破坏优化位点，导致无意义的优化测试，故我设计出基于以下插入规则的启发式算法：</p>
 <ul>
-<li>语句编译器、查询优化模块</li>
-<li>存储模块</li>
-<li>事务管理和并发控制模块</li>
+<li>一条指令可以被输出仅当：<ul>
+<li>不为 void 类型</li>
+<li>不是 Terminal 指令</li>
 </ul>
-<p>我们小组负责的 PostgreSQL 存储部分的分析报告如下，文章太长故不在此页显示（在此致谢 njj，bh兄 和 jp兄）：<br><a target="_blank" rel="noopener" href="https://argithun-blog-1321510384.cos.ap-beijing.myqcloud.com/postgresql%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A.pdf">PostgreSQL_memory_part 解析报告 pdf 版本链接</a></p>
+</li>
+<li>一条指令输出收益较大仅当：<ul>
+<li>其没有 User 或其 User 类型为 void</li>
+<li>依据其 Use 关系建树<ul>
+<li>指令本身为节点，用到的 Value 为子节点</li>
+<li>当前节点为 Call 指令则深入函数或直接为该边的长度赋予一个较大值</li>
+<li>当前节点没有 Use 对象或 Use 对象都为常数 或 全局值，则停止</li>
+<li>计算树的高度，越高则收益越大</li>
+</ul>
+</li>
+<li>不在循环内（加分项）</li>
+<li>收益的衡量和整个程序的 BasicBlock 数量相关，和指令所在块的指令条数相关。</li>
+</ul>
+</li>
+</ul>
+<p>这个算法为 ir 内一些“靠后”的变量产生输入，能更具代表性地反映程序的正确性。</p>
+<h2 id="错误过滤器"><a href="#错误过滤器" class="headerlink" title="错误过滤器"></a>错误过滤器</h2><p>由于我们要对 ir 进行执行操作，这就对 ir 的合理性提出了更高的要求，这里定义“不合理的 ir”为：</p>
+<ul>
+<li>无法通过 llvm 自带的合理性检查</li>
+<li>ir 执行过程中崩溃 (Core Dump)</li>
+<li>ir 执行时间过长</li>
+<li>ir 导致差分模块的误判<ul>
+<li>优化前的 ir 执行结果不确定</li>
+<li>异常导致 ir 执行结果未写入输出文件</li>
+<li>优化后的 ir 执行结果不确定(poison 值)</li>
+<li>未定义行为导致意料之外的执行结果</li>
+</ul>
+</li>
+</ul>
+<p>针对不同类型的 ir 及其细分情况，其初步的（有的比较生硬）解决办法是：</p>
+<ul>
+<li>ir 无法通过 llvm 自动检查 Assertion<ul>
+<li>GlobalValue is not external<br>原因：在 llvm 源码中有专门对 GlobalValue 的检查，如果不初始化会被归入 External 的全局值类型<br>解决：在代码中 GlobalValue 声明时使用 Internal 的 LinkageType，并给予初始值，这两步缺一不可</li>
+<li>Phi is not at the top of block<br>原因：llvm 自带的随机指令插入变异可能在 Phi 指令前插入一些指令<br>解决：在指令插入变异的函数末尾添加 Phi 指令提前的逻辑</li>
+<li>XXX is not dominate all its use<br>原因：可能有很多种，目前解决的是插入循环导致一些指令的 dom 关系被破坏<br>解决：在插入循环时维护好前驱后继（特别是 Phi 指令和跳转指令）的关系，保证不破坏支配关系</li>
+</ul>
+</li>
+<li>误判<ul>
+<li>before 执行结果不确定<br>原因：未定义行为<br>解决：将 before 的 ir 执行两次，若结果不一致直接舍弃该变异体（<strong>处理比较消极，后续从源码上修改</strong>）</li>
+<li>异常导致 before 执行结果无法写入文件<ul>
+<li>除&#x2F;模 0 异常<br>解决：对于 除&#x2F;模 类指令检查第二操作数<ul>
+<li>若为常数且为 0 则修改</li>
+<li>若不为常数，则替换为该值 + 7 （<strong>需修改</strong>）</li>
+</ul>
+</li>
+<li>移位异常<br>原因：移位操作数过大或为负数<br>解决：对于移位类指令检查第二操作数<ul>
+<li>若为常数且过大或为负数则修改</li>
+<li>若不为常数，则插入取模指令限制第二操作数</li>
+</ul>
+</li>
+<li>GEP 指令异常<br>原因：GEP 指令偏移量为溢出或为负数<br>解决：获取其操作的指针的空间长度，对偏移量进行取模（Urem）</li>
+<li>alloca 指令异常<br>原因：alloca 分配的空间长度为负数<br>解决：对于 alloca 指令检查第一操作数<ul>
+<li>若为常数且为负数则修改为 16</li>
+<li>若不为常数则直接置为 16（因为自动生成的 alloca 指令几乎不会用来存储数组） （<strong>需修改</strong>）</li>
+</ul>
+</li>
+<li>store 指令异常<ul>
+<li>store 写常量空间<br>原因：store 向一些存储常量的空间存入值<br>解决：溯源检查 store 写入的空间，若不能存入则删除此 store 指令</li>
+<li>store 写溢出<br>原因：store 写的字段长度大于分配的空间的长度<br>解决：<ul>
+<li>若空间皆为常量：检索对应 alloca 指令分配类型的长度，与 store 写入的数据类型长度对比，若溢出则删除该指令</li>
+<li>否则：对写入目标的 alloca 指令进行 8 字节对齐，可以避免写溢出     （<strong>需修改</strong>）</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>call 指令调用 printf 函数的参数被修改<br>原因：llvm 自带的插入指令的变异会为行插入的指令找一个 User<br>解决：防止 call 指令成为该机制找到的 User</li>
+</ul>
+</li>
+<li>溢出导致 after 打印 poison 值<br>原因：使用随机数导致各种算术指令的溢出<br>解决：<ul>
+<li>最大程度避免使用随机数，现已实现语义相同的变异（拆分指令和合并后的指令执行后的结果相同）</li>
+<li>对极易溢出的指令（移位），使用模数的方法进行限制</li>
+<li>检查优化后的 ir 中有无 poison 值，若有则丢弃该变异体</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>崩溃（core dump）<ul>
+<li>段错误（核心已转储）<ul>
+<li>call 指令的对象和参数被改动<br>原因：llvm 自带的插入指令的变异会为行插入的指令找一个 User<br>解决：防止 call 指令成为该机制找到的 User </li>
+<li>store 指令存入的值位数大于空间长度<br>原因：llvm 自带的插入指令的 sink 机制会生成一些存储值到其 alloca 出的空间的 store 指令<br>解决：不使用已有的 alloca 指令，为新的值新建 alloca 指令</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>ir 执行时间过长<ul>
+<li>循环次数过多<br>解决：限制循环类变异插入循环的循环次数</li>
+<li>循环深度过大<br>解决：循环类变异插入循环前检查深度</li>
+<li>死循环<br>解决：限时执行（<strong>需修改</strong>）</li>
+</ul>
+</li>
+</ul>
+<h2 id="执行和结果对比"><a href="#执行和结果对比" class="headerlink" title="执行和结果对比"></a>执行和结果对比</h2><p>这里比较直接，先使用 c++ 执行一些命令行将 .ll 文件编译链接为可执行文件：</p>
+<pre class=" language-cpp"><code class="language-cpp"><span class="token keyword">bool</span> <span class="token function">runAndSaveResult</span><span class="token punctuation">(</span><span class="token keyword">const</span> std<span class="token operator">::</span>string <span class="token operator">&amp;</span>filename<span class="token punctuation">,</span> llvm<span class="token operator">::</span>Module <span class="token operator">&amp;</span>M<span class="token punctuation">,</span> <span class="token keyword">bool</span> isBefore<span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+  <span class="token comment" spellcheck="true">// 1. 将 M 转化为 .ll 文件</span>
+  <span class="token keyword">int</span> fd <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+  std<span class="token operator">::</span>error_code EC <span class="token operator">=</span> llvm<span class="token operator">::</span>sys<span class="token operator">::</span>fs<span class="token operator">::</span><span class="token function">openFileForWrite</span><span class="token punctuation">(</span><span class="token string">"./result/executing.ll"</span><span class="token punctuation">,</span> fd<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>EC<span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+    raw_fd_ostream <span class="token function">OS</span><span class="token punctuation">(</span>fd<span class="token punctuation">,</span> <span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    M<span class="token punctuation">.</span><span class="token function">print</span><span class="token punctuation">(</span>OS<span class="token punctuation">,</span> <span class="token keyword">nullptr</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    OS<span class="token punctuation">.</span><span class="token function">close</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span> <span class="token keyword">else</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+    <span class="token function">errs</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">&lt;&lt;</span> <span class="token string">"Failed to open output file: "</span> <span class="token operator">&lt;&lt;</span> EC<span class="token punctuation">.</span><span class="token function">message</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">&lt;&lt;</span> <span class="token string">"\n"</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+  <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+
+  <span class="token comment" spellcheck="true">// 2. 使用 llc 将 .ll 文件编译成目标文件</span>
+  std<span class="token operator">::</span>string objFile <span class="token operator">=</span> <span class="token string">"./result/executing.o"</span><span class="token punctuation">;</span>
+  std<span class="token operator">::</span>string llFile <span class="token operator">=</span> <span class="token string">"./result/executing.ll"</span><span class="token punctuation">;</span>
+  std<span class="token operator">::</span>string llcCommand <span class="token operator">=</span> <span class="token string">"llc "</span> <span class="token operator">+</span> llFile <span class="token operator">+</span> <span class="token string">" -opaque-pointers -filetype=obj -o "</span> <span class="token operator">+</span> objFile<span class="token punctuation">;</span>
+  <span class="token keyword">int</span> llcResult <span class="token operator">=</span> std<span class="token operator">::</span><span class="token function">system</span><span class="token punctuation">(</span>llcCommand<span class="token punctuation">.</span><span class="token function">c_str</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>llcResult <span class="token operator">!=</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+    <span class="token function">errs</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">&lt;&lt;</span> <span class="token string">"Failed to execute llc command\n"</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+  <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+
+  <span class="token comment" spellcheck="true">// 3. 使用 clang 将目标文件链接成可执行文件</span>
+  std<span class="token operator">::</span>string executable <span class="token operator">=</span> <span class="token string">"./result/executing"</span><span class="token punctuation">;</span>
+  std<span class="token operator">::</span>string clangCommand <span class="token operator">=</span> <span class="token string">"clang "</span> <span class="token operator">+</span> objFile <span class="token operator">+</span> <span class="token string">" -o "</span> <span class="token operator">+</span> executable <span class="token operator">+</span> <span class="token string">" -no-pie"</span><span class="token punctuation">;</span>
+  <span class="token keyword">int</span> clangResult <span class="token operator">=</span> std<span class="token operator">::</span><span class="token function">system</span><span class="token punctuation">(</span>clangCommand<span class="token punctuation">.</span><span class="token function">c_str</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>clangResult <span class="token operator">!=</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+    <span class="token function">errs</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">&lt;&lt;</span> <span class="token string">"Failed to execute clang command\n"</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+  <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+
+  <span class="token comment" spellcheck="true">// 4. 执行可执行文件，并将结果写入指定文件</span>
+  std<span class="token operator">::</span>string execCommand <span class="token operator">=</span> <span class="token string">"timeout 20s "</span> <span class="token operator">+</span> executable <span class="token operator">+</span> <span class="token string">" > "</span> <span class="token operator">+</span> filename<span class="token punctuation">;</span>
+  <span class="token keyword">int</span> execResult <span class="token operator">=</span> std<span class="token operator">::</span><span class="token function">system</span><span class="token punctuation">(</span>execCommand<span class="token punctuation">.</span><span class="token function">c_str</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>execResult <span class="token operator">!=</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+  <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>isBefore<span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+    std<span class="token operator">::</span>string execCommandAddition <span class="token operator">=</span> <span class="token string">"timeout 20s "</span> <span class="token operator">+</span> executable <span class="token operator">+</span> <span class="token string">">"</span> <span class="token operator">+</span> <span class="token string">"./result/before_addition.txt"</span><span class="token punctuation">;</span>
+    <span class="token keyword">int</span> execResultAddition <span class="token operator">=</span> std<span class="token operator">::</span><span class="token function">system</span><span class="token punctuation">(</span>execCommandAddition<span class="token punctuation">.</span><span class="token function">c_str</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span> <span class="token keyword">else</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+    std<span class="token operator">::</span>string execCommandAddition <span class="token operator">=</span> <span class="token string">"timeout 20s "</span> <span class="token operator">+</span> executable <span class="token operator">+</span> <span class="token string">">"</span> <span class="token operator">+</span> <span class="token string">"./result/after_addition.txt"</span><span class="token punctuation">;</span>
+    <span class="token keyword">int</span> execResultAddition <span class="token operator">=</span> std<span class="token operator">::</span><span class="token function">system</span><span class="token punctuation">(</span>execCommandAddition<span class="token punctuation">.</span><span class="token function">c_str</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+
+  <span class="token keyword">return</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+</code></pre>
+<p>然后是对比输出的逻辑：</p>
+<pre class=" language-cpp"><code class="language-cpp"><span class="token keyword">bool</span> <span class="token function">compareResults</span><span class="token punctuation">(</span><span class="token keyword">const</span> std<span class="token operator">::</span>string <span class="token operator">&amp;</span>file1<span class="token punctuation">,</span> <span class="token keyword">const</span> std<span class="token operator">::</span>string <span class="token operator">&amp;</span>file2<span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+  <span class="token comment" spellcheck="true">// 打开第一个文件</span>
+  llvm<span class="token operator">::</span>ErrorOr<span class="token operator">&lt;</span>std<span class="token operator">::</span>unique_ptr<span class="token operator">&lt;</span>llvm<span class="token operator">::</span>MemoryBuffer<span class="token operator">>></span> File1BufferOrErr <span class="token operator">=</span>
+      llvm<span class="token operator">::</span>MemoryBuffer<span class="token operator">::</span><span class="token function">getFile</span><span class="token punctuation">(</span>file1<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>File1BufferOrErr<span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+    <span class="token function">errs</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">&lt;&lt;</span> <span class="token string">"Error opening file: "</span> <span class="token operator">&lt;&lt;</span> file1 <span class="token operator">&lt;&lt;</span> <span class="token string">"\n"</span><span class="token punctuation">;</span>
+    <span class="token function">abort</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+  <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+  std<span class="token operator">::</span>unique_ptr<span class="token operator">&lt;</span>llvm<span class="token operator">::</span>MemoryBuffer<span class="token operator">></span> File1Buffer <span class="token operator">=</span> std<span class="token operator">::</span><span class="token function">move</span><span class="token punctuation">(</span><span class="token operator">*</span>File1BufferOrErr<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  <span class="token comment" spellcheck="true">// 打开第二个文件</span>
+  llvm<span class="token operator">::</span>ErrorOr<span class="token operator">&lt;</span>std<span class="token operator">::</span>unique_ptr<span class="token operator">&lt;</span>llvm<span class="token operator">::</span>MemoryBuffer<span class="token operator">>></span> File2BufferOrErr <span class="token operator">=</span>
+      llvm<span class="token operator">::</span>MemoryBuffer<span class="token operator">::</span><span class="token function">getFile</span><span class="token punctuation">(</span>file2<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>File2BufferOrErr<span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+    <span class="token function">errs</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">&lt;&lt;</span> <span class="token string">"Error opening file: "</span> <span class="token operator">&lt;&lt;</span> file2 <span class="token operator">&lt;&lt;</span> <span class="token string">"\n"</span><span class="token punctuation">;</span>
+    <span class="token function">abort</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+  <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+  std<span class="token operator">::</span>unique_ptr<span class="token operator">&lt;</span>llvm<span class="token operator">::</span>MemoryBuffer<span class="token operator">></span> File2Buffer <span class="token operator">=</span> std<span class="token operator">::</span><span class="token function">move</span><span class="token punctuation">(</span><span class="token operator">*</span>File2BufferOrErr<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  <span class="token comment" spellcheck="true">// 比较两个文件的内容是否相同</span>
+  <span class="token keyword">return</span> File1Buffer<span class="token operator">-</span><span class="token operator">></span><span class="token function">getBuffer</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">==</span> File2Buffer<span class="token operator">-</span><span class="token operator">></span><span class="token function">getBuffer</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+</code></pre>
+<p>本阶段使编译器优化模块测试部分已经可以初步使用，但仍存在一些问题，其中最重要的是防止错误指令的生成，令人头痛的种种错误情况的收敛性仍然需要评估。</p>
 
                 
             </div>
@@ -425,7 +598,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://argithun.github.io/2024/01/03/db4/">https://argithun.github.io/2024/01/03/db4/</a>
+                    <a href="https://argithun.github.io/2024/02/01/pro-exp2/">https://argithun.github.io/2024/02/01/pro-exp2/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -463,12 +636,12 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">
-                                    <span class="chip bg-color">数据库</span>
+                                <a href="/tags/%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95/">
+                                    <span class="chip bg-color">软件测试</span>
                                 </a>
                             
-                                <a href="/tags/PostgreSQL/">
-                                    <span class="chip bg-color">PostgreSQL</span>
+                                <a href="/tags/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/">
+                                    <span class="chip bg-color">编译原理</span>
                                 </a>
                             
                         </div>
@@ -638,9 +811,10 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
                 <a href="/2024/02/01/pro-exp2/">
                     <div class="card-image">
@@ -657,9 +831,9 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2024-02-01
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2024-02-01
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -672,6 +846,7 @@
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -694,23 +869,23 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2024/01/02/db3/">
+                <a href="/2024/01/03/db4/">
                     <div class="card-image">
                         
-                        <img src="https://argithun-blog-1321510384.cos.ap-beijing.myqcloud.com/db3_1.png" class="responsive-img" alt="云数据库实验">
+                        <img src="https://argithun-blog-1321510384.cos.ap-beijing.myqcloud.com/db4_1.jpg" class="responsive-img" alt="PostgreSQL 源码分析">
                         
-                        <span class="card-title">云数据库实验</span>
+                        <span class="card-title">PostgreSQL 源码分析</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            云数据库实验报告
+                            开源数据库 PostgreSQL 的部分源码解析
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2024-01-02
+                                <i class="far fa-clock fa-fw icon-date"></i>2024-01-03
                             </span>
                         <span class="publish-author">
                             
@@ -727,12 +902,12 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E4%BA%91%E6%95%B0%E6%8D%AE%E5%BA%93/">
-                        <span class="chip bg-color">云数据库</span>
+                    <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">
+                        <span class="chip bg-color">数据库</span>
                     </a>
                     
-                    <a href="/tags/GaussDB/">
-                        <span class="chip bg-color">GaussDB</span>
+                    <a href="/tags/PostgreSQL/">
+                        <span class="chip bg-color">PostgreSQL</span>
                     </a>
                     
                 </div>

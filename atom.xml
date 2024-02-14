@@ -6,7 +6,7 @@
   <link href="https://argithun.github.io/atom.xml" rel="self"/>
   
   <link href="https://argithun.github.io/"/>
-  <updated>2024-02-13T15:31:58.329Z</updated>
+  <updated>2024-02-14T01:38:03.506Z</updated>
   <id>https://argithun.github.io/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>华为“毕昇”编译器模糊测试——项目二期</title>
+    <link href="https://argithun.github.io/2024/02/01/pro-exp2/"/>
+    <id>https://argithun.github.io/2024/02/01/pro-exp2/</id>
+    <published>2024-02-01T01:25:00.000Z</published>
+    <updated>2024-02-14T01:38:03.506Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;华为“毕昇”编译器模糊测试——项目二期&quot;&gt;&lt;a href=&quot;#华为“毕昇”编译器模糊测试——项目二期&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="项目实训" scheme="https://argithun.github.io/categories/%E9%A1%B9%E7%9B%AE%E5%AE%9E%E8%AE%AD/"/>
+    
+    
+    <category term="软件测试" scheme="https://argithun.github.io/tags/%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95/"/>
+    
+    <category term="编译原理" scheme="https://argithun.github.io/tags/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/"/>
+    
+  </entry>
   
   <entry>
     <title>PostgreSQL 源码分析</title>
@@ -176,11 +203,36 @@
   </entry>
   
   <entry>
+    <title>NISL-lab 实习——文献阅读</title>
+    <link href="https://argithun.github.io/2023/11/22/NISL_lab1/"/>
+    <id>https://argithun.github.io/2023/11/22/NISL_lab1/</id>
+    <published>2023-11-22T01:25:00.000Z</published>
+    <updated>2024-02-14T02:09:59.453Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;NISL-lab-实习——文献阅读&quot;&gt;&lt;a href=&quot;#NISL-lab-实习——文献阅读&quot; class=&quot;headerlink&quot; title=&quot;NISL-lab 实习——文献阅读&quot;&gt;&lt;/a&gt;NISL-lab 实习——文献阅读&lt;/h1&gt;&lt;p&gt;机缘巧合，获得</summary>
+        
+      
+    
+    
+    
+    <category term="计算机网络" scheme="https://argithun.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/"/>
+    
+    
+    <category term="网络安全" scheme="https://argithun.github.io/tags/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/"/>
+    
+  </entry>
+  
+  <entry>
     <title>华为“毕昇”编译器模糊测试——项目一期</title>
     <link href="https://argithun.github.io/2023/10/25/pro-exp1/"/>
     <id>https://argithun.github.io/2023/10/25/pro-exp1/</id>
     <published>2023-10-25T01:25:00.000Z</published>
-    <updated>2024-02-13T14:16:27.076Z</updated>
+    <updated>2024-02-14T00:42:23.212Z</updated>
     
     
       
@@ -489,60 +541,6 @@
         
         
     <summary type="html">&lt;h1 id=&quot;操作系统实验&quot;&gt;&lt;a href=&quot;#操作系统实验&quot; class=&quot;headerlink&quot; title=&quot;操作系统实验&quot;&gt;&lt;/a&gt;操作系统实验&lt;/h1&gt;&lt;h2 id=&quot;Lab1&quot;&gt;&lt;a href=&quot;#Lab1&quot; class=&quot;headerlink&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="体系结构" scheme="https://argithun.github.io/categories/%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84/"/>
-    
-    
-    <category term="操作系统" scheme="https://argithun.github.io/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/"/>
-    
-    <category term="linux" scheme="https://argithun.github.io/tags/linux/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>北航计算机学院面向对象（2023 第一单元）</title>
-    <link href="https://argithun.github.io/2023/03/01/OO_1/"/>
-    <id>https://argithun.github.io/2023/03/01/OO_1/</id>
-    <published>2023-03-01T01:25:00.000Z</published>
-    <updated>2023-10-09T14:16:47.153Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;北航计算机学院面向对象（2023-第一单元）&quot;&gt;&lt;a href=&quot;#北航计算机学院面向对象（2023-第一单元）&quot; class=&quot;headerlink&quot; title=&quot;北航计算机学院面向对象（2023 第一单元）&quot;&gt;&lt;/a&gt;北航计算机学院面向对象（2023</summary>
-        
-      
-    
-    
-    
-    <category term="面向对象" scheme="https://argithun.github.io/categories/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/"/>
-    
-    
-    <category term="Java" scheme="https://argithun.github.io/tags/Java/"/>
-    
-    <category term="面向对象" scheme="https://argithun.github.io/tags/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>操作系统实验报告（lab0）</title>
-    <link href="https://argithun.github.io/2023/03/01/os-lab0/"/>
-    <id>https://argithun.github.io/2023/03/01/os-lab0/</id>
-    <published>2023-03-01T01:25:00.000Z</published>
-    <updated>2023-10-15T02:42:21.894Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;操作系统实验&quot;&gt;&lt;a href=&quot;#操作系统实验&quot; class=&quot;headerlink&quot; title=&quot;操作系统实验&quot;&gt;&lt;/a&gt;操作系统实验&lt;/h1&gt;&lt;h2 id=&quot;Lab0&quot;&gt;&lt;a href=&quot;#Lab0&quot; class=&quot;headerlink&quot;</summary>
         
       
     
