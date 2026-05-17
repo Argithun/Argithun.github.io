@@ -126,58 +126,72 @@
 
 .pub-row {
     display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
-    gap: 14px;
+    align-items: center;
+    gap: 16px;
 }
 
 .pub-content {
+    flex: 1 1 0%;
     min-width: 0;
-    flex: 1;
 }
 
 .pub-title {
     margin: 0;
     font-weight: 600;
+    font-size: 15px;
+    line-height: 1.5;
 }
 
 .pub-meta {
     margin: 3px 0 0;
     color: var(--text-muted);
-    font-size: 14px;
+    font-size: 13px;
+    line-height: 1.5;
 }
 
 .pub-links {
+    flex: 0 0 auto;
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 6px;
     align-items: center;
-    flex-shrink: 0;
 }
 
 .pub-link {
-    width: 32px;
-    height: 32px;
-    border-radius: 8px;
-    border: 1px solid var(--line);
-    display: inline-flex;
+    display: flex;
     align-items: center;
     justify-content: center;
-    background: #ffffff;
-    color: #3c4660;
-    transition: 0.15s ease;
+    width: 30px;
+    height: 30px;
+    min-width: 30px;
+    min-height: 30px;
+    max-width: 30px;
+    max-height: 30px;
+    border-radius: 7px;
+    border: 1px solid var(--line);
+    background: #fff;
+    color: #4b5563;
+    text-decoration: none;
+    overflow: hidden;
+    transition: all 0.15s ease;
 }
 
 .pub-link:hover {
     border-color: #cfd9f6;
     transform: translateY(-1px);
-    box-shadow: 0 4px 12px rgba(49, 94, 251, 0.14);
+    box-shadow: 0 3px 10px rgba(49, 94, 251, 0.12);
 }
 
 .pub-link svg {
-    width: 18px;
-    height: 18px;
+    display: block;
+    width: 16px;
+    height: 16px;
+    min-width: 16px;
+    min-height: 16px;
+    max-width: 16px;
+    max-height: 16px;
     fill: currentColor;
+    flex-shrink: 0;
 }
 
 .github-link:hover {
@@ -191,7 +205,8 @@
 @media (max-width: 640px) {
     .pub-row {
         flex-direction: column;
-        gap: 10px;
+        align-items: flex-start;
+        gap: 8px;
     }
 
     .pub-links {
